@@ -7,14 +7,25 @@ import { CustomCanvas, Circle } from "./classes.js";
 const sketch = (s) => {
 	const circle = new Circle(s);
 
+	function resizeComponents() {
+		s.resize();
+		circle.resize();
+	}
+
 	s.setup = () => {
 		s.createCanvas(0, 0);
+		resizeComponents();
 	};
 
 	s.draw = () => {
-		s.updateDraw();
+		s.clear();
+		s.translate(s.width/2, s.height/2);
 
 		circle.draw();
+	};
+
+	s.windowResized = () => {
+		resizeComponents();
 	};
 };
 
