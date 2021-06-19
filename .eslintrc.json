@@ -5,9 +5,11 @@
 		"node": true
 	},
 	"extends": "eslint:recommended",
+	"parser": "@babel/eslint-parser", // Needed so eslint can parse static class properties (classes.js)
 	"parserOptions": {
 		"ecmaVersion": 12,
-		"sourceType": "module"
+		"sourceType": "module",
+		"requireConfigFile": false
 	},
 	"rules": {
 		"indent": [
