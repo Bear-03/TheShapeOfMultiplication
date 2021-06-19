@@ -7,3 +7,17 @@ html {
 	margin: 0;
 	padding: 0;
 }
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+.display-none {
+    display: none !important;
+}

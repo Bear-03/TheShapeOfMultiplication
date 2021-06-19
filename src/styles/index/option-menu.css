@@ -1,0 +1,8 @@
+#options {
+    position: relative;
+    cursor: pointer;
+}
+
+#options > ul {
+    position: absolute;
+}

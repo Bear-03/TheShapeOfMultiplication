@@ -16,7 +16,13 @@ module.exports = (_, options) => {
 		entry: {
 			common: "styles/common.css",
 
-			index: ["scripts/index/sketch.js", "styles/index.css"],
+			index: [
+				"scripts/index/sketch.js",
+				"scripts/index/option-menu.js",
+				"styles/index/index.css",
+				"styles/index/option-menu.css",
+				"styles/index/sketch.css"
+			],
 		},
 		output: {
 			publicPath: "", // Start all paths from the base dir ("dist/", set by express)
