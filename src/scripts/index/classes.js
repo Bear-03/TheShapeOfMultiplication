@@ -48,13 +48,17 @@ export class CustomCanvas extends p5 {
 
 class Node {
 	static diameter = 0;
-	/* Defined based on the relation between the man circle diameter
-	and the node diameter, in order to make it responsive.
 
-	i.e. The min node diameter is 0.01 * this.circle.diameter ...
+	/* The diameter of the nodes will me calculated dividing the
+	circle diameter by the node count. These numbers will be used
+	to clamp the dividend so the nodes don't become invisible nor huge.
+
+	The values can be interpreted as the max and min node count that
+	will be used for the calculations. i.e. nodes will never be smaller than
+	the size they get with nodeCount == maxDiameter, etc.
 	*/
-	static minDiameterRelation = 0.01;
-	static maxDiameterRelation = 0.03;
+	static minDiameter = 60;
+	static maxDiameter = 200;
 
 	/**
 	 * @param {p5} s
@@ -75,7 +79,7 @@ class Node {
 
 	static async recalculateDiameter() {
 		const { clampNumber } = await import("scripts/other/util");
-		Node.diameter = Circle.instance.diameter * clampNumber(Node.minDiameterRelation, 1 / Circle.instance.nodeCount, Node.maxDiameterRelation);
+		Node.diameter = Circle.instance.diameter / clampNumber(Node.minDiameter, Circle.instance.nodeCount, Node.maxDiameter);
 	}
 
 	recalculatePosition() {
