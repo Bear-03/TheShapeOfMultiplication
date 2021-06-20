@@ -61,20 +61,20 @@ class Node {
 	static maxDiameter = 200;
 
 	/**
-	 * @param {p5} s
+	 * @param {p5} c
 	 * @param {number} angle angle between the position vector of the node and the horizontal
 	 */
-	constructor(s, angle) {
-		this.s = s;
+	constructor(c, angle) {
+		this.c = c;
 		this.angle = angle;
 
-		this.position = this.s.createVector(0, 0);
+		this.position = this.c.createVector(0, 0);
 	}
 
 	draw() {
-		this.s.noStroke();
-		this.s.fill(255);
-		this.s.circle(this.position.x, this.position.y, Node.diameter);
+		this.c.noStroke();
+		this.c.fill(255);
+		this.c.circle(this.position.x, this.position.y, Node.diameter);
 	}
 
 	static async recalculateDiameter() {
@@ -83,7 +83,7 @@ class Node {
 	}
 
 	recalculatePosition() {
-		this.position = this.s.createVector(Math.cos(this.angle), Math.sin(this.angle)).mult(Circle.instance.diameter / 2);
+		this.position = this.c.createVector(Math.cos(this.angle), Math.sin(this.angle)).mult(Circle.instance.diameter / 2);
 	}
 }
 
@@ -91,13 +91,13 @@ class Node {
 export class Circle {
 
 	/**
-	 * @param {CustomCanvas} s
+	 * @param {CustomCanvas} c
 	 */
-	constructor(s) {
+	constructor(c) {
 		if (!Circle.instance) Circle.instance = this;
 		else return Circle.instance;
 
-		this.s = s;
+		this.c = c;
 
 		this.strokeWeight = 2;
 		this.diameter = 0;
@@ -140,16 +140,16 @@ export class Circle {
 	 * Draws the circle and all its components
 	 */
 	draw() {
-		this.s.noFill();
-		this.s.stroke(255);
-		this.s.strokeWeight(this.strokeWeight);
-		this.s.ellipse(0, 0, this.diameter);
+		this.c.noFill();
+		this.c.stroke(255);
+		this.c.strokeWeight(this.strokeWeight);
+		this.c.ellipse(0, 0, this.diameter);
 
 		this.drawNodes();
 	}
 
 	recalculateDiameter() {
-		this.diameter = this.s.vmax - this.strokeWeight;
+		this.diameter = this.c.vmax - this.strokeWeight;
 	}
 
 	populateNodeArray() {
@@ -157,7 +157,7 @@ export class Circle {
 		const angleBetweenNodes = 2 * Math.PI / this.nodeCount;
 
 		for (let angleTraveled = 0; angleTraveled < 2 * Math.PI; angleTraveled += angleBetweenNodes)
-			this.nodes.push(new Node(this.s, angleTraveled));
+			this.nodes.push(new Node(this.c, angleTraveled));
 	}
 
 	recalculateNodesPosition() {

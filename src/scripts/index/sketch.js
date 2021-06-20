@@ -4,30 +4,30 @@
 
 /**
  * The closure passed to create the p5 instance
- * @param {CustomCanvas} s
+ * @param {CustomCanvas} c
  */
-const sketch = async (s) => {
+const sketch = async (c) => {
 	const { Circle } = await import("./classes");
 
-	const circle = new Circle(s);
+	const circle = new Circle(c);
 
 	function resizeComponents() {
-		s.resize();
+		c.resize();
 		circle.resize();
 	}
 
-	s.setup = () => {
+	c.setup = () => {
 		resizeComponents();
 	};
 
-	s.draw = () => {
-		s.clear();
-		s.translate(s.width/2, s.height/2);
+	c.draw = () => {
+		c.clear();
+		c.translate(c.width/2, c.height/2);
 
 		circle.draw();
 	};
 
-	s.windowResized = () => {
+	c.windowResized = () => {
 		resizeComponents();
 	};
 };
