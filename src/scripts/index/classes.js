@@ -18,10 +18,6 @@ export class CustomCanvas extends p5 {
 		else this.createCanvas(canvasSize, canvasSize);
 	}
 
-	get vmax() {
-		return Math.max(this.width, this.height);
-	}
-
 	get boundingRect() {
 		return document.querySelector("canvas").getBoundingClientRect();
 	}
@@ -149,7 +145,7 @@ export class Circle {
 	}
 
 	recalculateDiameter() {
-		this.diameter = this.c.vmax - this.strokeWeight;
+		this.diameter = this.c.width - this.strokeWeight;
 	}
 
 	populateNodeArray() {
