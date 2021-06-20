@@ -8,19 +8,11 @@ export class CustomCanvas extends p5 {
 		/* Number multiplied by the available length so
 		the canvas has some margin */
 		this.sizeScalingFactor = 0.9;
-
-		this.center = this.createVector(0, 0);
 	}
 
 	resize() {
 		const canvasSize = this.calculateSize();
 		this.resizeCanvas(canvasSize, canvasSize);
-
-		this.recalculateCenter();
-	}
-
-	recalculateCenter() {
-		this.center = this.createVector(this.width / 2, this.height / 2);
 	}
 
 	get vmax() {
