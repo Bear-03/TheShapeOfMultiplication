@@ -16,6 +16,12 @@ a {
 button {
     border: none;
     outline: none;
+	cursor: pointer;
+	background: none;
+
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 .display-none {

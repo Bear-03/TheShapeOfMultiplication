@@ -1,8 +1,33 @@
-#options {
+#option-menu {
     position: relative;
     cursor: pointer;
 }
 
-#options > ul {
+#option-menu > ul {
     position: absolute;
+    background-color: rgb(42, 42, 42);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    right: 0;
+    margin-top: 1rem;
+}
+
+#option-menu li {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+
+#option-menu * + * {
+    margin-left: 1rem;
+}
+
+#option-menu span {
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+#node-number__field {
+    width: 5rem;
 }

@@ -13,11 +13,20 @@
         <header>
             <nav>Soon</nav>
             <h1>The Shape of Multiplication</h1>
-            <div id="options">
-                <span>Hi</span>
+            <div id="option-menu">
+                <button>Hi</button>
                 <ul class="display-none">
-                    <li>1</li>
-                    <li>2</li>
+                    <li>
+                        <!--Dummy slider YET (not working)-->
+                        <span>Multiplication number</span>
+                        <input type="range" min="1" max="100" value="10" step="1">
+                        <input type="number">
+                    </li>
+                    <li id="option-menu__node-number">
+                        <span>Number of nodes</span>
+                        <input name="node-number" type="range" min="1" max="100" value="10" step="1">
+                        <input name="node-number" type="number">
+                    </li>
                     <li>3</li>
                     <li>4</li>
                     <li>5</li>

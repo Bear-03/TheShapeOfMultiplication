@@ -54,6 +54,7 @@ class Node {
 	constructor(s, angle) {
 		this.s = s;
 		this.angle = angle;
+
 		this.position = this.s.createVector(0, 0);
 	}
 
@@ -86,10 +87,11 @@ export class Circle {
 		this.s = s;
 
 		this.strokeWeight = 2;
-		this.nodes = [];
-		this.nodeCount = 5;
-
 		this.diameter = 0;
+
+		this.nodes = [];
+		this._nodeCount = 5;
+		this.populateNodeArray();
 	}
 
 	get nodeCount() {
@@ -97,8 +99,13 @@ export class Circle {
 	}
 
 	set nodeCount(value) {
+		if (value === this.nodeCount) return;
+
 		this._nodeCount = value;
-		this.generateNodes();
+		this.populateNodeArray();
+
+		// Now nodes have different diameter and position, so the circle must be resized
+		this.resize();
 	}
 
 	async resize() {
@@ -132,7 +139,7 @@ export class Circle {
 		this.diameter = this.s.vmax - this.strokeWeight;
 	}
 
-	generateNodes() {
+	populateNodeArray() {
 		this.nodes = [];
 		const angleBetweenNodes = 2 * Math.PI / this.nodeCount;
 
