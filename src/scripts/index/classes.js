@@ -53,8 +53,8 @@ class Node {
 	will be used for the calculations. i.e. nodes will never be smaller than
 	the size they get with nodeCount == maxDiameter, etc.
 	*/
-	static minDiameter = 60;
-	static maxDiameter = 200;
+	static minNodeCountForDiameter = 60;
+	static maxNodeCountForDiameter = 200;
 
 	/**
 	 * @param {p5} c
@@ -67,15 +67,19 @@ class Node {
 		this.position = this.c.createVector(0, 0);
 	}
 
+	static async recalculateDiameter() {
+		const { clampNumber } = await import("scripts/other/util");
+		Node.diameter = Circle.instance.diameter / clampNumber(Node.minNodeCountForDiameter, Circle.instance.nodeCount, Node.maxNodeCountForDiameter);
+	}
+
+	static get maxDiameter() {
+		return Circle.instance.diameter / Node.minNodeCountForDiameter;
+	}
+
 	draw() {
 		this.c.noStroke();
 		this.c.fill(255);
 		this.c.circle(this.position.x, this.position.y, Node.diameter);
-	}
-
-	static async recalculateDiameter() {
-		const { clampNumber } = await import("scripts/other/util");
-		Node.diameter = Circle.instance.diameter / clampNumber(Node.minDiameter, Circle.instance.nodeCount, Node.maxDiameter);
 	}
 
 	recalculatePosition() {
@@ -113,23 +117,14 @@ export class Circle {
 		this._nodeCount = value;
 		this.populateNodeArray();
 
-		// Now nodes have different diameter and position, so the circle must be resized
-		this.resize();
+		this.adjustNodes();
 	}
 
 	async resize() {
 		this.recalculateDiameter();
+		this.diameter -= Node.maxDiameter;
 
-		/* The circle radius, and thus, the node position, will depend on
-		the node diameter, so that must be calculated first */
-		await Node.recalculateDiameter();
-
-		// Subtract the node diameter so there isn't overflow
-		this.diameter -= Node.diameter;
-
-		/* After the main circle and nodes have been resized,
-		the position can be calculated */
-		this.recalculateNodesPosition();
+		this.adjustNodes();
 	}
 
 	/**
@@ -156,8 +151,9 @@ export class Circle {
 			this.nodes.push(new Node(this.c, angleTraveled));
 	}
 
-	recalculateNodesPosition() {
+	async adjustNodes() {
 		for (const node of this.nodes) node.recalculatePosition();
+		await Node.recalculateDiameter();
 	}
 
 	/**
