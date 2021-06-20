@@ -3,7 +3,7 @@ document.querySelector("#option-menu > button").addEventListener("click", () => 
 });
 
 document.querySelector("#option-menu__node-number input[type='range']").addEventListener("input", async (event) => {
-	if (!event.target.value || event.target.value <= 0) return;
+	if (!event.target.checkValidity()) return;
 
 	const { Circle } = await import("./classes");
 
@@ -12,7 +12,7 @@ document.querySelector("#option-menu__node-number input[type='range']").addEvent
 });
 
 document.querySelector("#option-menu__node-number input[type='number']").addEventListener("input", async (event) => {
-	if (!event.target.value || event.target.value <= 0) return;
+	if (!event.target.checkValidity()) return;
 
 	const { Circle } = await import("./classes");
 

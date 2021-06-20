@@ -5,7 +5,7 @@
 
 #option-menu > ul {
     position: absolute;
-    background-color: rgb(42, 42, 42);
+    background-color: #2a2a2a;
     padding: 1rem 2rem;
     border-radius: 1rem;
     right: 0;
@@ -19,7 +19,11 @@
     align-items: center;
 }
 
-#option-menu * + * {
+#option-menu li + li {
+    margin-top: .5rem;
+}
+
+#option-menu li > * + * {
     margin-left: 1rem;
 }
 
@@ -28,6 +32,19 @@
     white-space: nowrap;
 }
 
-#node-number__field {
-    width: 5rem;
+#option-menu input[type=number] {
+    appearance: textfield;
+    width: 4rem;
+    padding: 0 .2rem;
+
+    border: none;
+    border-radius: .5rem;
+}
+
+#option-menu input[type=number]:invalid {
+    outline: .2rem solid #c80000;
+}
+
+#option-menu input[type=range] {
+    width: 25rem;
 }

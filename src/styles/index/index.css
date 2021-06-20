@@ -1,8 +1,7 @@
 body {
     text-align: center;
     color: white;
-    font-size: 2rem;
-    background-color: rgb(50, 50, 50);
+    background-color: #323232;
 }
 
 header {
@@ -11,4 +10,5 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 1rem 3rem;
+    font-size: 2rem;
 }

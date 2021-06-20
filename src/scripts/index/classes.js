@@ -117,14 +117,14 @@ export class Circle {
 		this._nodeCount = value;
 		this.populateNodeArray();
 
-		this.adjustNodes();
+		this.updateNodes();
 	}
 
 	async resize() {
 		this.recalculateDiameter();
 		this.diameter -= Node.maxDiameter;
 
-		this.adjustNodes();
+		this.updateNodes();
 	}
 
 	/**
@@ -151,7 +151,10 @@ export class Circle {
 			this.nodes.push(new Node(this.c, angleTraveled));
 	}
 
-	async adjustNodes() {
+	/**
+	 * Recalculates all node positions and diameter
+	 */
+	async updateNodes() {
 		for (const node of this.nodes) node.recalculatePosition();
 		await Node.recalculateDiameter();
 	}
