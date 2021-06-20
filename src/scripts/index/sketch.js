@@ -17,7 +17,6 @@ const sketch = async (s) => {
 	}
 
 	s.setup = () => {
-		s.createCanvas(0, 0);
 		resizeComponents();
 	};
 

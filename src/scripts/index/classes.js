@@ -7,11 +7,15 @@ export class CustomCanvas extends p5 {
 		/* Number multiplied by the available length so
 		the canvas has some margin */
 		this.sizeScalingFactor = 0.9;
+
+		this.canvasCreated = false;
 	}
 
 	resize() {
 		const canvasSize = this.calculateSize();
-		this.resizeCanvas(canvasSize, canvasSize);
+
+		if (this.canvasCreated) this.resizeCanvas(canvasSize, canvasSize);
+		else this.createCanvas(canvasSize, canvasSize);
 	}
 
 	get vmax() {
@@ -20,6 +24,11 @@ export class CustomCanvas extends p5 {
 
 	get boundingRect() {
 		return document.querySelector("canvas").getBoundingClientRect();
+	}
+
+	createCanvas(...args) {
+		super.createCanvas(...args);
+		this.canvasCreated = true;
 	}
 
 	/**
