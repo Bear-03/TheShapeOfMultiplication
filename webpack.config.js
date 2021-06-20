@@ -93,6 +93,7 @@ module.exports = (_, options) => {
 				new CssMinimizerPlugin(),
 				new TerserPlugin()
 			],
+			runtimeChunk: "single",
 			splitChunks: {
 				chunks: "all",
 				maxSize: 244000

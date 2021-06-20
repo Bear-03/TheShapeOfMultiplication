@@ -1,5 +1,4 @@
 import p5 from "p5";
-import { clampNumber } from "scripts/common/util";
 
 export class CustomCanvas extends p5 {
 	constructor(...args) {
@@ -64,8 +63,9 @@ class Node {
 		this.s.circle(this.position.x, this.position.y, Node.diameter);
 	}
 
-	static recalculateDiameter() {
-		Node.diameter = Circle.instance.diameter * clampNumber(this.minDiameterRelation, 1 / Circle.instance.nodeCount, this.maxDiameterRelation);
+	static async recalculateDiameter() {
+		const { clampNumber } = await import("scripts/other/util");
+		Node.diameter = Circle.instance.diameter * clampNumber(Node.minDiameterRelation, 1 / Circle.instance.nodeCount, Node.maxDiameterRelation);
 	}
 
 	recalculatePosition() {
@@ -101,12 +101,12 @@ export class Circle {
 		this.generateNodes();
 	}
 
-	resize() {
+	async resize() {
 		this.recalculateDiameter();
 
 		/* The circle radius, and thus, the node position, will depend on
 		the node diameter, so that must be calculated first */
-		Node.recalculateDiameter();
+		await Node.recalculateDiameter();
 
 		// Subtract the node diameter so there isn't overflow
 		this.diameter -= Node.diameter;

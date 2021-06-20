@@ -1,10 +1,14 @@
-import { CustomCanvas, Circle } from "./classes.js";
+/**
+ * @typedef {import("./classes").CustomCanvas} CustomCanvas
+ */
 
 /**
  * The closure passed to create the p5 instance
  * @param {CustomCanvas} s
  */
-const sketch = (s) => {
+const sketch = async (s) => {
+	const { Circle } = await import("./classes");
+
 	const circle = new Circle(s);
 
 	function resizeComponents() {
@@ -29,4 +33,7 @@ const sketch = (s) => {
 	};
 };
 
-new CustomCanvas(sketch, "sketch-container"); // Not saved in a variable because it wont be used
+(async () => {
+	const { CustomCanvas } = await import("./classes");
+	new CustomCanvas(sketch, "sketch-container"); // Not saved in a variable because it wont be used
+})();
