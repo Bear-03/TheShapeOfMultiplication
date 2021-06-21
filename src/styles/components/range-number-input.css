@@ -19,6 +19,7 @@
 }
 
 :host input[type=number] {
+    outline: none; /* Removes chrome outline on focus */
     appearance: textfield;
     width: 4ch;
 
@@ -28,7 +29,9 @@
 }
 
 :host input[type=number]:invalid {
-    outline: .2rem solid #c80000;
+    /* Chrome doesn't apply border-radius to outline
+    so box-shadow has to be used */
+    box-shadow: 0 0 0 .2rem #c80000;
 }
 
 :host input[type=range] {
