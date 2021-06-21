@@ -3,7 +3,7 @@
     cursor: pointer;
 }
 
-#option-menu > ul {
+#option-menu__dropdown {
     position: absolute;
     background-color: #2a2a2a;
     padding: 1rem 2rem;
@@ -12,18 +12,18 @@
     margin-top: 1rem;
 }
 
-#option-menu li {
+#option-menu__dropdown > * {
     display: flex;
     flex-direction: row;
     justify-content: right;
     align-items: center;
 }
 
-#option-menu li + li {
+#option-menu__dropdown > * + * {
     margin-top: .5rem;
 }
 
-#option-menu li > * + * {
+#option-menu__dropdown > * > * + * {
     margin-left: 1rem;
 }
 

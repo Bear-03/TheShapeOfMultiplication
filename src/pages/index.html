@@ -15,19 +15,10 @@
             <h1>The Shape of Multiplication</h1>
             <div id="option-menu">
                 <button>Hi</button>
-                <ul class="display-none">
-                    <li>
-                        <!--Dummy slider YET (not working)-->
-                        <span>Multiplication number</span>
-                        <input type="range" min="1" max="100" value="10" step="1">
-                        <input type="number" min="1" max="100">
-                    </li>
-                    <li id="option-menu__node-number">
-                        <span>Number of nodes</span>
-                        <input type="range" min="1" max="100" value="10" step="1">
-                        <input type="number" min="1" max="500" value="10">
-                    </li>
-                </ul>
+                <div id="option-menu__dropdown" class="display-none">
+                    <range-number-input name="Multiplication number" min="1" range-max="100" number-max="100" value="10"></range-number-input>
+                    <range-number-input id="option-menu__node-number" name="Number of nodes" min="1" range-max="100" number-max="500" value="10"></range-number-input>
+                </div>
             </div>
         </header>
         <div id="sketch-container"></div>

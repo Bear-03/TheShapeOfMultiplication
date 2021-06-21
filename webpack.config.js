@@ -15,6 +15,7 @@ module.exports = (_, options) => {
 		// Entries for specific html files must be named as the html file.
 		entry: {
 			common: "styles/common.css",
+			rangeNumberInput: "scripts/elements/range-number-input.js",
 
 			index: [
 				"scripts/index/sketch.js",
@@ -63,7 +64,8 @@ module.exports = (_, options) => {
 			new DynamicHtmlWebpackPlugin({
 				dir: "src/pages",
 				additionalChunks: {
-					all: "common"
+					all: "common",
+					index: "rangeNumberInput"
 				},
 				commonOptions: {
 					scriptLoading: "defer",
