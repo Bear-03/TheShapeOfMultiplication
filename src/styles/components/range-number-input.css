@@ -10,17 +10,21 @@
 }
 
 :host span {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     white-space: nowrap;
+}
+
+:host input {
+    background-color: #f5f5f5;
 }
 
 :host input[type=number] {
     appearance: textfield;
-    width: 4rem;
-    padding: 0 .2rem;
+    width: 4ch;
 
     border: none;
-    border-radius: .5rem;
+    border-radius: .7rem;
+    padding: 0 .4rem;
 }
 
 :host input[type=number]:invalid {
@@ -28,5 +32,18 @@
 }
 
 :host input[type=range] {
+    appearance: none;
     width: 25rem;
+    height: 1rem;
+
+    border-radius: .5rem;
+    padding: 0 .3rem;
+}
+
+:host input[type=range]::-webkit-slider-thumb,
+:host input[type=range]::-moz-range-thumb {
+    height: .5rem;
+    border: none;
+    background-color: #252525;
+    cursor: pointer;
 }
