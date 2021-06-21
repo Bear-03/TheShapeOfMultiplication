@@ -9,16 +9,16 @@
     margin-left: 1rem;
 }
 
-:host span {
+span {
     font-size: 1.7rem;
     white-space: nowrap;
 }
 
-:host input {
+input {
     background-color: #f5f5f5;
 }
 
-:host input[type=number] {
+input[type=number] {
     outline: none; /* Removes chrome outline on focus */
     appearance: textfield;
     width: 4ch;
@@ -28,13 +28,13 @@
     padding: 0 .4rem;
 }
 
-:host input[type=number]:invalid {
+input[type=number]:invalid {
     /* Chrome doesn't apply border-radius to outline
     so box-shadow has to be used */
     box-shadow: 0 0 0 .2rem #c80000;
 }
 
-:host input[type=range] {
+input[type=range] {
     appearance: none;
     width: 25rem;
     height: 1rem;
@@ -43,8 +43,9 @@
     padding: 0 .3rem;
 }
 
-:host input[type=range]::-webkit-slider-thumb,
-:host input[type=range]::-moz-range-thumb {
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb {
+    appearance: none;
     height: .5rem;
     border: none;
     background-color: #252525;
