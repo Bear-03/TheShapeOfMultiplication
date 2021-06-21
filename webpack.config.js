@@ -15,7 +15,7 @@ module.exports = (_, options) => {
 		// Entries for specific html files must be named as the html file.
 		entry: {
 			common: "styles/common.css",
-			rangeNumberInput: "scripts/elements/range-number-input.js",
+			rangeNumberInput: "scripts/components/range-number-input.js",
 
 			index: [
 				"scripts/index/sketch.js",
