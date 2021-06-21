@@ -1,22 +1,37 @@
+import style from "styles/components/range-number-input.css";
+
 class RangeNumberInput extends HTMLElement {
 	constructor() {
 		super();
 
+		this.attachShadow({mode: "open"});
+
+		this.processAttributes();
+		this.addChildren();
+		this.addListeners();
+	}
+
+	processAttributes() {
 		this.name = this.getAttribute("name");
 		this.min = parseInt(this.getAttribute("min"));
 		this.rangeMax = parseInt(this.getAttribute("range-max"));
 		this.numberMax = parseInt(this.getAttribute("number-max"));
 		this.value = parseInt(this.getAttribute("value"));
+	}
 
+	addChildren() {
 		// The "required" attribute makes empty inputs not valid
-		this.innerHTML = `
+		this.shadowRoot.innerHTML = `
+			<style>${style}</style>
 			<span>${this.name}</span>
 			<input type="range" min=${this.min} max=${this.rangeMax} value=${this.value}>
 			<input required type="number" min=${this.min} max=${this.numberMax} value=${this.value}>
 		`;
+	}
 
-		const rangeInput = this.querySelector("input[type=range]");
-		const numberInput = this.querySelector("input[type=number]");
+	addListeners() {
+		const rangeInput = this.shadowRoot.querySelector("input[type=range]");
+		const numberInput = this.shadowRoot.querySelector("input[type=number]");
 
 		// When the value is changed in any of the elements, it should be updated
 		rangeInput.addEventListener("input", (event) => this.onInput(event, numberInput));

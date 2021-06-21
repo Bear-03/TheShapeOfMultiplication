@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+
+:host > * + * {
+    margin-left: 1rem;
+}
+
+:host span {
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+:host input[type=number] {
+    appearance: textfield;
+    width: 4rem;
+    padding: 0 .2rem;
+
+    border: none;
+    border-radius: .5rem;
+}
+
+:host input[type=number]:invalid {
+    outline: .2rem solid #c80000;
+}
+
+:host input[type=range] {
+    width: 25rem;
+}

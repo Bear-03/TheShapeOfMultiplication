@@ -45,19 +45,17 @@ module.exports = (_, options) => {
 				},
 				{
 					test: /\.css$/,
-					use: [
-						{
-							loader: MiniCssExtractPlugin.loader
-						},
-						{
-							loader: "css-loader",
-							options: {
-								url: false,
-								sourceMap: devmode
-							}
-						}
-					]
-				}
+					exclude: path.resolve(__dirname, "src/styles/components"),
+					loader: MiniCssExtractPlugin.loader
+				},
+				{
+					test: /\.css$/,
+					loader: "css-loader",
+					options: {
+						url: false,
+						sourceMap: devmode
+					}
+				},
 			]
 		},
 		plugins: [

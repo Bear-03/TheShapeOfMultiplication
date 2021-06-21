@@ -12,39 +12,6 @@
     margin-top: 1rem;
 }
 
-#option-menu__dropdown > * {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-}
-
 #option-menu__dropdown > * + * {
     margin-top: .5rem;
-}
-
-#option-menu__dropdown > * > * + * {
-    margin-left: 1rem;
-}
-
-#option-menu span {
-    font-size: 1.5rem;
-    white-space: nowrap;
-}
-
-#option-menu input[type=number] {
-    appearance: textfield;
-    width: 4rem;
-    padding: 0 .2rem;
-
-    border: none;
-    border-radius: .5rem;
-}
-
-#option-menu input[type=number]:invalid {
-    outline: .2rem solid #c80000;
-}
-
-#option-menu input[type=range] {
-    width: 25rem;
 }
