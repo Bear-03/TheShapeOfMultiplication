@@ -8,10 +8,11 @@ class RangeNumberInput extends HTMLElement {
 		this.numberMax = parseInt(this.getAttribute("number-max"));
 		this.value = parseInt(this.getAttribute("value"));
 
+		// The "required" attribute makes empty inputs not valid
 		this.innerHTML = `
 			<span>${this.name}</span>
-			<input type="range" min=${this.min} max=${this.rangeMax} value=${this.value} step="1">
-			<input type="number" min=${this.min} max=${this.numberMax} value=${this.value}>
+			<input type="range" min=${this.min} max=${this.rangeMax} value=${this.value}>
+			<input required type="number" min=${this.min} max=${this.numberMax} value=${this.value}>
 		`;
 
 		const rangeInput = this.querySelector("input[type=range]");
@@ -30,7 +31,7 @@ class RangeNumberInput extends HTMLElement {
 
 		if (!event.target.checkValidity()) return;
 
-		this.value = event.target.value;
+		this.value = parseInt(event.target.value);
 		otherInput.value = this.value;
 
 		/* Fire a new event on this element so it can be listened,
