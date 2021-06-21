@@ -103,7 +103,7 @@ export class Circle {
 		this.diameter = 0;
 
 		this.nodes = [];
-		this._nodeCount = 5;
+		this._nodeCount = document.getElementById("option-menu__node-number").value;
 		this.populateNodeArray();
 	}
 
@@ -116,7 +116,6 @@ export class Circle {
 
 		this._nodeCount = value;
 		this.populateNodeArray();
-
 		this.updateNodes();
 	}
 
