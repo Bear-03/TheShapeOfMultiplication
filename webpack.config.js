@@ -19,9 +19,10 @@ module.exports = (_, options) => {
 
 			index: [
 				"scripts/index/sketch.js",
-				"scripts/index/option-menu.js",
+				"scripts/index/menus.js",
+
 				"styles/index/index.css",
-				"styles/index/option-menu.css",
+				"styles/index/classes/menu.css",
 				"styles/index/sketch.css"
 			],
 		},

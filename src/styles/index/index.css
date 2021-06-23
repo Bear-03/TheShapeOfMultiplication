@@ -2,6 +2,7 @@ body {
     text-align: center;
     color: white;
     background-color: #323232;
+    overflow: hidden; /* For menus */
 }
 
 header {
