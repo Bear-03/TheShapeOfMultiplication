@@ -23,9 +23,11 @@ class RangeNumberInput extends HTMLElement {
 		// The "required" attribute makes empty inputs not valid
 		this.shadowRoot.innerHTML = `
 			<style>${style}</style>
-			<span>${this.name}</span>
-			<input type="range" min=${this.min} max=${this.rangeMax} value=${this.value}>
-			<input required type="number" min=${this.min} max=${this.numberMax} value=${this.value}>
+			<label>
+				<span>${this.name}</span>
+				<input type="range" min=${this.min} max=${this.rangeMax} value=${this.value}>
+				<input required type="number" min=${this.min} max=${this.numberMax} value=${this.value}>
+			</label>
 		`;
 	}
 
