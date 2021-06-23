@@ -41,6 +41,7 @@ input[type=number]:invalid {
 
 input[type=range] {
     appearance: none;
+    cursor: pointer;
     width: 25rem;
     height: 1rem;
 
@@ -51,32 +52,59 @@ input[type=range] {
     --thumb-width: 1.5rem;
     --thumb-backround-color: #252525;
     --thumb-border-radius: 50rem;
+
+    --hover-thumb-brightness: 3.5;
+    --hover-track-thumb-brightness: 2.5; /* thumb brightness when hovering on track */
+    --hover-thumb-transition-duration: .2s;
+    --hover-thumb-transition-function: ease-out;
 }
 
-/* REPEATED RULE */
+/* DOUBLED RULES */
 /* Chrome doesn't render a rule if it contains
 an unknown selector, even if other ones do work.
 This makes it necessary to make a rule only for
 webkit browsers */
+
 input[type=range]::-moz-range-thumb {
     appearance: none;
     border: none;
-    cursor: pointer;
 
     height: var(--thumb-height);
     width: var(--thumb-width);
     background-color: var(--thumb-backround-color);
     border-radius: var(--thumb-border-radius);
+
+    transition: filter var(--hover-thumb-transition-duration) var(--hover-thumb-transition-function);
 }
 
 input[type=range]::-webkit-slider-thumb {
     appearance: none;
     border: none;
-    cursor: pointer;
 
     height: var(--thumb-height);
     width: var(--thumb-width);
     background-color: var(--thumb-backround-color);
     border-radius: var(--thumb-border-radius);
+
+    transition: filter var(--hover-thumb-transition-duration) var(--hover-thumb-transition-function);
 }
-/* REPEATED RULE */
+
+input[type=range]::-moz-range-thumb:hover,
+input[type=range]::-moz-range-thumb:active {
+    filter: brightness(var(--hover-thumb-brightness)) !important;
+}
+
+input[type=range]::-webkit-slider-thumb:hover,
+input[type=range]::-webkit-slider-thumb:active {
+    filter: brightness(var(--hover-thumb-brightness)) !important;
+}
+
+input[type=range]:hover::-moz-range-thumb {
+    filter: brightness(var(--hover-track-thumb-brightness));
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+    filter: brightness(var(--hover-track-thumb-brightness));
+}
+
+/* DOUBLED RULES */

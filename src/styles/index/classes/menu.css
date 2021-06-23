@@ -1,6 +1,11 @@
 .menu > button {
     position: relative;
     z-index: 1;
+    transition: filter .15s ease-out;
+}
+
+.menu > button:hover {
+    filter: brightness(.7);
 }
 
 .menu aside {
