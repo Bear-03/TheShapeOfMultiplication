@@ -33,7 +33,7 @@ class RangeNumberInput extends HTMLElement {
 		const rangeInput = this.shadowRoot.querySelector("input[type=range]");
 		const numberInput = this.shadowRoot.querySelector("input[type=number]");
 
-		// When the value is changed in any of the elements, it should be updated
+		// The event should fire the same way for both of the input elements
 		rangeInput.addEventListener("input", (event) => this.onInput(event, numberInput));
 		numberInput.addEventListener("input", (event) => this.onInput(event, rangeInput));
 	}
@@ -47,6 +47,7 @@ class RangeNumberInput extends HTMLElement {
 		if (!event.target.checkValidity()) return;
 
 		this.value = parseInt(event.target.value);
+		// Show the value in the element that didn't trigger the event
 		otherInput.value = this.value;
 
 		/* Fire a new event on this element so it can be listened,
