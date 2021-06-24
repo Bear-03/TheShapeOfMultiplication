@@ -101,9 +101,11 @@ export class Circle {
 
 		this.strokeWeight = 2;
 		this.diameter = 0;
-
 		this.nodes = [];
-		this._nodeCount = document.getElementById("option-menu__node-number").value;
+
+		this.setPropertyWithElementValue("option-menu__node-count", "_nodeCount");
+		this.setPropertyWithElementValue("option-menu__mult-number", "multNumber");
+
 		this.populateNodeArray();
 	}
 
@@ -140,6 +142,21 @@ export class Circle {
 
 	recalculateDiameter() {
 		this.diameter = this.c.width - this.strokeWeight;
+	}
+
+	/**
+	 * Sets the value of a variable to the value of an input element.
+	 * This is used to pass the default value of the <input> to the
+	 * variable that it controls in order to avoid duplication and,
+	 * thus, make the code easier to maintain
+	 *
+	 * @param {*} elementId id of the input element.
+	 * @param {*} propertyName property of this object that will be set.
+	 */
+	setPropertyWithElementValue(elementId, propertyName) {
+		/* JS doesn't allow passing by reference so the
+		property has to be accessed with [] and a string */
+		this[propertyName] = this._nodeCount = document.getElementById(elementId).value;
 	}
 
 	populateNodeArray() {
