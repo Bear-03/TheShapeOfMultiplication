@@ -135,9 +135,11 @@ export class Circle {
 		this.c.noFill();
 		this.c.stroke(255);
 		this.c.strokeWeight(this.strokeWeight);
+
 		this.c.ellipse(0, 0, this.diameter);
 
 		this.drawNodes();
+		this.drawLines();
 	}
 
 	recalculateDiameter() {
@@ -180,5 +182,21 @@ export class Circle {
 	 */
 	drawNodes() {
 		for (const node of this.nodes) node.draw();
+	}
+
+	drawLines() {
+		// Start at node 1 because first node is 0 and 0 * anything = 0
+		for (let [i, node] of this.nodes.slice(1).entries()) {
+			i++;
+			const endNodeIndex = (i * this.multNumber) % this.nodeCount;
+			this.drawLineBetweenNodes(node, this.nodes[endNodeIndex]);
+		}
+	}
+
+	drawLineBetweenNodes(startNode, endNode) {
+		this.c.noFill();
+		this.c.stroke(255);
+
+		this.c.line(startNode.position.x, startNode.position.y, endNode.position.x, endNode.position.y);
 	}
 }
