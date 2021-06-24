@@ -187,7 +187,10 @@ export class Circle {
 	drawLines() {
 		// Start at node 1 because first node is 0 and 0 * anything = 0
 		for (let [i, node] of this.nodes.slice(1).entries()) {
+			/* i starts at 0 because a new array is created, but it is
+			node number 1 */
 			i++;
+
 			const endNodeIndex = (i * this.multNumber) % this.nodeCount;
 			this.drawLineBetweenNodes(node, this.nodes[endNodeIndex]);
 		}
