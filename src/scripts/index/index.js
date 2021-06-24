@@ -1,3 +1,5 @@
+import "scripts/index/menus.js";
+
 /**
  * @typedef {import("./classes").CustomCanvas} CustomCanvas
  */

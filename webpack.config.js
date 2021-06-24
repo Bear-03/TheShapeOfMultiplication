@@ -14,16 +14,12 @@ module.exports = (_, options) => {
 		devtool: devmode ? "inline-source-map" : false,
 		// Entries for specific html files must be named as the html file.
 		entry: {
-			common: "styles/common.css",
+			common: "styles/shared/common.css",
 			rangeNumberInput: "scripts/components/range-number-input.js",
 
 			index: [
-				"scripts/index/sketch.js",
-				"scripts/index/menus.js",
-
+				"scripts/index/index.js",
 				"styles/index/index.css",
-				"styles/index/classes/menu.css",
-				"styles/index/sketch.css"
 			],
 		},
 		output: {

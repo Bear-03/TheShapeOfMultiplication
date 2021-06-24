@@ -1,3 +1,6 @@
+@import url(styles/shared/classes/menu.css);
+@import url(styles/index/sketch.css);
+
 body {
     text-align: center;
     color: white;
