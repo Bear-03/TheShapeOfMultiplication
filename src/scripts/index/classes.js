@@ -54,7 +54,7 @@ class Node {
 	the size they get with nodeCount == maxDiameter, etc.
 	*/
 	static minNodeCountForDiameter = 60;
-	static maxNodeCountForDiameter = 200;
+	static maxNodeCountForDiameter = 300;
 
 	/**
 	 * @param {p5} c

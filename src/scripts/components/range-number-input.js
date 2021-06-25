@@ -14,8 +14,7 @@ class RangeNumberInput extends HTMLElement {
 	processAttributes() {
 		this.name = this.getAttribute("name");
 		this.min = parseInt(this.getAttribute("min"));
-		this.rangeMax = parseInt(this.getAttribute("range-max"));
-		this.numberMax = parseInt(this.getAttribute("number-max"));
+		this.max = parseInt(this.getAttribute("max"));
 		this.value = parseInt(this.getAttribute("value"));
 	}
 
@@ -25,8 +24,8 @@ class RangeNumberInput extends HTMLElement {
 			<style>${style}</style>
 			<label>
 				<span>${this.name}</span>
-				<input type="range" min=${this.min} max=${this.rangeMax} value=${this.value}>
-				<input required type="number" min=${this.min} max=${this.numberMax} value=${this.value}>
+				<input type="range" min=${this.min} max=${this.max} value=${this.value}>
+				<input required type="number" min=${this.min} max=${this.max} value=${this.value}>
 			</label>
 		`;
 	}
