@@ -1,15 +1,10 @@
 import p5 from "p5";
 
-export class CustomCanvas extends p5 {
-	constructor(...args) {
-		super(...args);
-
-		/* Number multiplied by the available length so
-		the canvas has some margin */
-		this.sizeScalingFactor = 0.9;
-
-		this.canvasCreated = false;
-	}
+export class CustomCanvas extends p5 {ç
+	/* Number multiplied by the available
+	length so the canvas has some margin */
+	sizeScalingFactor = 0.9;
+	canvasCreated = false;
 
 	resize() {
 		const canvasSize = this.calculateSize();
@@ -43,7 +38,8 @@ export class CustomCanvas extends p5 {
 }
 
 class Node {
-	static diameter = 0;
+	/** @type {number} */
+	static diameter;
 
 	/* The diameter of the nodes will me calculated dividing the
 	circle diameter by the node count. These numbers will be used
@@ -53,11 +49,20 @@ class Node {
 	will be used for the calculations. i.e. nodes will never be smaller than
 	the size they get with nodeCount == maxDiameter, etc.
 	*/
+	/** @type {number} */
 	static minNodeCountForDiameter = 60;
+	/** @type {number} */
 	static maxNodeCountForDiameter = 300;
 
+	/** @type {CustomCanvas} */
+	c;
+	/** @type {number} */
+	angle;
+	/** @type {p5.Vector} */
+	position;
+
 	/**
-	 * @param {p5} c
+	 * @param {CustomCanvas} c
 	 * @param {number} angle angle between the position vector of the node and the horizontal
 	 */
 	constructor(c, angle) {
