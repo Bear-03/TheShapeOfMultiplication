@@ -11,11 +11,11 @@ import "scripts/index/menus.js";
 const sketch = async (c) => {
 	const { Circle } = await import("./classes");
 
-	const circle = new Circle(c);
+	Circle.instance.init(c);
 
 	function resizeComponents() {
 		c.resize();
-		circle.resize();
+		Circle.instance.resize();
 	}
 
 	c.setup = () => {
@@ -26,7 +26,7 @@ const sketch = async (c) => {
 		c.clear();
 		c.translate(c.width/2, c.height/2);
 
-		circle.draw();
+		Circle.instance.draw();
 	};
 
 	c.windowResized = () => {

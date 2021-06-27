@@ -87,21 +87,36 @@ class Node {
 	}
 }
 
-// Singleton
+
 export class Circle {
+
+	/** @type {Circle} */
+	_instance;
+
+	/** @type {CustomCanvas} */
+	c;
+	/** @type {number} */
+	multNumber;
+	/** @type {number} */
+	_nodeCount;
+	/** @type {number} */
+	strokeWeight = 2;
+	/** @type {number} */
+	diameter;
+	/** @type {Node[]} */
+	nodes;
+
+	static get instance() {
+		if (!Circle._instance) Circle._instance = new Circle();
+
+		return Circle._instance;
+	}
 
 	/**
 	 * @param {CustomCanvas} c
 	 */
-	constructor(c) {
-		if (!Circle.instance) Circle.instance = this;
-		else return Circle.instance;
-
+	init(c) {
 		this.c = c;
-
-		this.strokeWeight = 2;
-		this.diameter = 0;
-		this.nodes = [];
 
 		this.setPropertyWithElementValue("option-menu__node-count", "_nodeCount");
 		this.setPropertyWithElementValue("option-menu__mult-number", "multNumber");
