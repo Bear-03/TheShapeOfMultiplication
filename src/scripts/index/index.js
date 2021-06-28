@@ -1,5 +1,3 @@
-import "scripts/index/menus.js";
-
 /**
  * @typedef {import("./classes").CustomCanvas} CustomCanvas
  */
@@ -9,13 +7,18 @@ import "scripts/index/menus.js";
  * @param {CustomCanvas} c
  */
 const sketch = async (c) => {
+	const { loadDropdowns, changePropertyOnInput } = await import("./menus");
 	const { Circle } = await import("./classes");
 
-	Circle.instance.init(c);
+	const circle = new Circle(c);
+
+	loadDropdowns();
+	changePropertyOnInput("option-menu__node-count", circle, "nodeCount");
+	changePropertyOnInput("option-menu__mult-number", circle, "multNumber");
 
 	function resizeComponents() {
 		c.resize();
-		Circle.instance.resize();
+		circle.resize();
 	}
 
 	c.setup = () => {
@@ -26,7 +29,7 @@ const sketch = async (c) => {
 		c.clear();
 		c.translate(c.width/2, c.height/2);
 
-		Circle.instance.draw();
+		circle.draw();
 	};
 
 	c.windowResized = () => {

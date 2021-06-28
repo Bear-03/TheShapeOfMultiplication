@@ -72,13 +72,13 @@ class Node {
 		this.position = this.c.createVector(0, 0);
 	}
 
-	static async recalculateDiameter() {
+	static async recalculateDiameter(circle) {
 		const { clampNumber } = await import("scripts/other/util");
-		Node.diameter = Circle.instance.diameter / clampNumber(Node.minNodeCountForDiameter, Circle.instance.nodeCount, Node.maxNodeCountForDiameter);
+		Node.diameter = circle.diameter / clampNumber(Node.minNodeCountForDiameter, circle.nodeCount, Node.maxNodeCountForDiameter);
 	}
 
-	static get maxDiameter() {
-		return Circle.instance.diameter / Node.minNodeCountForDiameter;
+	static getMaxDiameter(circle) {
+		return circle.diameter / Node.minNodeCountForDiameter;
 	}
 
 	draw() {
@@ -87,23 +87,20 @@ class Node {
 		this.c.circle(this.position.x, this.position.y, Node.diameter);
 	}
 
-	recalculatePosition() {
-		this.position = this.c.createVector(Math.cos(this.angle), Math.sin(this.angle)).mult(Circle.instance.diameter / 2);
+	recalculatePosition(circle) {
+		this.position = this.c.createVector(Math.cos(this.angle), Math.sin(this.angle)).mult(circle.diameter / 2);
 	}
 }
 
 
 export class Circle {
-
-	/** @type {Circle} */
-	_instance;
+	/** @type {number} */
+	multNumber = document.getElementById("option-menu__node-count").value;
+	/** @type {number} */
+	_nodeCount = document.getElementById("option-menu__mult-number").value;
 
 	/** @type {CustomCanvas} */
 	c;
-	/** @type {number} */
-	multNumber;
-	/** @type {number} */
-	_nodeCount;
 	/** @type {number} */
 	strokeWeight = 2;
 	/** @type {number} */
@@ -111,21 +108,8 @@ export class Circle {
 	/** @type {Node[]} */
 	nodes;
 
-	static get instance() {
-		if (!Circle._instance) Circle._instance = new Circle();
-
-		return Circle._instance;
-	}
-
-	/**
-	 * @param {CustomCanvas} c
-	 */
-	init(c) {
+	constructor(c) {
 		this.c = c;
-
-		this.setPropertyWithElementValue("option-menu__node-count", "_nodeCount");
-		this.setPropertyWithElementValue("option-menu__mult-number", "multNumber");
-
 		this.populateNodeArray();
 	}
 
@@ -137,15 +121,16 @@ export class Circle {
 		if (value === this.nodeCount) return;
 
 		this._nodeCount = value;
+
 		this.populateNodeArray();
-		this.updateNodes();
+		this.updateNodeProperties();
 	}
 
-	async resize() {
+	resize() {
 		this.recalculateDiameter();
-		this.diameter -= Node.maxDiameter;
+		this.diameter -= Node.getMaxDiameter(this);
 
-		this.updateNodes();
+		this.updateNodeProperties();
 	}
 
 	/**
@@ -166,21 +151,6 @@ export class Circle {
 		this.diameter = this.c.width - this.strokeWeight;
 	}
 
-	/**
-	 * Sets the value of a variable to the value of an input element.
-	 * This is used to pass the default value of the <input> to the
-	 * variable that it controls in order to avoid duplication and,
-	 * thus, make the code easier to maintain
-	 *
-	 * @param {*} elementId id of the input element.
-	 * @param {*} propertyName property of this object that will be set.
-	 */
-	setPropertyWithElementValue(elementId, propertyName) {
-		/* JS doesn't allow passing by reference so the
-		property has to be accessed with [] and a string */
-		this[propertyName] = document.getElementById(elementId).value;
-	}
-
 	populateNodeArray() {
 		this.nodes = [];
 		const angleBetweenNodes = 2 * Math.PI / this.nodeCount;
@@ -192,9 +162,9 @@ export class Circle {
 	/**
 	 * Recalculates all node positions and diameter
 	 */
-	async updateNodes() {
-		for (const node of this.nodes) node.recalculatePosition();
-		await Node.recalculateDiameter();
+	async updateNodeProperties() {
+		for (const node of this.nodes) node.recalculatePosition(this);
+		await Node.recalculateDiameter(this);
 	}
 
 	/**
