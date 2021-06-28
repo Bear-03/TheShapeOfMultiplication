@@ -1,6 +1,6 @@
 import p5 from "p5";
 
-export class CustomCanvas extends p5 {ç
+export class CustomCanvas extends p5 {
 	/* Number multiplied by the available
 	length so the canvas has some margin */
 	sizeScalingFactor = 0.9;
