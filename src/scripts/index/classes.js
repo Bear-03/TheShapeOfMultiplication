@@ -178,7 +178,7 @@ export class Circle {
 	setPropertyWithElementValue(elementId, propertyName) {
 		/* JS doesn't allow passing by reference so the
 		property has to be accessed with [] and a string */
-		this[propertyName] = this._nodeCount = document.getElementById(elementId).value;
+		this[propertyName] = document.getElementById(elementId).value;
 	}
 
 	populateNodeArray() {
