@@ -107,10 +107,17 @@ export class Circle {
 	diameter;
 	/** @type {Node[]} */
 	nodes;
+	/** @type {p5.Color[]} */
+	lineColors;
+	/** @type {p5.Color[]} */
+	usedLineColors = [];
 
-	constructor(c) {
+	constructor(c, lineColors) {
 		this.c = c;
+		this.lineColors = lineColors;
+
 		this.populateNodeArray();
+		this.pickUsedLineColors();
 	}
 
 	get nodeCount() {
@@ -124,6 +131,7 @@ export class Circle {
 
 		this.populateNodeArray();
 		this.updateNodeProperties();
+		this.pickUsedLineColors();
 	}
 
 	resize() {
@@ -174,7 +182,8 @@ export class Circle {
 		for (const node of this.nodes) node.draw();
 	}
 
-	drawLines() {
+	async drawLines() {
+
 		// Start at node 1 because first node is 0 and 0 * anything = 0
 		for (let [i, node] of this.nodes.slice(1).entries()) {
 			/* i starts at 0 because a new array is created, but it is
@@ -182,14 +191,34 @@ export class Circle {
 			i++;
 
 			const endNodeIndex = (i * this.multNumber) % this.nodeCount;
-			this.drawLineBetweenNodes(node, this.nodes[endNodeIndex]);
+			// this.lineColors[i]
+			this.drawLineBetweenNodes(node, this.nodes[endNodeIndex], this.usedLineColors[i]);
 		}
 	}
 
-	drawLineBetweenNodes(startNode, endNode) {
+	drawLineBetweenNodes(startNode, endNode, color) {
 		this.c.noFill();
-		this.c.stroke(255);
+		if (color === undefined) {
+			console.log(color);
+			return;
+		}
+		this.c.stroke(color);
 
 		this.c.line(startNode.position.x, startNode.position.y, endNode.position.x, endNode.position.y);
+	}
+
+	/**
+	 * Picks evenly spaced colors from the lineColors array
+	 * so there are as many colors as nodes.
+	 */
+	pickUsedLineColors() {
+		for (let i = 0; i < this.nodeCount; i++) {
+			/* Number from 0 to 1 where the element to select is
+			located, 0 being the first element and 1 the last one */
+			const elementProportionInArray = i / this.nodeCount;
+			const elementIndex = Math.round(elementProportionInArray * this.lineColors.length);
+
+			this.usedLineColors.push(this.lineColors[elementIndex]);
+		}
 	}
 }
