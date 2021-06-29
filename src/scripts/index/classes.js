@@ -151,8 +151,8 @@ export class Circle {
 
 		this.c.ellipse(0, 0, this.diameter);
 
-		this.drawNodes();
 		this.drawLines();
+		this.drawNodes();
 	}
 
 	recalculateDiameter() {
@@ -182,8 +182,7 @@ export class Circle {
 		for (const node of this.nodes) node.draw();
 	}
 
-	async drawLines() {
-
+	drawLines() {
 		// Start at node 1 because first node is 0 and 0 * anything = 0
 		for (let [i, node] of this.nodes.slice(1).entries()) {
 			/* i starts at 0 because a new array is created, but it is
