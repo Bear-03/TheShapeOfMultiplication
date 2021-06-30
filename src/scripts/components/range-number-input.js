@@ -1,21 +1,18 @@
 import style from "styles/components/range-number-input.css";
 
 class RangeNumberInput extends HTMLElement {
+	name = this.getAttribute("name");
+	min = parseInt(this.getAttribute("min"));
+	max = parseInt(this.getAttribute("max"));
+	value = parseInt(this.getAttribute("value"));
+
 	constructor() {
 		super();
 
 		this.attachShadow({mode: "open"});
 
-		this.processAttributes();
 		this.addChildren();
 		this.addListeners();
-	}
-
-	processAttributes() {
-		this.name = this.getAttribute("name");
-		this.min = parseInt(this.getAttribute("min"));
-		this.max = parseInt(this.getAttribute("max"));
-		this.value = parseInt(this.getAttribute("value"));
 	}
 
 	addChildren() {
