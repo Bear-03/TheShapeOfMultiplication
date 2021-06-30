@@ -190,10 +190,6 @@ export class Circle {
 			if (i === 0) continue;
 
 			const endNodeIndex = (i * this.multNumber) % this.nodeCount;
-			if (this.usedLineColors[i ] === undefined) {
-				console.log(i);
-				return;
-			}
 			this.drawLineBetweenNodes(node, this.nodes[endNodeIndex], this.usedLineColors[i]);
 		}
 	}
