@@ -163,8 +163,10 @@ export class Circle {
 		this.nodes = [];
 		const angleBetweenNodes = 2 * Math.PI / this.nodeCount;
 
-		for (let angleTraveled = 0; angleTraveled < 2 * Math.PI; angleTraveled += angleBetweenNodes)
-			this.nodes.push(new Node(this.c, angleTraveled));
+		for (let nodeNumber = 0; nodeNumber < this.nodeCount; nodeNumber++) {
+			const angle = nodeNumber * angleBetweenNodes;
+			this.nodes.push(new Node(this.c, angle));
+		}
 	}
 
 	/**
@@ -183,24 +185,21 @@ export class Circle {
 	}
 
 	drawLines() {
-		// Start at node 1 because first node is 0 and 0 * anything = 0
-		for (let [i, node] of this.nodes.slice(1).entries()) {
-			/* i starts at 0 because a new array is created, but it is
-			node number 1 */
-			i++;
+		for (let [i, node] of this.nodes.entries()) {
+			// Start at node 1 because first node is 0 and 0 * anything = 0
+			if (i === 0) continue;
 
 			const endNodeIndex = (i * this.multNumber) % this.nodeCount;
-			// this.lineColors[i]
+			if (this.usedLineColors[i ] === undefined) {
+				console.log(i);
+				return;
+			}
 			this.drawLineBetweenNodes(node, this.nodes[endNodeIndex], this.usedLineColors[i]);
 		}
 	}
 
 	drawLineBetweenNodes(startNode, endNode, color) {
 		this.c.noFill();
-		if (color === undefined) {
-			console.log(color);
-			return;
-		}
 		this.c.stroke(color);
 
 		this.c.line(startNode.position.x, startNode.position.y, endNode.position.x, endNode.position.y);
@@ -211,6 +210,8 @@ export class Circle {
 	 * so there are as many colors as nodes.
 	 */
 	pickUsedLineColors() {
+		this.usedLineColors = [];
+
 		for (let i = 0; i < this.nodeCount; i++) {
 			/* Number from 0 to 1 where the element to select is
 			located, 0 being the first element and 1 the last one */
@@ -219,5 +220,7 @@ export class Circle {
 
 			this.usedLineColors.push(this.lineColors[elementIndex]);
 		}
+
+		console.log(`${this.nodeCount} ${this.usedLineColors.length}`);
 	}
 }
