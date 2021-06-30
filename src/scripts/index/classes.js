@@ -220,7 +220,5 @@ export class Circle {
 
 			this.usedLineColors.push(this.lineColors[elementIndex]);
 		}
-
-		console.log(`${this.nodeCount} ${this.usedLineColors.length}`);
 	}
 }
