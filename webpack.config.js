@@ -18,8 +18,8 @@ module.exports = (_, options) => {
 			rangeNumberInput: "scripts/components/range-number-input.js",
 
 			index: [
-				"scripts/index/index.js",
-				"styles/index/index.css",
+				"scripts/pages/index/index.js",
+				"styles/pages/index/index.css",
 			],
 		},
 		output: {
@@ -57,7 +57,7 @@ module.exports = (_, options) => {
 		},
 		plugins: [
 			new DynamicHtmlWebpackPlugin({
-				dir: "src/pages",
+				dir: "src/html/pages",
 				additionalChunks: {
 					all: "common",
 					index: "rangeNumberInput"

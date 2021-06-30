@@ -73,7 +73,7 @@ class Node {
 	}
 
 	static async recalculateDiameter(circle) {
-		const { clampNumber } = await import("scripts/other/util");
+		const { clampNumber } = await import("scripts/shared/util");
 		Node.diameter = circle.diameter / clampNumber(Node.minNodeCountForDiameter, circle.nodeCount, Node.maxNodeCountForDiameter);
 	}
 
