@@ -1,5 +1,7 @@
 import React from "react";
 
+import style from "./Sketch.module.css";
+
 export default function Sketch() {
-	return <div id="sketch-container"></div>;
+	return <div className={style.container}></div>;
 }

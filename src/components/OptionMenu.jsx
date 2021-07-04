@@ -1,9 +1,12 @@
 import RangeNumberInput from "./RangeNumberInput";
+import { expandMenu } from "./scripts/menu";
+
+import "./styles/menu.css";
 
 export default function OptionMenu() {
 	return (
-		<div>
-			<button>Hi</button>
+		<div className="menu menu--expand-left">
+			<button onClick={expandMenu}>Hi</button>
 			<aside>
 				<RangeNumberInput
 					label="Multiplication number"

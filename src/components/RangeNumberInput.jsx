@@ -1,31 +1,35 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-export default function RangeNumberInput({ label, min, max, defaultValue }) {
-	const [value, setValue] = useState(defaultValue);
+import style from "./RangeNumberInput.module.css";
 
-	function onChange(event) {
-		if (!event.target.checkValidity()) return;
-		setValue(parseInt(event.target.value));
+export default function RangeNumberInput({ label, min, max, defaultValue }) {
+	const [displayedValue, setDisplayedValue] = useState(defaultValue);
+	let value = defaultValue; // Will be used later on for the sketch
+
+	function onValueInput(event) {
+		setDisplayedValue(event.target.value);
+
+		if (event.target.checkValidity()) value = displayedValue;
 	}
 
 	return (
-		<label>
+		<label className={style.container}>
 			<span>{label}</span>
 			<input
 				type="range"
 				min={min}
 				max={max}
-				value={value}
-				onChange={onChange}
+				value={displayedValue}
+				onChange={onValueInput}
 			/>
 			<input
 				required
 				type="number"
 				min={min}
 				max={max}
-				value={value}
-				onChange={onChange}
+				value={displayedValue}
+				onChange={onValueInput}
 			/>
 		</label>
 	);
