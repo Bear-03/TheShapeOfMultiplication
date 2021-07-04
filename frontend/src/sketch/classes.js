@@ -17,10 +17,10 @@ export class CustomCanvas extends p5 {
 		return document.querySelector("canvas").getBoundingClientRect();
 	}
 
-	createCanvas(...args) {
+	/*createCanvas(...args) {
 		super.createCanvas(...args);
 		this.canvasCreated = true;
-	}
+	}*/
 
 	/**
 	 * Sets the size of the canvas to the minimum value of the width or height available.
@@ -76,7 +76,7 @@ class Node {
 	}
 
 	static async recalculateDiameter(circle) {
-		const { clampNumber } = await import("scripts/shared/util");
+		const { clampNumber } = await import("./util");
 		Node.diameter =
 			circle.diameter /
 			clampNumber(
@@ -105,9 +105,9 @@ class Node {
 
 export class Circle {
 	/** @type {number} */
-	multNumber = document.getElementById("option-menu__node-count").value;
+	multNumber = 2; // TODO: Set with react context
 	/** @type {number} */
-	_nodeCount = document.getElementById("option-menu__mult-number").value;
+	_nodeCount = 10; // TODO: Set with react context
 
 	/** @type {CustomCanvas} */
 	c;
