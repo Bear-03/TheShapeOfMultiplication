@@ -1,7 +1,7 @@
 import RangeNumberInput from "./RangeNumberInput";
-import { expandMenu } from "./scripts/menu";
 
-import "./styles/menu.css";
+import "./common/styles/menu.css";
+import { expandMenu } from "./common/scripts/menu";
 
 export default function OptionMenu() {
 	return (
