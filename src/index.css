@@ -1,5 +1,5 @@
 html {
-    font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 * {
@@ -14,16 +14,16 @@ a {
 }
 
 button {
-    border: none;
-    outline: none;
+	border: none;
+	outline: none;
 	cursor: pointer;
 	background: none;
 
-    color: inherit;
-    font-size: inherit;
-    font-family: inherit;
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
 }
 
 .display-none {
-    display: none !important;
+	display: none !important;
 }

@@ -1,0 +1,15 @@
+body {
+	text-align: center;
+	color: white;
+	background-color: #323232;
+	overflow: hidden; /* For menus */
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1rem 3rem;
+	font-size: 2rem;
+}
