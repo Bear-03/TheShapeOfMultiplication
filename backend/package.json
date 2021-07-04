@@ -2,9 +2,7 @@
 	"name": "the-shape-of-multiplication-backend",
 	"version": "1.0.0",
 	"scripts": {
-		"build": "cd frontend && npm run build",
-		"start": "cd backend && npm start",
-		"dev": "cd frontend && npm start"
+		"start": "node app"
 	},
 	"dependencies": {
 		"compression": "^1.7.4",
