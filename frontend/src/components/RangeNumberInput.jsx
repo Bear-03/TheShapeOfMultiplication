@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import style from "./RangeNumberInput.module.css";
 
 export default function RangeNumberInput({ label, min, max, defaultValue }) {
+	const localStorageKey =
+		"option-menu." + label.toLowerCase().replace(/ /g, "-");
+
+	/* value will only be updated if displayedValue is valid.
+	If it isn't, displayedValue will still be updated so the input
+	element shows feedback */
 	const [displayedValue, setDisplayedValue] = useState(defaultValue);
-	let value = defaultValue; // Will be used later on for the sketch
+	let value = useRef(defaultValue);
+
+	// Load value stored in localStorage
+	useEffect(() => {
+		const storedValue = parseInt(localStorage.getItem(localStorageKey));
+
+		if (storedValue) setDisplayedValue(storedValue);
+	}, [localStorageKey]);
 
 	function onValueInput(event) {
-		setDisplayedValue(event.target.value);
+		const newValue = event.target.value;
+		setDisplayedValue(newValue);
 
-		if (event.target.checkValidity()) value = displayedValue;
+		if (event.target.checkValidity()) {
+			value.current = parseInt(newValue);
+			localStorage.setItem(localStorageKey, value.current);
+		}
 	}
 
 	return (
