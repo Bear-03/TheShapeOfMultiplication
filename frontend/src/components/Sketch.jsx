@@ -6,8 +6,8 @@ export default function Sketch(s) {
 	const containerRef = useRef();
 
 	useEffect(() => {
-		import("../sketch/sketch").then(({ createSketch }) =>
-			createSketch(700, containerRef.current)
+		import("../sketch").then(
+			({ createSketch }) => createSketch(700, containerRef.current) // TODO: Get maxNodeCount with react context
 		);
 	}, []);
 
