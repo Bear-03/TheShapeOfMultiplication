@@ -4,23 +4,20 @@ export class CustomCanvas extends p5 {
 	/* Number multiplied by the available
 	length so the canvas has some margin */
 	sizeScalingFactor = 0.9;
-	canvasCreated = false;
+
+	create() {
+		const canvasSize = this.calculateSize();
+		this.createCanvas(canvasSize, canvasSize);
+	}
 
 	resize() {
 		const canvasSize = this.calculateSize();
-
-		if (this.canvasCreated) this.resizeCanvas(canvasSize, canvasSize);
-		else this.createCanvas(canvasSize, canvasSize);
+		this.resizeCanvas(canvasSize, canvasSize);
 	}
 
 	get boundingRect() {
 		return document.querySelector("canvas").getBoundingClientRect();
 	}
-
-	/*createCanvas(...args) {
-		super.createCanvas(...args);
-		this.canvasCreated = true;
-	}*/
 
 	/**
 	 * Sets the size of the canvas to the minimum value of the width or height available.

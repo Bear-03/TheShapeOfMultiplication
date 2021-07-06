@@ -16,13 +16,9 @@ export async function createSketch(maxNodeCount, ref) {
 
 		const circle = new Circle(c, lineColors);
 
-		function resizeComponents() {
-			c.resize();
-			circle.resize();
-		}
-
 		c.setup = () => {
-			resizeComponents();
+			c.create();
+			circle.resize();
 		};
 
 		c.draw = () => {
@@ -36,7 +32,8 @@ export async function createSketch(maxNodeCount, ref) {
 		};
 
 		c.windowResized = () => {
-			resizeComponents();
+			c.resize();
+			circle.resize();
 		};
 	}
 
