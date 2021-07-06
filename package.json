@@ -4,10 +4,7 @@
 	"scripts": {
 		"build": "cd frontend && npm run build",
 		"start": "cd backend && npm start",
-		"dev": "cd frontend && npm start"
-	},
-	"dependencies": {
-		"compression": "^1.7.4",
-		"express": "^4.17.1"
+		"dev": "cd frontend && npm start",
+		"install:all": "cd frontend && npm install & cd backend && npm install"
 	}
 }
