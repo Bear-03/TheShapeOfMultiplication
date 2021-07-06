@@ -1,22 +1,27 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { OptionMenuContext } from "../contexts/OptionMenuContext";
 
 import style from "./RangeNumberInput.module.css";
 
-export default function RangeNumberInput({ label, min, max, defaultValue }) {
-	const localStorageKey =
-		"option-menu." + label.toLowerCase().replace(/ /g, "-");
+export default function RangeNumberInput({
+	id,
+	label,
+	min,
+	max,
+	defaultValue
+}) {
+	const localStorageKey = "optionMenu." + id;
 
 	/* value will only be updated if displayedValue is valid.
 	If it isn't, displayedValue will still be updated so the input
 	element shows feedback */
 	const [displayedValue, setDisplayedValue] = useState(defaultValue);
-	let value = useRef(defaultValue);
+	const [options, setOptions] = useContext(OptionMenuContext);
 
-	// Load value stored in localStorage
 	useEffect(() => {
+		// Load value stored in localStorage
 		const storedValue = parseInt(localStorage.getItem(localStorageKey));
-
 		if (storedValue) setDisplayedValue(storedValue);
 	}, [localStorageKey]);
 
@@ -25,8 +30,10 @@ export default function RangeNumberInput({ label, min, max, defaultValue }) {
 		setDisplayedValue(newValue);
 
 		if (event.target.checkValidity()) {
-			value.current = parseInt(newValue);
-			localStorage.setItem(localStorageKey, value.current);
+			const intValue = parseInt(newValue);
+
+			setOptions({ ...options, [id]: intValue });
+			localStorage.setItem(localStorageKey, intValue);
 		}
 	}
 
