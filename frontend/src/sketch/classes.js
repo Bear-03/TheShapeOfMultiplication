@@ -5,18 +5,13 @@ export class CustomCanvas extends p5 {
 	length so the canvas has some margin */
 	sizeScalingFactor = 0.9;
 
-	create() {
-		const canvasSize = this.calculateSize();
-		this.createCanvas(canvasSize, canvasSize);
-	}
-
 	resize() {
 		const canvasSize = this.calculateSize();
 		this.resizeCanvas(canvasSize, canvasSize);
 	}
 
 	get boundingRect() {
-		return document.querySelector("canvas").getBoundingClientRect();
+		return this.canvas.getBoundingClientRect();
 	}
 
 	/**

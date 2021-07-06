@@ -17,7 +17,7 @@ export async function createSketch(maxNodeCount, ref) {
 		const circle = new Circle(c, lineColors);
 
 		c.setup = () => {
-			c.create();
+			c.resize();
 			circle.resize();
 		};
 
