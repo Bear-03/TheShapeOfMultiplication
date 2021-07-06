@@ -1,11 +1,11 @@
+import { generateGradientArray } from "./palette-manager";
+import { CustomCanvas, Circle } from "./classes";
+
 /**
  * The closure passed to create the p5 instance
  * @param {CustomCanvas} c
  */
-export async function createSketch(maxNodeCount, ref) {
-	const { generateGradientArray } = await import("./palette-manager");
-	const { CustomCanvas, Circle } = await import("./classes");
-
+export function createSketch(maxNodeCount, ref) {
 	function sketch(c) {
 		const lineColors = generateGradientArray(
 			c,

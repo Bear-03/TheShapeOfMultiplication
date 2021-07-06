@@ -1,4 +1,5 @@
 import p5 from "p5";
+import { clampNumber } from "./util";
 
 export class CustomCanvas extends p5 {
 	/* Number multiplied by the available
@@ -67,8 +68,7 @@ class Node {
 		this.position = this.c.createVector(0, 0);
 	}
 
-	static async recalculateDiameter(circle) {
-		const { clampNumber } = await import("./util");
+	static recalculateDiameter(circle) {
 		Node.diameter =
 			circle.diameter /
 			clampNumber(
@@ -174,9 +174,9 @@ export class Circle {
 	/**
 	 * Recalculates all node positions and diameter
 	 */
-	async updateNodeProperties() {
+	updateNodeProperties() {
 		for (const node of this.nodes) node.recalculatePosition(this);
-		await Node.recalculateDiameter(this);
+		Node.recalculateDiameter(this);
 	}
 
 	/**
