@@ -6,6 +6,9 @@ import { CustomCanvas, Circle } from "./classes";
  * @param {CustomCanvas} c
  */
 export function createSketch(maxNodeCount, ref) {
+	/*
+	 * @param {CustomCanvas} c
+	 */
 	function sketch(c) {
 		const lineColors = generateGradientArray(
 			c,
@@ -16,9 +19,13 @@ export function createSketch(maxNodeCount, ref) {
 
 		const circle = new Circle(c, lineColors);
 
-		c.setup = () => {
+		function resizeComponents() {
 			c.resize();
 			circle.resize();
+		}
+
+		c.setup = () => {
+			resizeComponents();
 		};
 
 		c.draw = () => {
@@ -32,8 +39,7 @@ export function createSketch(maxNodeCount, ref) {
 		};
 
 		c.windowResized = () => {
-			c.resize();
-			circle.resize();
+			resizeComponents();
 		};
 	}
 
