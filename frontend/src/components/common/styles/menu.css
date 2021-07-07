@@ -30,12 +30,12 @@
 
 .menu--expand-right aside {
 	--direction: 1;
-	align-items: start;
+	align-items: flex-start;
 	right: 100%;
 }
 
 .menu--expand-left aside {
 	--direction: -1;
-	align-items: end;
+	align-items: flex-end;
 	left: 100%;
 }
