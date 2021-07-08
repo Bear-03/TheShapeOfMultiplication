@@ -1,25 +1,30 @@
-import p5 from "p5";
+/**
+ * @typedef {import("p5")} p5
+ */
+
 import { clampNumber } from "./util";
 
-export class CustomCanvas extends p5 {
+export class CanvasManager {
 	/* Number multiplied by the available
 	length so the canvas has some margin */
-	sizeScalingFactor = 0.9;
+	static sizeScalingFactor = 0.9;
 
-	resize() {
-		const canvasSize = this.calculateSize();
-		this.resizeCanvas(canvasSize, canvasSize);
+	static resizeCanvas(sketch) {
+		console.log(sketch);
+
+		const canvasSize = this.calculateSize(sketch, sketch.canvas);
+		sketch.resizeCanvas(canvasSize, canvasSize);
 	}
 
-	get boundingRect() {
-		return this.canvas.getBoundingClientRect();
+	static getBoundingRect(canvas) {
+		return canvas.getBoundingClientRect();
 	}
 
 	/**
 	 * Sets the size of the canvas to the minimum value of the width or height available.
 	 * @returns {number}
 	 */
-	calculateSize() {
+	static calculateSize(sketch) {
 		/*
 		The width available is the whole window width because there will be no elements on the sides
 		The height available is the window height, but subtracting the height of the elements on top, as
@@ -27,9 +32,10 @@ export class CustomCanvas extends p5 {
 		*/
 		return (
 			Math.min(
-				this.windowWidth,
-				this.windowHeight - this.boundingRect.top
-			) * this.sizeScalingFactor
+				sketch.windowWidth,
+				sketch.windowHeight -
+					CanvasManager.getBoundingRect(sketch.canvas).top
+			) * CanvasManager.sizeScalingFactor
 		);
 	}
 }
@@ -50,7 +56,7 @@ class Node {
 	/** @type {number} */
 	static maxNodeCountForDiameter = 300;
 
-	/** @type {CustomCanvas} */
+	/** @type {p5} */
 	c;
 	/** @type {number} */
 	angle;
@@ -58,7 +64,7 @@ class Node {
 	position;
 
 	/**
-	 * @param {CustomCanvas} c
+	 * @param {p5}
 	 * @param {number} angle angle between the position vector of the node and the horizontal
 	 */
 	constructor(c, angle) {
@@ -101,7 +107,7 @@ export class Circle {
 	/** @type {number} */
 	_nodeCount = 10; // TODO: Set with react context
 
-	/** @type {CustomCanvas} */
+	/** @type {p5} */
 	c;
 	/** @type {number} */
 	strokeWeight = 2;
@@ -179,9 +185,6 @@ export class Circle {
 		Node.recalculateDiameter(this);
 	}
 
-	/**
-	 * Draws all the circles in the canvas
-	 */
 	drawNodes() {
 		for (const node of this.nodes) node.draw();
 	}

@@ -1,9 +1,10 @@
+import p5 from "p5";
 import { generateGradientArray } from "./palette-manager";
-import { CustomCanvas, Circle } from "./classes";
+import { CanvasManager, Circle } from "./classes";
 
 /**
  * The closure passed to create the p5 instance
- * @param {CustomCanvas} c
+ * @param {p5} c
  */
 export function createSketch(maxNodeCount, ref) {
 	/*
@@ -20,7 +21,7 @@ export function createSketch(maxNodeCount, ref) {
 		const circle = new Circle(c, lineColors);
 
 		function resizeComponents() {
-			c.resize();
+			CanvasManager.resizeCanvas(c);
 			circle.resize();
 		}
 
@@ -43,5 +44,5 @@ export function createSketch(maxNodeCount, ref) {
 		};
 	}
 
-	return new CustomCanvas(sketch, ref);
+	return new p5(sketch, ref);
 }

@@ -8,10 +8,6 @@ export default function Sketch() {
 
 	useEffect(() => {
 		const sketch = createSketch(700, containerRef.current);
-
-		return () => {
-			sketch.remove();
-		};
 	}, []);
 
 	return <div ref={containerRef} className={style.container}></div>;
