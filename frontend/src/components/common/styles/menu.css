@@ -1,0 +1,41 @@
+.menu > button {
+	position: relative;
+	z-index: 1;
+	transition: filter 0.15s ease-out;
+}
+
+.menu > button:hover {
+	filter: brightness(0.7);
+}
+
+.menu aside {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	background-color: #1a1a1af0;
+	height: 100%;
+	top: 0;
+	padding: 7rem 2rem 0;
+
+	transition: transform 0.3s ease-out;
+}
+
+.menu.expanded aside {
+	transform: translateX(calc(var(--direction) * 100%));
+}
+
+.menu aside > * + * {
+	margin-top: 2rem;
+}
+
+.menu--expand-right aside {
+	--direction: 1;
+	align-items: flex-start;
+	right: 100%;
+}
+
+.menu--expand-left aside {
+	--direction: -1;
+	align-items: flex-end;
+	left: 100%;
+}

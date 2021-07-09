@@ -1,49 +1,10 @@
 {
-  "name": "the-shape-of-multiplication",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "webpack --mode development",
-    "build:prod": "webpack --mode production",
-    "server": "npm run build -- --watch",
-    "server:prod": "npm run build:prod -- --watch",
-    "start": "node index"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bear-03/TheShapeOfMultiplication.git"
-  },
-  "keywords": [
-    "p5",
-    "p5js",
-    "multiplication",
-    "visualization"
-  ],
-  "author": "Bear_03",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Bear-03/TheShapeOfMultiplication/issues"
-  },
-  "homepage": "https://github.com/Bear-03/TheShapeOfMultiplication#readme",
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.14.5",
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
-    "css-loader": "^5.2.6",
-    "css-minimizer-webpack-plugin": "^3.0.1",
-    "delete-ghost-scripts-plugin": "^1.0.4",
-    "dynamic-html-webpack-plugin": "^1.1.0",
-    "eslint": "^7.28.0",
-    "html-loader": "^2.1.2",
-    "mini-css-extract-plugin": "^1.6.0",
-    "nodemon-webpack-plugin": "^4.5.2",
-    "terser-webpack-plugin": "^5.1.3",
-    "webpack": "^5.39.1",
-    "webpack-cli": "^4.7.2"
-  },
-  "dependencies": {
-    "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "p5": "^1.3.1"
-  }
+	"name": "the-shape-of-multiplication-backend",
+	"version": "1.0.0",
+	"scripts": {
+		"build": "cd frontend && npm run build",
+		"start": "cd backend && npm start",
+		"dev": "cd frontend && npm start",
+		"install:all": "cd frontend && npm install & cd backend && npm install"
+	}
 }
