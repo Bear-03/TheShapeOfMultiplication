@@ -7,22 +7,28 @@ import { clampNumber } from "./util";
 export class CanvasManager {
 	/* Number multiplied by the available
 	length so the canvas has some margin */
-	static sizeScalingFactor = 0.9;
+	sizeScalingFactor = 0.9;
+	/** @type {p5} */
+	sketch;
 
-	static resizeCanvas(sketch) {
-		const canvasSize = this.calculateSize(sketch, sketch.canvas);
-		sketch.resizeCanvas(canvasSize, canvasSize);
+	constructor(sketch) {
+		this.sketch = sketch;
 	}
 
-	static getBoundingRect(canvas) {
-		return canvas.getBoundingClientRect();
+	resizeCanvas() {
+		const canvasSize = this.calculateSize(this.sketch, this.sketch.canvas);
+		this.sketch.resizeCanvas(canvasSize, canvasSize);
+	}
+
+	getCanvasBoundingRect() {
+		return this.sketch.canvas.getBoundingClientRect();
 	}
 
 	/**
 	 * Sets the size of the canvas to the minimum value of the width or height available.
 	 * @returns {number}
 	 */
-	static calculateSize(sketch) {
+	calculateSize() {
 		/*
 		The width available is the whole window width because there will be no elements on the sides
 		The height available is the window height, but subtracting the height of the elements on top, as
@@ -30,10 +36,9 @@ export class CanvasManager {
 		*/
 		return (
 			Math.min(
-				sketch.windowWidth,
-				sketch.windowHeight -
-					CanvasManager.getBoundingRect(sketch.canvas).top
-			) * CanvasManager.sizeScalingFactor
+				this.sketch.windowWidth,
+				this.sketch.windowHeight - this.getCanvasBoundingRect().top
+			) * this.sizeScalingFactor
 		);
 	}
 }

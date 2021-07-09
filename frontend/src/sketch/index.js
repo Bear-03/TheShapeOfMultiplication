@@ -23,10 +23,11 @@ export function createSketch(options, ref) {
 			["#AFCBFF", "#254441", "#43AA8B", "#B2B09B", "#EF3054"]
 		);
 
+		const canvasManager = new CanvasManager(sketch);
 		const circle = new Circle(sketch, options, lineColors);
 
 		function resizeComponents() {
-			CanvasManager.resizeCanvas(sketch);
+			canvasManager.resizeCanvas(sketch);
 			circle.resize();
 		}
 
