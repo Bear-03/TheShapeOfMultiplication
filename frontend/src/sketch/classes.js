@@ -10,8 +10,6 @@ export class CanvasManager {
 	static sizeScalingFactor = 0.9;
 
 	static resizeCanvas(sketch) {
-		console.log(sketch);
-
 		const canvasSize = this.calculateSize(sketch, sketch.canvas);
 		sketch.resizeCanvas(canvasSize, canvasSize);
 	}
@@ -102,13 +100,13 @@ class Node {
 }
 
 export class Circle {
-	/** @type {number} */
-	multNumber = 2; // TODO: Set with react context
-	/** @type {number} */
-	_nodeCount = 10; // TODO: Set with react context
-
 	/** @type {p5} */
 	c;
+	/** @type {{}} */
+	_options;
+	/** @type {p5.Color[]} */
+	lineColors;
+
 	/** @type {number} */
 	strokeWeight = 2;
 	/** @type {number} */
@@ -116,27 +114,37 @@ export class Circle {
 	/** @type {Node[]} */
 	nodes;
 	/** @type {p5.Color[]} */
-	lineColors;
-	/** @type {p5.Color[]} */
 	usedLineColors = [];
 
-	constructor(c, lineColors) {
+	constructor(c, options, lineColors) {
 		this.c = c;
+		this._options = options;
 		this.lineColors = lineColors;
 
 		this.populateNodeArray();
 		this.pickUsedLineColors();
 	}
 
-	get nodeCount() {
-		return this._nodeCount;
+	get options() {
+		return this._options;
 	}
 
-	set nodeCount(value) {
-		if (value === this.nodeCount) return;
+	set options(newOptions) {
+		const oldNodeCount = this.nodeCount;
+		this._options = newOptions;
 
-		this._nodeCount = value;
+		if (oldNodeCount !== this.nodeCount) this.updateNodeCount();
+	}
 
+	get nodeCount() {
+		return this.options.nodeCount;
+	}
+
+	get multNumber() {
+		return this.options.multNumber;
+	}
+
+	updateNodeCount() {
 		this.populateNodeArray();
 		this.updateNodeProperties();
 		this.pickUsedLineColors();

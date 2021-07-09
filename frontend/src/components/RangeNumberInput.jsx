@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { OptionMenuContext } from "../contexts/OptionMenuContext";
+import { OptionContext } from "../contexts/OptionContext";
 
 import style from "./RangeNumberInput.module.css";
 
@@ -17,13 +17,16 @@ export default function RangeNumberInput({
 	If it isn't, displayedValue will still be updated so the input
 	element shows feedback */
 	const [displayedValue, setDisplayedValue] = useState(defaultValue);
-	const [options, setOptions] = useContext(OptionMenuContext);
+	const [, updateOptions] = useContext(OptionContext);
 
 	useEffect(() => {
 		// Load value stored in localStorage
 		const storedValue = parseInt(localStorage.getItem(localStorageKey));
-		if (storedValue) setDisplayedValue(storedValue);
-	}, [localStorageKey]);
+		if (storedValue) {
+			setDisplayedValue(storedValue);
+			updateOptions({ [id]: storedValue });
+		}
+	}, []);
 
 	function onValueInput(event) {
 		const newValue = event.target.value;
@@ -32,7 +35,7 @@ export default function RangeNumberInput({
 		if (event.target.checkValidity()) {
 			const intValue = parseInt(newValue);
 
-			setOptions({ ...options, [id]: intValue });
+			updateOptions({ [id]: intValue });
 			localStorage.setItem(localStorageKey, intValue);
 		}
 	}

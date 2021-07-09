@@ -2,13 +2,13 @@ import "./App.css";
 
 import Header from "./components/Header";
 import Sketch from "./components/Sketch";
-import { OptionMenuProvider } from "./contexts/OptionMenuContext";
+import { OptionProvider } from "./contexts/OptionContext";
 
 export default function App() {
 	return (
-		<OptionMenuProvider>
+		<OptionProvider>
 			<Header />
 			<Sketch />
-		</OptionMenuProvider>
+		</OptionProvider>
 	);
 }

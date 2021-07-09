@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { OptionMenuContext } from "../contexts/OptionMenuContext";
+import { OptionContext } from "../contexts/OptionContext";
 
 import RangeNumberInput from "./RangeNumberInput";
 
@@ -7,7 +7,7 @@ import "./common/styles/menu.css";
 import { expandMenu } from "./common/scripts/menu";
 
 export default function OptionMenu() {
-	const [options, setOptions] = useContext(OptionMenuContext);
+	const [, updateOptions] = useContext(OptionContext);
 
 	const defaultOptions = {
 		multNumber: 2,
@@ -15,7 +15,9 @@ export default function OptionMenu() {
 		maxNodeCount: 700
 	};
 
-	useEffect(() => setOptions(defaultOptions), [setOptions]);
+	useEffect(() => {
+		updateOptions(defaultOptions, true);
+	}, []);
 
 	return (
 		<div className="menu menu--expand-left">
