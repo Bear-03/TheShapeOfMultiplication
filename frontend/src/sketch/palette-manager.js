@@ -7,18 +7,18 @@
  * @param {string[]} palette
  * @returns {Color[]}
  */
-function hexToColorPalette(c, palette) {
-	return palette.map((e) => c.color(e));
+function hexToColorPalette(sketch, palette) {
+	return palette.map((e) => sketch.color(e));
 }
 
 /**
- * @param {CustomCanvas} c
+ * @param {CustomCanvas} sketch
  * @param {number} maxNodeCount
  * @param {string[]} palette
  * @returns {Color[]}
  */
-export function generateGradientArray(c, maxNodeCount, strPalette) {
-	const palette = hexToColorPalette(c, strPalette);
+export function generateGradientArray(sketch, maxNodeCount, strPalette) {
+	const palette = hexToColorPalette(sketch, strPalette);
 
 	const result = [];
 
@@ -58,7 +58,7 @@ export function generateGradientArray(c, maxNodeCount, strPalette) {
 			const lerpAmt =
 				colorNumber / (colorCountForIntervals[interval] + 1);
 
-			result.push(c.lerpColor(startColor, endColor, lerpAmt));
+			result.push(sketch.lerpColor(startColor, endColor, lerpAmt));
 		}
 	}
 

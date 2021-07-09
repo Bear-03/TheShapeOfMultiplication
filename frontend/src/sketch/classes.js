@@ -55,7 +55,7 @@ class Node {
 	static maxNodeCountForDiameter = 300;
 
 	/** @type {p5} */
-	c;
+	sketch;
 	/** @type {number} */
 	angle;
 	/** @type {p5.Vector} */
@@ -65,11 +65,11 @@ class Node {
 	 * @param {p5}
 	 * @param {number} angle angle between the position vector of the node and the horizontal
 	 */
-	constructor(c, angle) {
-		this.c = c;
+	constructor(sketch, angle) {
+		this.sketch = sketch;
 		this.angle = angle;
 
-		this.position = this.c.createVector(0, 0);
+		this.position = this.sketch.createVector(0, 0);
 	}
 
 	static recalculateDiameter(circle) {
@@ -87,13 +87,13 @@ class Node {
 	}
 
 	draw() {
-		this.c.noStroke();
-		this.c.fill(255);
-		this.c.circle(this.position.x, this.position.y, Node.diameter);
+		this.sketch.noStroke();
+		this.sketch.fill(255);
+		this.sketch.circle(this.position.x, this.position.y, Node.diameter);
 	}
 
 	recalculatePosition(circle) {
-		this.position = this.c
+		this.position = this.sketch
 			.createVector(Math.cos(this.angle), Math.sin(this.angle))
 			.mult(circle.diameter / 2);
 	}
@@ -101,7 +101,7 @@ class Node {
 
 export class Circle {
 	/** @type {p5} */
-	c;
+	sketch;
 	/** @type {{}} */
 	_options;
 	/** @type {p5.Color[]} */
@@ -116,8 +116,8 @@ export class Circle {
 	/** @type {p5.Color[]} */
 	usedLineColors = [];
 
-	constructor(c, options, lineColors) {
-		this.c = c;
+	constructor(sketch, options, lineColors) {
+		this.sketch = sketch;
 		this._options = options;
 		this.lineColors = lineColors;
 
@@ -161,18 +161,18 @@ export class Circle {
 	 * Draws the circle and all its components
 	 */
 	draw() {
-		this.c.noFill();
-		this.c.stroke(255);
-		this.c.strokeWeight(this.strokeWeight);
+		this.sketch.noFill();
+		this.sketch.stroke(255);
+		this.sketch.strokeWeight(this.strokeWeight);
 
-		this.c.ellipse(0, 0, this.diameter);
+		this.sketch.ellipse(0, 0, this.diameter);
 
 		this.drawLines();
 		this.drawNodes();
 	}
 
 	recalculateDiameter() {
-		this.diameter = this.c.width - this.strokeWeight;
+		this.diameter = this.sketch.width - this.strokeWeight;
 	}
 
 	populateNodeArray() {
@@ -181,7 +181,7 @@ export class Circle {
 
 		for (let nodeNumber = 0; nodeNumber < this.nodeCount; nodeNumber++) {
 			const angle = nodeNumber * angleBetweenNodes;
-			this.nodes.push(new Node(this.c, angle));
+			this.nodes.push(new Node(this.sketch, angle));
 		}
 	}
 
@@ -212,10 +212,10 @@ export class Circle {
 	}
 
 	drawLineBetweenNodes(startNode, endNode, color) {
-		this.c.noFill();
-		this.c.stroke(color);
+		this.sketch.noFill();
+		this.sketch.stroke(color);
 
-		this.c.line(
+		this.sketch.line(
 			startNode.position.x,
 			startNode.position.y,
 			endNode.position.x,
