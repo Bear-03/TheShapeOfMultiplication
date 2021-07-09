@@ -15,7 +15,7 @@ export function createSketch(options, ref) {
 	/*
 	 * @param {CustomCanvas} sketch
 	 */
-	function sketch(sketch) {
+	function sketchFunction(sketch) {
 		const lineColors = generateGradientArray(
 			sketch,
 			options.maxNodeCount,
@@ -57,7 +57,7 @@ export function createSketch(options, ref) {
 		};
 	}
 
-	new p5(sketch, ref);
+	new p5(sketchFunction, ref);
 
 	return onOptionChange;
 }
