@@ -1,5 +1,5 @@
 import Nav from "./Nav";
-import OptionMenu from "./OptionMenu";
+import OptionMenu from "./option_menu/OptionMenu";
 
 export default function Header() {
 	return (

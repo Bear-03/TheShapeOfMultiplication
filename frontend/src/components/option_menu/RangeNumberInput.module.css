@@ -1,16 +1,11 @@
 .container {
 	display: flex;
 	align-items: center;
-	width: min-content;
+	width: 100%;
 }
 
-.container > * + * {
-	margin-left: 1rem;
-}
-
-span {
-	font-size: 1.7rem;
-	white-space: nowrap;
+.container span {
+	margin-right: 1rem;
 }
 
 input {
@@ -47,6 +42,8 @@ input[type="range"] {
 
 	border-radius: 0.5rem;
 	padding: 0 0.4rem;
+
+	margin: 0 1rem 0 auto;
 
 	--thumb-height: 0.5rem;
 	--thumb-width: 1.5rem;

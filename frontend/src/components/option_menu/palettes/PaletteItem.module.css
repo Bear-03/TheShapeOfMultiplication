@@ -1,0 +1,68 @@
+.outerLi {
+	--border-radius: 0.5rem;
+	display: flex;
+}
+
+.outerLi:hover {
+	--background-color: #ffffff15;
+
+	/* The hover rules have to be in the <li> instead of
+	the inner <ul> because firefox doesn't render the border-radius
+	with box-shadow properly when a scrollbar is present */
+	border-radius: var(--border-radius);
+	/* Expands the background a bit to the sides */
+	box-shadow: 0 0 0 0.5rem var(--background-color);
+	background-color: var(--background-color);
+}
+
+.container {
+	display: inline-flex;
+	gap: var(--gap);
+	width: 100%;
+
+	cursor: pointer;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.scrollable {
+	--scrollbar-width: 0.6rem;
+	--scrollbar-bg-color: transparent;
+	--scrollbar-thumb-color: #666666;
+	--scrollbar-thumb-color-hover: #7f7f7f;
+
+	padding-bottom: calc(var(--gap) / 2);
+
+	/* #region Firefox scrollbar rules */
+	scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
+	/* #endregion */
+}
+
+/* #region Chrome scrollbar rules */
+.scrollable::-webkit-scrollbar {
+	width: var(--scrollbar-width);
+	height: var(--scrollbar-width);
+	background-color: var(--scrollbar-bg-color);
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-color);
+	border-radius: var(--border-radius);
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scrollbar-thumb-color-hover);
+}
+/* #endregion */
+
+.color {
+	--size: 9rem;
+
+	display: inline-block;
+	flex-shrink: 0;
+	width: var(--size);
+	height: var(--size);
+
+	border-radius: var(--border-radius);
+	background-color: var(--color);
+}

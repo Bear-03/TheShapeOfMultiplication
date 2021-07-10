@@ -3,6 +3,7 @@
  */
 
 import { clampNumber } from "./util";
+import { generateGradientArray } from "./palette-manager";
 
 export class CanvasManager {
 	/* Number multiplied by the available
@@ -127,7 +128,7 @@ export class Circle {
 		this.lineColors = lineColors;
 
 		this.populateNodeArray();
-		this.pickUsedLineColors();
+		this.updateLineColors();
 	}
 
 	get options() {
@@ -135,23 +136,31 @@ export class Circle {
 	}
 
 	set options(newOptions) {
-		const oldNodeCount = this.nodeCount;
+		const oldOptions = this.options;
 		this._options = newOptions;
 
-		if (oldNodeCount !== this.nodeCount) this.updateNodeCount();
+		if (oldOptions.nodeCount !== this.nodeCount) this.updateNodeCount();
+		else if (oldOptions.selectedPalette !== this.selectedPalette)
+			this.updateLineColors();
 	}
 
 	get nodeCount() {
 		return this.options.nodeCount;
 	}
 
-	get multNumber() {
-		return this.options.multNumber;
-	}
-
 	updateNodeCount() {
 		this.populateNodeArray();
 		this.updateNodeProperties();
+		this.pickUsedLineColors();
+	}
+
+	updateLineColors() {
+		this.lineColors = generateGradientArray(
+			this.sketch,
+			this.options.maxNodeCount,
+			this.options.palettes[this.options.selectedPalette]
+		);
+
 		this.pickUsedLineColors();
 	}
 
@@ -207,7 +216,7 @@ export class Circle {
 			// Start at node 1 because first node is 0 and 0 * anything = 0
 			if (i === 0) continue;
 
-			const endNodeIndex = (i * this.multNumber) % this.nodeCount;
+			const endNodeIndex = (i * this.options.multNumber) % this.nodeCount;
 			this.drawLineBetweenNodes(
 				node,
 				this.nodes[endNodeIndex],

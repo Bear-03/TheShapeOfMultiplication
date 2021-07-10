@@ -1,0 +1,22 @@
+.label,
+.paletteUl {
+	width: 100%;
+}
+
+.label p {
+	margin-bottom: 1rem;
+}
+
+.paletteUl {
+	--gap: 1.2rem;
+
+	width: 50rem;
+	gap: var(--gap);
+
+	display: flex;
+	flex-direction: column;
+}
+
+.paletteUl li {
+	list-style-type: none;
+}

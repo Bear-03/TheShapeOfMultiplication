@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { OptionContext } from "../contexts/OptionContext";
+import { OptionContext } from "../../contexts/OptionContext";
 
 import style from "./RangeNumberInput.module.css";
 
