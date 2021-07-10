@@ -1,5 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { OptionContext } from "../../contexts/OptionContext";
+import { useUpdateEffect } from "../../hooks";
 
 import style from "./OptionMenu.module.css";
 
@@ -24,14 +25,27 @@ const defaultOptions = {
 	selectedPalette: 0
 };
 
+const localStorageKey = "optionMenu";
+
 export default function OptionMenu() {
-	const [, updateOptions] = useContext(OptionContext);
+	const [options, updateOptions] = useContext(OptionContext);
+	const optionsAreLoaded = useRef(false);
 
 	useEffect(() => {
-		/* Give priority to already set options in
-		case they exist in the local storage */
-		updateOptions(defaultOptions, true);
+		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
+		updateOptions({ ...defaultOptions, ...storedOptions });
 	}, []);
+
+	useUpdateEffect(() => {
+		/* Avoids re-saving the options when they are first loaded, as the
+		options object would be updated and this useEffect would be called */
+		if (!optionsAreLoaded.current) {
+			optionsAreLoaded.current = true;
+			return;
+		}
+
+		localStorage.setItem(localStorageKey, JSON.stringify(options));
+	}, [options]);
 
 	return (
 		<div className={`${style.container} menu menu--expand-left`}>
