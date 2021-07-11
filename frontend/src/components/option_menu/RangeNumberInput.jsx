@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
 
@@ -15,18 +15,14 @@ export default function RangeNumberInput({
 	If it isn't, displayedValue will still be updated so the input
 	element shows feedback */
 	const [displayedValue, setDisplayedValue] = useState(defaultValue);
-	const [options, updateOptions] = useContext(OptionContext);
+	const [, updateOptions] = useContext(OptionContext);
 
 	function onValueInput(event) {
+		setDisplayedValue(event.target.value);
+
 		if (event.target.checkValidity())
 			updateOptions({ [optionName]: parseInt(event.target.value) });
 	}
-
-	/* Displays changes caused both by user input and initial
-	option loading from localStorage */
-	useEffect(() => {
-		setDisplayedValue(options[optionName]);
-	}, [options]);
 
 	return (
 		<label className={style.container}>
