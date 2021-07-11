@@ -8,11 +8,11 @@
 }
 
 .outerLi.selected {
-	--background-color: #ffffff20;
+	--background-color: #ffffff2a;
 }
 
 .outerLi.selected:hover {
-	--background-color: #ffffff30;
+	--background-color: #ffffff35;
 }
 
 .outerLi:hover,
