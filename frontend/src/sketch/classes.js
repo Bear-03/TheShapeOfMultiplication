@@ -139,12 +139,16 @@ export class Circle {
 		this._options = newOptions;
 
 		if (oldOptions.nodeCount !== this.nodeCount) this.updateNodeCount();
-		else if (oldOptions.selectedPalette !== this.selectedPalette)
+		if (oldOptions.selectedPalette !== this.options.selectedPalette)
 			this.updateLineColors();
 	}
 
 	get nodeCount() {
 		return this.options.nodeCount;
+	}
+
+	get usedPalette() {
+		return this.options.palettes[this.options.selectedPalette];
 	}
 
 	updateNodeCount() {
@@ -157,7 +161,7 @@ export class Circle {
 		this.lineColors = generateGradientArray(
 			this.sketch,
 			this.options.maxNodeCount,
-			this.options.palettes[this.options.selectedPalette]
+			this.usedPalette
 		);
 
 		this.pickUsedLineColors();
