@@ -33,19 +33,15 @@ export function useStateObject(initialObject = {}) {
 	 *
 	 * @param {{} | Function} objectToAdd Key-value pair to add to the existing object or a function that will return one.
 	 * If a function is passed, the first argument will be the previous object.
-	 * @param {Boolean} [invertOverridePriority=false] Whether or not `objectToAdd` properties
-	 * override the previous object or vice versa.
 	 */
-	function updateObject(objectToAdd, invertOverridePriority = false) {
+	function updateObject(objectToAdd) {
 		setObject((prevObject) => {
 			const result =
 				typeof objectToAdd === "function"
 					? objectToAdd(prevObject)
 					: objectToAdd;
 
-			return invertOverridePriority
-				? { ...result, ...prevObject }
-				: { ...prevObject, ...result };
+			return { ...prevObject, ...result };
 		});
 	}
 

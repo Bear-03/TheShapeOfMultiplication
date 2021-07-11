@@ -1,5 +1,4 @@
-import React, { useRef, useContext } from "react";
-import { useUpdateEffect } from "../hooks";
+import React, { useRef, useEffect, useContext } from "react";
 import { OptionContext } from "../contexts/OptionContext";
 
 import style from "./Sketch.module.css";
@@ -10,7 +9,7 @@ export default function Sketch() {
 	const containerRef = useRef();
 	const onOptionChange = useRef();
 
-	useUpdateEffect(() => {
+	useEffect(() => {
 		if (onOptionChange.current === undefined) {
 			onOptionChange.current = createSketch(
 				options,
