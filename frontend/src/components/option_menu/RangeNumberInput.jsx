@@ -5,7 +5,7 @@ import { OptionContext } from "../../contexts/OptionContext";
 import style from "./RangeNumberInput.module.css";
 
 export default function RangeNumberInput({
-	id,
+	optionName,
 	label,
 	min,
 	max,
@@ -19,13 +19,13 @@ export default function RangeNumberInput({
 
 	function onValueInput(event) {
 		if (event.target.checkValidity())
-			updateOptions({ [id]: parseInt(event.target.value) });
+			updateOptions({ [optionName]: parseInt(event.target.value) });
 	}
 
 	/* Displays changes caused both by user input and initial
 	option loading from localStorage */
 	useEffect(() => {
-		setDisplayedValue(options[id]);
+		setDisplayedValue(options[optionName]);
 	}, [options]);
 
 	return (

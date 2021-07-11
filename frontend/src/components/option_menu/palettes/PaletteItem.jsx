@@ -3,13 +3,15 @@ import { OptionContext } from "../../../contexts/OptionContext";
 
 import style from "./PaletteItem.module.css";
 
-export default function PaletteItem({ id, palette }) {
-	const [, updateOptions] = useContext(OptionContext);
+export default function PaletteItem({ index, palette }) {
+	const [options, updateOptions] = useContext(OptionContext);
 	const container = useRef();
 	const hasScrollbar = useRef(false);
 
+	const isSelected = options.selectedPalette === index;
+
 	function onPaletteSelect() {
-		updateOptions({ selectedPalette: id });
+		updateOptions({ selectedPalette: index });
 	}
 
 	useEffect(() => {
@@ -18,7 +20,7 @@ export default function PaletteItem({ id, palette }) {
 	}, []);
 
 	return (
-		<li className={style.outerLi}>
+		<li className={`${style.outerLi} ${isSelected ? style.selected : ""}`}>
 			<ul
 				ref={container}
 				className={`${style.container} ${

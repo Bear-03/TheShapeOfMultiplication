@@ -37,13 +37,13 @@ export default function OptionMenu() {
 			<button onClick={expandMenu}>Hi</button>
 			<aside>
 				<RangeNumberInput
-					id="multNumber"
+					optionName="multNumber"
 					label="Multiplication number"
 					max={100}
 					defaultValue={options.multNumber}
 				/>
 				<RangeNumberInput
-					id="nodeCount"
+					optionName="nodeCount"
 					label="Number of nodes"
 					max={options.maxNodeCount}
 					defaultValue={options.nodeCount}

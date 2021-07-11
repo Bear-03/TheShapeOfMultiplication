@@ -10,7 +10,7 @@ export default function PaletteContainer({ palettes }) {
 			<p>Palettes</p>
 			<ul className={style.paletteUl}>
 				{palettes.map((palette, i) => (
-					<PaletteItem key={i} id={i} palette={palette} />
+					<PaletteItem key={i} index={i} palette={palette} />
 				))}
 			</ul>
 		</label>

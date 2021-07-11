@@ -5,7 +5,18 @@
 
 .outerLi:hover {
 	--background-color: #ffffff15;
+}
 
+.outerLi.selected {
+	--background-color: #ffffff20;
+}
+
+.outerLi.selected:hover {
+	--background-color: #ffffff30;
+}
+
+.outerLi:hover,
+.outerLi.selected {
 	/* The hover rules have to be in the <li> instead of
 	the inner <ul> because firefox doesn't render the border-radius
 	with box-shadow properly when a scrollbar is present */
@@ -28,7 +39,7 @@
 .scrollable {
 	--scrollbar-width: 0.6rem;
 	--scrollbar-bg-color: transparent;
-	--scrollbar-thumb-color: #666666;
+	--scrollbar-thumb-color: #777777;
 	--scrollbar-thumb-color-hover: #7f7f7f;
 
 	padding-bottom: calc(var(--gap) / 2);
