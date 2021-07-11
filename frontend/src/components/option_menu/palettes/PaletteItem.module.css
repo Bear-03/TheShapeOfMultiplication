@@ -36,10 +36,11 @@
 	white-space: nowrap;
 }
 
+/* #region Scrollable container */
 .scrollable {
 	--scrollbar-width: 0.6rem;
 	--scrollbar-bg-color: transparent;
-	--scrollbar-thumb-color: #777777;
+	--scrollbar-thumb-color: #707070;
 	--scrollbar-thumb-color-hover: #7f7f7f;
 
 	padding-bottom: calc(var(--gap) / 2);

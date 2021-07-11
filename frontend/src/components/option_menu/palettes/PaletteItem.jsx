@@ -1,12 +1,12 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { OptionContext } from "../../../contexts/OptionContext";
 
 import style from "./PaletteItem.module.css";
 
 export default function PaletteItem({ index, palette }) {
 	const [options, updateOptions] = useContext(OptionContext);
+	const [hasScrollbar, setHasScrollbar] = useState(false);
 	const container = useRef();
-	const hasScrollbar = useRef(false);
 
 	const isSelected = options.selectedPalette === index;
 
@@ -15,8 +15,10 @@ export default function PaletteItem({ index, palette }) {
 	}
 
 	useEffect(() => {
-		hasScrollbar.current =
+		const elementOverflows =
 			container.current.scrollWidth > container.current.clientWidth;
+
+		if (elementOverflows) setHasScrollbar(true);
 	}, []);
 
 	return (
@@ -24,7 +26,7 @@ export default function PaletteItem({ index, palette }) {
 			<ul
 				ref={container}
 				className={`${style.container} ${
-					hasScrollbar.current ? style.scrollable : ""
+					hasScrollbar ? style.scrollable : ""
 				}`}
 				onClick={onPaletteSelect}
 			>
