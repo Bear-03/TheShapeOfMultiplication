@@ -1,0 +1,60 @@
+class Node {
+	/** @type {number} */
+	static diameter;
+
+	/* The diameter of the nodes will me calculated dividing the
+	circle diameter by the node count. These numbers will be used
+	to clamp the dividend so the nodes don't become invisible nor huge.
+	The values can be interpreted as the max and min node count that
+	will be used for the calculations. i.e. nodes will never be smaller than
+	the size they get with nodeCount == maxDiameter, etc.
+	*/
+	static minNodeCountToShrink = 60;
+	static maxNodeCountToDisappear = 300;
+	static hidden = false;
+
+	/** @type {p5} */
+	sketch;
+	/** @type {number} */
+	angle;
+	/** @type {p5.Vector} */
+	position;
+
+	/**
+	 * @param {p5}
+	 * @param {number} angle angle between the position vector of the node and the horizontal
+	 */
+	constructor(sketch, angle) {
+		this.sketch = sketch;
+		this.angle = angle;
+
+		this.position = this.sketch.createVector(0, 0);
+	}
+
+	static recalculateDiameter(circle) {
+		this.hidden = circle.nodeCount > Node.maxNodeCountToDisappear;
+		if (this.hidden) return;
+
+		Node.diameter =
+			circle.diameter /
+			Math.max(Node.minNodeCountToShrink, circle.nodeCount);
+	}
+
+	static getMaxDiameter(circle) {
+		return circle.diameter / Node.minNodeCountForDiameter;
+	}
+
+	draw() {
+		if (this.hidden) return;
+
+		this.sketch.noStroke();
+		this.sketch.fill(255);
+		this.sketch.circle(this.position.x, this.position.y, Node.diameter);
+	}
+
+	recalculatePosition(circle) {
+		this.position = this.sketch
+			.createVector(Math.cos(this.angle), Math.sin(this.angle))
+			.mult(circle.diameter / 2);
+	}
+}

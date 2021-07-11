@@ -2,7 +2,6 @@
  * @typedef {import("p5")} p5
  */
 
-import { clampNumber } from "./util";
 import { generateGradientArray } from "./palette-manager";
 
 export class CanvasManager {
@@ -55,10 +54,9 @@ class Node {
 	will be used for the calculations. i.e. nodes will never be smaller than
 	the size they get with nodeCount == maxDiameter, etc.
 	*/
-	/** @type {number} */
-	static minNodeCountForDiameter = 60;
-	/** @type {number} */
-	static maxNodeCountForDiameter = 300;
+	static minNodeCountToShrink = 60;
+	static maxNodeCountToDisappear = 300;
+	static hidden = false;
 
 	/** @type {p5} */
 	sketch;
@@ -79,20 +77,21 @@ class Node {
 	}
 
 	static recalculateDiameter(circle) {
+		Node.hidden = circle.nodeCount > Node.maxNodeCountToDisappear;
+		if (Node.hidden) return;
+
 		Node.diameter =
 			circle.diameter /
-			clampNumber(
-				Node.minNodeCountForDiameter,
-				circle.nodeCount,
-				Node.maxNodeCountForDiameter
-			);
+			Math.max(Node.minNodeCountToShrink, circle.nodeCount);
 	}
 
 	static getMaxDiameter(circle) {
-		return circle.diameter / Node.minNodeCountForDiameter;
+		return circle.diameter / Node.minNodeCountToShrink;
 	}
 
 	draw() {
+		if (Node.hidden) return;
+
 		this.sketch.noStroke();
 		this.sketch.fill(255);
 		this.sketch.circle(this.position.x, this.position.y, Node.diameter);
@@ -175,14 +174,20 @@ export class Circle {
 	 * Draws the circle and all its components
 	 */
 	draw() {
+		this.drawLines();
+		this.drawCircle();
+		this.drawNodes();
+	}
+
+	/**
+	 * Draws the circle (see draw() for the circle and components)
+	 */
+	drawCircle() {
 		this.sketch.noFill();
 		this.sketch.stroke(255);
 		this.sketch.strokeWeight(this.strokeWeight);
 
 		this.sketch.ellipse(0, 0, this.diameter);
-
-		this.drawLines();
-		this.drawNodes();
 	}
 
 	recalculateDiameter() {
