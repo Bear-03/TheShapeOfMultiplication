@@ -5,7 +5,7 @@ export const OptionContext = React.createContext();
 
 const defaultOptions = {
 	multNumber: 2,
-	nodeCount: 10,
+	nodeCount: 100,
 	maxNodeCount: 700,
 	palettes: [
 		["#AFCBFF", "#254441", "#43AA8B", "#B2B09B", "#EF3054"],
