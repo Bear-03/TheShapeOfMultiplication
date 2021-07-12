@@ -4,17 +4,27 @@
 	width: 100%;
 }
 
-input {
+.container label {
+	position: absolute;
+	/* Makes it invisible without affecting accessibility */
+	right: 1000%;
+}
+
+.inputWrapper {
+	margin-left: auto;
+}
+
+.container input {
 	background-color: #f5f5f5;
 }
 
 /* Fixes chrome +- buttons not disappearing with "appearance: textfield"*/
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+.container input[type="number"]::-webkit-outer-spin-button,
+.container input[type="number"]::-webkit-inner-spin-button {
 	appearance: none;
 }
 
-input[type="number"] {
+.container input[type="number"] {
 	outline: none; /* Removes chrome outline on focus */
 	appearance: textfield;
 	width: 4ch;
@@ -24,13 +34,13 @@ input[type="number"] {
 	padding: 0 0.4rem;
 }
 
-input[type="number"]:invalid {
+.container input[type="number"]:invalid {
 	/* Chrome doesn't apply border-radius to outline
     so box-shadow has to be used */
 	box-shadow: 0 0 0 0.2rem #c80000;
 }
 
-input[type="range"] {
+.container input[type="range"] {
 	appearance: none;
 	cursor: pointer;
 	width: 25rem;
@@ -38,8 +48,7 @@ input[type="range"] {
 
 	border-radius: 0.5rem;
 	padding: 0 0.4rem;
-
-	margin: 0 1rem 0 auto;
+	margin-right: 1rem;
 
 	--thumb-height: 0.5rem;
 	--thumb-width: 1.5rem;
@@ -58,7 +67,7 @@ an unknown selector, even if other ones do work.
 This makes it necessary to make a rule only for
 webkit browsers */
 
-input[type="range"]::-moz-range-thumb {
+.container input[type="range"]::-moz-range-thumb {
 	appearance: none;
 	border: none;
 
@@ -71,7 +80,7 @@ input[type="range"]::-moz-range-thumb {
 		var(--hover-thumb-transition-function);
 }
 
-input[type="range"]::-webkit-slider-thumb {
+.container input[type="range"]::-webkit-slider-thumb {
 	appearance: none;
 	border: none;
 
@@ -84,19 +93,19 @@ input[type="range"]::-webkit-slider-thumb {
 		var(--hover-thumb-transition-function);
 }
 
-input[type="range"]::-moz-range-thumb:is(:hover, :active) {
+.container input[type="range"]::-moz-range-thumb:is(:hover, :active) {
 	background-color: var(--hover-thumb-bg-color) !important;
 }
 
-input[type="range"]::-webkit-slider-thumb:is(:hover, :active) {
+.container input[type="range"]::-webkit-slider-thumb:is(:hover, :active) {
 	background-color: var(--hover-thumb-bg-color) !important;
 }
 
-input[type="range"]:hover::-moz-range-thumb {
+.container input[type="range"]:hover::-moz-range-thumb {
 	background-color: var(--hover-track-thumb-bg-color);
 }
 
-input[type="range"]:hover::-webkit-slider-thumb {
+.container input[type="range"]:hover::-webkit-slider-thumb {
 	background-color: var(--hover-track-thumb-bg-color);
 }
 

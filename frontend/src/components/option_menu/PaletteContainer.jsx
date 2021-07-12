@@ -9,7 +9,7 @@ export default function PaletteContainer({ palettes, tooltip }) {
 	const [tooltipShown, toggleTooltipShown] = useToggleState(false);
 
 	return (
-		<label
+		<div
 			className={`${style.label} ${tooltipShown ? "tooltip--shown" : ""}`}
 			tooltip={tooltip}
 		>
@@ -22,6 +22,6 @@ export default function PaletteContainer({ palettes, tooltip }) {
 					<PaletteItem key={i} index={i} palette={palette} />
 				))}
 			</ul>
-		</label>
+		</div>
 	);
 }

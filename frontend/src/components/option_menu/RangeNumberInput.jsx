@@ -28,7 +28,7 @@ export default function RangeNumberInput({
 	}
 
 	return (
-		<label
+		<div
 			className={`${style.container} ${
 				tooltipShown ? "tooltip--shown" : ""
 			}`}
@@ -38,22 +38,32 @@ export default function RangeNumberInput({
 			<button className="tooltip__button" onClick={toggleTooltipShown}>
 				?
 			</button>
-			<input
-				type="range"
-				min={min}
-				max={max}
-				value={displayedValue}
-				onChange={onValueInput}
-			/>
-			<input
-				required
-				type="number"
-				min={min}
-				max={max}
-				value={displayedValue}
-				onChange={onValueInput}
-			/>
-		</label>
+			<div className={style.inputWrapper}>
+				<label
+					htmlFor={`${optionName}-range`}
+				>{`${label}: Range input`}</label>
+				<input
+					type="range"
+					id={`${optionName}-range`}
+					min={min}
+					max={max}
+					value={displayedValue}
+					onChange={onValueInput}
+				/>
+				<label
+					htmlFor={`${optionName}-number`}
+				>{`${label}: Number input`}</label>
+				<input
+					required
+					type="number"
+					id={`${optionName}-number`}
+					min={min}
+					max={max}
+					value={displayedValue}
+					onChange={onValueInput}
+				/>
+			</div>
+		</div>
 	);
 }
 

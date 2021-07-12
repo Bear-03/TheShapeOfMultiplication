@@ -19,7 +19,8 @@
 	color: var(--color);
 	border-radius: 50%;
 
-	transition: color 0.5s ease-out;
+	transition: all 0.1s ease-out;
+	transition-property: color, border-color;
 }
 
 .tooltip__button:hover {
