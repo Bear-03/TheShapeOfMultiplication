@@ -1,5 +1,5 @@
 import React from "react";
-import { useToggleState } from "../../../hooks";
+import { useToggleState } from "../../hooks";
 
 import PaletteItem from "./PaletteItem";
 

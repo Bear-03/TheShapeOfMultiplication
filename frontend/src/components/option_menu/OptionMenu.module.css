@@ -1,4 +1,0 @@
-.container :is(span, p) {
-	font-size: 1.7rem;
-	white-space: nowrap;
-}

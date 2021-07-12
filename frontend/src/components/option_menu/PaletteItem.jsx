@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import { OptionContext } from "../../../contexts/OptionContext";
+import { OptionContext } from "../../contexts/OptionContext";
 
 import style from "./PaletteItem.module.css";
 

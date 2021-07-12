@@ -20,7 +20,7 @@
 	transition: transform 0.3s ease-out;
 }
 
-.menu.expanded aside {
+.menu--expanded aside {
 	transform: translateX(calc(var(--direction) * 100%));
 }
 

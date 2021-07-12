@@ -1,18 +1,16 @@
 import { useState, useEffect, useContext } from "react";
+import { useToggleState } from "../../hooks";
 import { OptionContext } from "../../contexts/OptionContext";
 
-import style from "./OptionMenu.module.css";
-
 import RangeNumberInput from "./RangeNumberInput";
-import PaletteContainer from "./palettes/PaletteContainer";
-
-import { expandMenu } from "../common/scripts/menu";
+import PaletteContainer from "./PaletteContainer";
 
 const localStorageKey = "optionMenu";
 
 export default function OptionMenu() {
 	const [options, updateOptions] = useContext(OptionContext);
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
+	const [menuExpanded, toggleMenuExpanded] = useToggleState(false);
 
 	useEffect(() => {
 		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
@@ -29,8 +27,12 @@ export default function OptionMenu() {
 	}, [options]);
 
 	return (
-		<div className={`${style.container} menu menu--expand-left`}>
-			<button onClick={expandMenu}>Hi</button>
+		<div
+			className={`${
+				menuExpanded ? "menu--expanded" : ""
+			} menu menu--expand-left`}
+		>
+			<button onClick={toggleMenuExpanded}>Hi</button>
 			{optionsAreLoaded ? (
 				<aside>
 					<RangeNumberInput
