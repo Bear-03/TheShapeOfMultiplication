@@ -6,7 +6,6 @@ import style from "./OptionMenu.module.css";
 import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./palettes/PaletteContainer";
 
-import "../common/styles/menu.css";
 import { expandMenu } from "../common/scripts/menu";
 
 const localStorageKey = "optionMenu";
@@ -39,14 +38,25 @@ export default function OptionMenu() {
 						label="Multiplication number"
 						max={100}
 						defaultValue={options.multNumber}
+						tooltip={
+							"Number by which the node index will be multiplied. " +
+							"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6."
+						}
 					/>
 					<RangeNumberInput
 						optionName="nodeCount"
 						label="Number of nodes"
 						max={options.maxNodeCount}
 						defaultValue={options.nodeCount}
+						tooltip="Number of nodes the circle has."
 					/>
-					<PaletteContainer palettes={options.palettes} />
+					<PaletteContainer
+						palettes={options.palettes}
+						tooltip={
+							"Color palette for the lines. The lines will use colors in order (first color " +
+							"for the first line, last color for the last line, etc.), creating a gradient."
+						}
+					/>
 				</aside>
 			) : null}
 		</div>

@@ -1,3 +1,6 @@
+import "./components/common/styles/menu.css";
+import "./components/common/styles/tooltip.css";
+
 import "./App.css";
 
 import Header from "./components/Header";

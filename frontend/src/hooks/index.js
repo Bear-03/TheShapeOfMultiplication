@@ -47,3 +47,13 @@ export function useStateObject(initialObject = {}) {
 
 	return [object, updateObject];
 }
+
+export function useToggleState(initialValue) {
+	const [value, setValue] = useState(initialValue);
+
+	function toggleState() {
+		setValue((prevValue) => !prevValue);
+	}
+
+	return [value, toggleState];
+}

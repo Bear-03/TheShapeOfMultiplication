@@ -1,4 +1,3 @@
-import "./common/styles/menu.css";
 import { expandMenu } from "./common/scripts/menu";
 
 export default function Nav() {
