@@ -39,7 +39,7 @@ export default function OptionMenu() {
 						optionName="multNumber"
 						label="Multiplication number"
 						max={100}
-						defaultValue={options.multNumber}
+						value={options.multNumber}
 						tooltip={
 							"Number by which the node index will be multiplied. " +
 							"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6."
@@ -49,7 +49,7 @@ export default function OptionMenu() {
 						optionName="nodeCount"
 						label="Number of nodes"
 						max={options.maxNodeCount}
-						defaultValue={options.nodeCount}
+						value={options.nodeCount}
 						tooltip="Number of nodes the circle has."
 					/>
 					<PaletteContainer

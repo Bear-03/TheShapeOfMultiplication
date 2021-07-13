@@ -10,13 +10,13 @@ export default function RangeNumberInput({
 	label,
 	min,
 	max,
-	defaultValue,
+	value,
 	tooltip
 }) {
 	/* value will only be updated if displayedValue is valid.
 	If it isn't, displayedValue will still be updated so the input
 	element shows feedback */
-	const [displayedValue, setDisplayedValue] = useState(defaultValue);
+	const [displayedValue, setDisplayedValue] = useState(value);
 	const [tooltipShown, toggleTooltipShown] = useToggleState(false);
 	const [, updateOptions] = useContext(OptionContext);
 
