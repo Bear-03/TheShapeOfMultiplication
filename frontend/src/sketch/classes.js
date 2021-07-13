@@ -55,7 +55,7 @@ class Node {
 	the size they get with nodeCount == maxDiameter, etc.
 	*/
 	static minNodeCountToShrink = 60;
-	static maxNodeCountToDisappear = 300;
+	static maxNodeCountToDisappear = 250;
 	static hidden = false;
 
 	/** @type {p5} */
