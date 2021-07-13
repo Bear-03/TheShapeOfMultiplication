@@ -10,16 +10,16 @@ export default function PaletteItem({ index, palette }) {
 
 	const isSelected = options.selectedPalette === index;
 
-	function onPaletteSelect() {
-		updateOptions({ selectedPalette: index });
-	}
-
 	useEffect(() => {
 		const elementOverflows =
 			container.current.scrollWidth > container.current.clientWidth;
 
 		if (elementOverflows) setHasScrollbar(true);
 	}, []);
+
+	function onPaletteSelect() {
+		updateOptions({ selectedPalette: index });
+	}
 
 	return (
 		<li className={`${style.outerLi} ${isSelected ? style.selected : ""}`}>
