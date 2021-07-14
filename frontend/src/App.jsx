@@ -3,15 +3,19 @@ import "./common/styles/tooltip.css";
 
 import "./App.css";
 
+import React from "react";
 import Header from "./components/Header";
-import Sketch from "./components/Sketch";
 import { OptionProvider } from "./contexts/OptionContext";
+
+const Sketch = React.lazy(() => import("./components/Sketch"));
 
 export default function App() {
 	return (
 		<OptionProvider>
 			<Header />
-			<Sketch />
+			<React.Suspense fallback={<p>Loading...</p>}>
+				<Sketch />
+			</React.Suspense>
 		</OptionProvider>
 	);
 }
