@@ -31,7 +31,7 @@
 	--color: #aaaaaa;
 }
 
-[tooltip] {
+[tooltip-text] {
 	--arrow-size: 1rem;
 	--bg-color: black;
 	--border-radius: 1rem;
@@ -40,8 +40,8 @@
 	font-size: 1.5rem;
 }
 
-[tooltip]::before,
-[tooltip]::after {
+[tooltip-text]::before,
+[tooltip-text]::after {
 	position: absolute;
 	right: 103%;
 	pointer-events: none;
@@ -50,8 +50,8 @@
 	transition: opacity 0.3s ease-out;
 }
 
-[tooltip]::before {
-	content: attr(tooltip);
+[tooltip-text]::before {
+	content: attr(tooltip-text);
 	top: calc(-1 * var(--border-radius));
 	padding: 1rem;
 	width: max-content;
@@ -61,7 +61,7 @@
 	border-radius: var(--border-radius);
 }
 
-[tooltip]::after {
+[tooltip-text]::after {
 	content: "";
 	top: 0;
 	transform: translate(100%, 10%);
@@ -70,7 +70,7 @@
 	border-left-color: var(--bg-color);
 }
 
-[tooltip].tooltip--shown::before,
-[tooltip].tooltip--shown::after {
+[tooltip-text].tooltip--shown::before,
+[tooltip-text].tooltip--shown::after {
 	opacity: 1;
 }

@@ -1,20 +1,19 @@
 import React from "react";
-import { useToggleState } from "../../hooks";
 
 import PaletteItem from "./PaletteItem";
 
 import style from "./PaletteContainer.module.css";
 
 export default function PaletteContainer({ palettes, tooltip }) {
-	const [tooltipShown, toggleTooltipShown] = useToggleState(false);
-
 	return (
 		<div
-			className={`${style.label} ${tooltipShown ? "tooltip--shown" : ""}`}
-			tooltip={tooltip}
+			className={`${style.label} ${
+				tooltip.shown ? "tooltip--shown" : ""
+			}`}
+			tooltip-text={tooltip.text}
 		>
 			<span>Palettes</span>
-			<button className="tooltip__button" onClick={toggleTooltipShown}>
+			<button className="tooltip__button" onClick={tooltip.toggleShown}>
 				?
 			</button>
 			<ul className={style.paletteUl}>

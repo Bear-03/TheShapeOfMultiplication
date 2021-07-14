@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { useToggleState } from "../../hooks";
 import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
 
@@ -17,7 +16,6 @@ export default function RangeNumberInput({
 	If it isn't, displayedValue will still be updated so the input
 	element shows feedback */
 	const [displayedValue, setDisplayedValue] = useState(value);
-	const [tooltipShown, toggleTooltipShown] = useToggleState(false);
 	const [, updateOptions] = useContext(OptionContext);
 
 	function onValueInput(event) {
@@ -30,12 +28,12 @@ export default function RangeNumberInput({
 	return (
 		<div
 			className={`${style.container} ${
-				tooltipShown ? "tooltip--shown" : ""
+				tooltip.shown ? "tooltip--shown" : ""
 			}`}
-			tooltip={tooltip}
+			tooltip-text={tooltip.text}
 		>
 			<span>{label}</span>
-			<button className="tooltip__button" onClick={toggleTooltipShown}>
+			<button className="tooltip__button" onClick={tooltip.toggleShown}>
 				?
 			</button>
 			<div className={style.inputWrapper}>
