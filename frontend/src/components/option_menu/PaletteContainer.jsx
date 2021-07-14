@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { Tooltip } from "../../common/scripts/tooltip-manager";
 
 import PaletteItem from "./PaletteItem";
 
@@ -24,3 +26,8 @@ export default function PaletteContainer({ palettes, tooltip }) {
 		</div>
 	);
 }
+
+PaletteContainer.propTypes = {
+	palettes: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+	tooltip: PropTypes.instanceOf(Tooltip).isRequired
+};

@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
 
+import { Tooltip } from "../../common/scripts/tooltip-manager";
 import style from "./RangeNumberInput.module.css";
 
 export default function RangeNumberInput({
@@ -66,10 +67,12 @@ export default function RangeNumberInput({
 }
 
 RangeNumberInput.propTypes = {
+	optionName: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	min: PropTypes.number,
 	max: PropTypes.number.isRequired,
-	defaultValue: PropTypes.number.isRequired
+	value: PropTypes.number.isRequired,
+	tooltip: PropTypes.instanceOf(Tooltip).isRequired
 };
 
 RangeNumberInput.defaultProps = {

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
 
 import style from "./PaletteItem.module.css";
@@ -41,3 +42,8 @@ export default function PaletteItem({ index, palette }) {
 		</li>
 	);
 }
+
+PaletteItem.propTypes = {
+	index: PropTypes.number.isRequired,
+	palette: PropTypes.arrayOf(PropTypes.string).isRequired
+};
