@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useToggleState } from "../../hooks";
 import { OptionContext } from "../../contexts/OptionContext";
 import { Tooltip } from "../../common/scripts/tooltip-manager";
