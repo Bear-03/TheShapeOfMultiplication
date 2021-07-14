@@ -1,0 +1,27 @@
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.loader {
+	--size: 15rem;
+	width: var(--size);
+	height: var(--size);
+
+	border: calc(var(--size) / 12) solid #505050;
+	border-top-color: #cccccc;
+	border-radius: 50%;
+
+	animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
