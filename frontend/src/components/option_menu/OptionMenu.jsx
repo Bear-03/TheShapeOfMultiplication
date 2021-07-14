@@ -9,9 +9,10 @@ import PaletteContainer from "./PaletteContainer";
 const localStorageKey = "optionMenu";
 
 export default function OptionMenu() {
-	const optionsContainer = useRef();
 	const [options, updateOptions] = useContext(OptionContext);
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
+	/* Options will use IDs starting from 0 that will identify
+	which tooltip is open. null = no tooltip shown */
 	const [shownTooltipId, setShownTooltipId] = useState(null);
 	const [menuExpanded, toggleMenuExpanded] = useToggleState(false);
 
@@ -30,6 +31,8 @@ export default function OptionMenu() {
 	}, [options]);
 
 	function expandOrClose() {
+		/* Menu was expanded but is gonna be closed,
+		so all tooltips should be hidden as well */
 		if (menuExpanded) setShownTooltipId(null);
 		toggleMenuExpanded();
 	}
@@ -42,7 +45,7 @@ export default function OptionMenu() {
 		>
 			<button onClick={expandOrClose}>Hi</button>
 			{optionsAreLoaded ? (
-				<aside ref={optionsContainer}>
+				<aside>
 					<RangeNumberInput
 						optionName="multNumber"
 						label="Multiplication number"
