@@ -2,18 +2,23 @@ export class Tooltip {
 	/** @type {string} */
 	text;
 	/** @type {number} */
-	optionId;
+	optionIndex;
 	/** @type {Function} */
-	setShownTooltipId;
+	setShownTooltipIndex;
 	/** @type {boolean} */
 	shown;
 
-	constructor({ text, optionId, shownTooltipId, setShownTooltipId }) {
+	constructor({
+		text,
+		optionIndex,
+		shownTooltipIndex,
+		setShownTooltipIndex
+	}) {
 		this.text = text;
-		this.optionId = optionId;
-		this.setShownTooltipId = setShownTooltipId;
+		this.optionIndex = optionIndex;
+		this.setShownTooltipIndex = setShownTooltipIndex;
 
-		this.shown = shownTooltipId === optionId;
+		this.shown = shownTooltipIndex === optionIndex;
 	}
 
 	// Arrow function is needed for autobind "this" (React doesn't do it automatically)
@@ -22,7 +27,7 @@ export class Tooltip {
 	 * when this one is opened as well as only closing this one if it was already open
 	 */
 	toggleShown = () => {
-		if (this.shown) this.setShownTooltipId(null);
-		else this.setShownTooltipId(this.optionId);
+		if (this.shown) this.setShownTooltipIndex(null);
+		else this.setShownTooltipIndex(this.optionIndex);
 	};
 }

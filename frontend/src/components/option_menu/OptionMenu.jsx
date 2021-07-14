@@ -13,7 +13,7 @@ export default function OptionMenu() {
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
-	const [shownTooltipId, setShownTooltipId] = useState(null);
+	const [shownTooltipIndex, setShownTooltipIndex] = useState(null);
 	const [menuExpanded, toggleMenuExpanded] = useToggleState(false);
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ export default function OptionMenu() {
 	function expandOrClose() {
 		/* Menu was expanded but is gonna be closed,
 		so all tooltips should be hidden as well */
-		if (menuExpanded) setShownTooltipId(null);
+		if (menuExpanded) setShownTooltipIndex(null);
 		toggleMenuExpanded();
 	}
 
@@ -56,9 +56,9 @@ export default function OptionMenu() {
 								text:
 									"Number by which the node index will be multiplied. " +
 									"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6.",
-								optionId: 0,
-								shownTooltipId: shownTooltipId,
-								setShownTooltipId: setShownTooltipId
+								optionIndex: 0,
+								shownTooltipIndex: shownTooltipIndex,
+								setShownTooltipIndex: setShownTooltipIndex
 							})
 						}
 					/>
@@ -70,9 +70,9 @@ export default function OptionMenu() {
 						tooltip={
 							new Tooltip({
 								text: "Number of nodes the circle has.",
-								optionId: 1,
-								shownTooltipId: shownTooltipId,
-								setShownTooltipId: setShownTooltipId
+								optionIndex: 1,
+								shownTooltipIndex: shownTooltipIndex,
+								setShownTooltipIndex: setShownTooltipIndex
 							})
 						}
 					/>
@@ -83,9 +83,9 @@ export default function OptionMenu() {
 								text:
 									"Color palette for the lines. The lines will use colors in order (first color " +
 									"for the first line, last color for the last line, etc.), creating a gradient.",
-								optionId: 2,
-								shownTooltipId: shownTooltipId,
-								setShownTooltipId: setShownTooltipId
+								optionIndex: 2,
+								shownTooltipIndex: shownTooltipIndex,
+								setShownTooltipIndex: setShownTooltipIndex
 							})
 						}
 					/>
