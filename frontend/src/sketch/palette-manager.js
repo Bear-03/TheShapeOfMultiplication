@@ -1,6 +1,6 @@
 /**
+ * @typedef {import("p5")} p5
  * @typedef {import("p5").Color} Color
- * @typedef {import("./classes").CustomCanvas} CustomCanvas
  */
 
 /**
@@ -25,7 +25,7 @@ function distributeColors(colorsToGenerate, intervalCount) {
 }
 
 /**
- * @param {CustomCanvas} sketch
+ * @param {p5} sketch
  * @param {number} maxNodeCount
  * @param {string[]} strPalette
  * @returns {Color[]}

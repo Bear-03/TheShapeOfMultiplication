@@ -10,8 +10,8 @@ import { CanvasManager, Circle } from "./classes";
 export function createSketch(options, ref) {
 	let onOptionChange = () => {};
 
-	/*
-	 * @param {CustomCanvas} sketch
+	/**
+	 * @param {p5} sketch
 	 */
 	function sketchFunction(sketch) {
 		const canvasManager = new CanvasManager(sketch);
