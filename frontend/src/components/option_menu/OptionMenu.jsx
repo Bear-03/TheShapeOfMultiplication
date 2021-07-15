@@ -16,6 +16,8 @@ export default function OptionMenu() {
 	const [shownTooltipIndex, setShownTooltipIndex] = useState(null);
 	const [menuExpanded, toggleMenuExpanded] = useToggleState(false);
 
+	Tooltip.setStaticProperties(shownTooltipIndex, setShownTooltipIndex);
+
 	useEffect(() => {
 		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
 		if (storedOptions !== null) updateOptions(storedOptions);
@@ -56,9 +58,7 @@ export default function OptionMenu() {
 								text:
 									"Number by which the node index will be multiplied. " +
 									"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6.",
-								optionIndex: 0,
-								shownTooltipIndex: shownTooltipIndex,
-								setShownTooltipIndex: setShownTooltipIndex
+								optionIndex: 0
 							})
 						}
 					/>
@@ -70,9 +70,7 @@ export default function OptionMenu() {
 						tooltip={
 							new Tooltip({
 								text: "Number of nodes the circle has.",
-								optionIndex: 1,
-								shownTooltipIndex: shownTooltipIndex,
-								setShownTooltipIndex: setShownTooltipIndex
+								optionIndex: 1
 							})
 						}
 					/>
@@ -83,9 +81,7 @@ export default function OptionMenu() {
 								text:
 									"Color palette for the lines. The lines will use colors in order (first color " +
 									"for the first line, last color for the last line, etc.), creating a gradient.",
-								optionIndex: 2,
-								shownTooltipIndex: shownTooltipIndex,
-								setShownTooltipIndex: setShownTooltipIndex
+								optionIndex: 2
 							})
 						}
 					/>
