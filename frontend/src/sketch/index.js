@@ -23,6 +23,7 @@ export function createSketch(options, ref) {
 		}
 
 		sketch.setup = () => {
+			sketch.pixelDensity(1);
 			resizeComponents();
 		};
 
