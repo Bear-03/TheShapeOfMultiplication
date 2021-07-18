@@ -20,6 +20,8 @@ export default function PaletteItem({ index, palette }) {
 		}
 
 		checkOverflow();
+		/* useEffect only runs when the component is re-rendered, but
+		this check has to be run every time the window resizes */
 		window.addEventListener("resize", checkOverflow);
 	}, []);
 
