@@ -11,6 +11,7 @@
 .menu aside {
 	position: absolute;
 	display: flex;
+	max-width: 100%;
 	flex-direction: column;
 	background-color: #1a1a1af0;
 	height: 100%;

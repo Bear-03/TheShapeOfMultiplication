@@ -12,10 +12,15 @@ export default function PaletteItem({ index, palette }) {
 	const isSelected = options.selectedPalette === index;
 
 	useEffect(() => {
-		const elementOverflows =
-			container.current.scrollWidth > container.current.clientWidth;
+		function checkOverflow() {
+			const elementOverflows =
+				container.current.scrollWidth > container.current.clientWidth;
 
-		if (elementOverflows) setHasScrollbar(true);
+			setHasScrollbar(elementOverflows);
+		}
+
+		checkOverflow();
+		window.addEventListener("resize", checkOverflow);
 	}, []);
 
 	function onPaletteSelect() {

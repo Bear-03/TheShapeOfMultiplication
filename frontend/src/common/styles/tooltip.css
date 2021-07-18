@@ -4,6 +4,7 @@
 
 	box-sizing: content-box;
 	display: inline-flex;
+	flex-shrink: 0;
 
 	font-size: 1.4rem;
 	width: var(--size);

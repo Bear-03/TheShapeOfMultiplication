@@ -1,4 +1,14 @@
+html,
 body {
+	/* Mobile fix for horizontal overflow scroll*/
+	height: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	/* Mobile fix for horizontal overflow scroll*/
+	position: relative;
+
 	color: white;
 	background-color: #323232;
 	overflow: hidden; /* For menus */
@@ -11,4 +21,9 @@ header {
 	align-items: center;
 	margin: 1rem 3rem;
 	font-size: 2rem;
+}
+
+h1 {
+	text-align: center;
+	font-size: min(5vw, 5rem);
 }
