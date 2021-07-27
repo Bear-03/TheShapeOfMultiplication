@@ -1,6 +1,7 @@
 {
-	"name": "the-shape-of-multiplication-backend",
+	"name": "the-shape-of-multiplication",
 	"version": "1.0.0",
+	"private": true,
 	"scripts": {
 		"build": "cd frontend && npm run build",
 		"start": "cd backend && npm start",

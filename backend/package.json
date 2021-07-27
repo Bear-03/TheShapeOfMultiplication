@@ -1,6 +1,4 @@
 {
-	"name": "the-shape-of-multiplication-backend",
-	"version": "1.0.0",
 	"scripts": {
 		"start": "node app"
 	},
