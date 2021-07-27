@@ -7,9 +7,10 @@
 
 .inputWrapper {
 	display: flex;
+	align-items: inherit;
 	justify-content: flex-end;
 	width: 100%;
-	max-width: 30rem;
+	max-width: 28rem;
 	min-width: 15rem;
 }
 
