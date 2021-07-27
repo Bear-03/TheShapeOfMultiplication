@@ -33,10 +33,15 @@ export default function RangeNumberInput({
 			}`}
 			tooltip-text={tooltip.text}
 		>
-			<span>{label}</span>
-			<button className="tooltip__button" onClick={tooltip.toggleShown}>
-				?
-			</button>
+			<div>
+				<span>{label}</span>
+				<button
+					className="tooltip__button"
+					onClick={tooltip.toggleShown}
+				>
+					?
+				</button>
+			</div>
 			<div className={style.inputWrapper}>
 				<label
 					htmlFor={`${optionName}-range`}

@@ -1,17 +1,22 @@
 .container {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	width: 100%;
+}
+
+.inputWrapper {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	max-width: 30rem;
+	min-width: 15rem;
 }
 
 .container label {
 	position: absolute;
 	/* Makes it invisible without affecting accessibility */
 	right: 1000%;
-}
-
-.inputWrapper {
-	margin-left: auto;
 }
 
 .container input {
@@ -43,7 +48,7 @@
 .container input[type="range"] {
 	appearance: none;
 	cursor: pointer;
-	width: 25rem;
+	width: 100%;
 	height: 1rem;
 
 	border-radius: 0.5rem;
