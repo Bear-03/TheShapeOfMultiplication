@@ -6,6 +6,8 @@ import { Tooltip } from "../../common/scripts/tooltip-manager";
 import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
 
+import style from "./OptionMenu.module.css";
+
 const localStorageKey = "optionMenu";
 
 export default function OptionMenu() {
@@ -41,7 +43,7 @@ export default function OptionMenu() {
 
 	return (
 		<div
-			className={`${
+			className={`${style.container} ${
 				menuExpanded ? "menu--expanded" : ""
 			} menu menu--expand-left`}
 		>

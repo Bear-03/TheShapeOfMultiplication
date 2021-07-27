@@ -1,5 +1,4 @@
 .outerLi {
-	--border-radius: 0.5rem;
 	display: flex;
 }
 
@@ -37,37 +36,9 @@
 	white-space: nowrap;
 }
 
-/* #region Scrollable container */
 .scrollable {
-	--scrollbar-width: 0.6rem;
-	--scrollbar-bg-color: transparent;
-	--scrollbar-thumb-color: #707070;
-	--scrollbar-thumb-color-hover: #7f7f7f;
-
 	padding-bottom: calc(var(--gap) / 2);
-
-	/* #region Firefox scrollbar rules */
-	scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
-	/* #endregion */
 }
-
-/* #region Chrome scrollbar rules */
-.scrollable::-webkit-scrollbar {
-	width: var(--scrollbar-width);
-	height: var(--scrollbar-width);
-	background-color: var(--scrollbar-bg-color);
-}
-
-.scrollable::-webkit-scrollbar-thumb {
-	background-color: var(--scrollbar-thumb-color);
-	border-radius: var(--border-radius);
-}
-
-.scrollable::-webkit-scrollbar-thumb:hover {
-	background-color: var(--scrollbar-thumb-color-hover);
-}
-/* #endregion */
-/* #endregion */
 
 .color {
 	--size: 9rem;
