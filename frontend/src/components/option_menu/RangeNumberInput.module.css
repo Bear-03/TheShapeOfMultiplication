@@ -1,13 +1,12 @@
 .container {
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 	width: 100%;
 }
 
 .inputWrapper {
 	display: flex;
-	align-items: inherit;
+	align-items: center;
 	justify-content: flex-end;
 	width: 100%;
 	max-width: 28rem;
