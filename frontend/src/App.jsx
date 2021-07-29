@@ -1,5 +1,3 @@
-import "./common/styles/tooltip.css";
-
 import "./App.css";
 
 import React from "react";

@@ -1,21 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Tooltip } from "../../common/scripts/tooltip-manager";
 
 import PaletteItem from "./PaletteItem";
 
 import style from "./PaletteContainer.module.css";
+import { tooltipButton } from "../wrappers/TooltipWrapper.module.css";
 
-export default function PaletteContainer({ palettes, tooltip }) {
+export default function PaletteContainer({ palettes, showTooltip }) {
 	return (
-		<div
-			className={`${style.label} ${
-				tooltip.shown ? "tooltip--shown" : ""
-			}`}
-			tooltip-text={tooltip.text}
-		>
+		<div className={style.container}>
 			<span>Palettes</span>
-			<button className="tooltip__button" onClick={tooltip.toggleShown}>
+			<button className={tooltipButton} onClick={showTooltip}>
 				?
 			</button>
 			<ul className={style.paletteUl}>
@@ -29,5 +24,5 @@ export default function PaletteContainer({ palettes, tooltip }) {
 
 PaletteContainer.propTypes = {
 	palettes: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
-	tooltip: PropTypes.instanceOf(Tooltip).isRequired
+	tooltip: PropTypes.func
 };

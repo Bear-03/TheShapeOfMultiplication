@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
 
-import { Tooltip } from "../../common/scripts/tooltip-manager";
 import style from "./RangeNumberInput.module.css";
+import { tooltipButton } from "../wrappers/TooltipWrapper.module.css";
 
 export default function RangeNumberInput({
 	optionName,
@@ -11,7 +11,7 @@ export default function RangeNumberInput({
 	min,
 	max,
 	value,
-	tooltip
+	showTooltip
 }) {
 	/* value will only be updated if displayedValue is valid.
 	If it isn't, displayedValue will still be updated so the input
@@ -27,18 +27,10 @@ export default function RangeNumberInput({
 	}
 
 	return (
-		<div
-			className={`${style.container} ${
-				tooltip.shown ? "tooltip--shown" : ""
-			}`}
-			tooltip-text={tooltip.text}
-		>
+		<div className={style.container}>
 			<div>
 				<span>{label}</span>
-				<button
-					className="tooltip__button"
-					onClick={tooltip.toggleShown}
-				>
+				<button className={tooltipButton} onClick={showTooltip}>
 					?
 				</button>
 			</div>
@@ -77,7 +69,7 @@ RangeNumberInput.propTypes = {
 	min: PropTypes.number,
 	max: PropTypes.number.isRequired,
 	value: PropTypes.number.isRequired,
-	tooltip: PropTypes.instanceOf(Tooltip).isRequired
+	showTooltip: PropTypes.func
 };
 
 RangeNumberInput.defaultProps = {

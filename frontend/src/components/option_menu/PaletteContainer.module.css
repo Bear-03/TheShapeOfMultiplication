@@ -1,9 +1,9 @@
-.label,
+.container,
 .paletteUl {
 	width: 100%;
 }
 
-.label span {
+.container span {
 	display: inline-block;
 	margin-bottom: 1rem;
 }

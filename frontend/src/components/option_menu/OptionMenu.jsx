@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { OptionContext } from "../../contexts/OptionContext";
-import { Tooltip } from "../../common/scripts/tooltip-manager";
 
+import TooltipWrapper from "../wrappers/TooltipWrapper";
 import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
 
@@ -14,9 +14,7 @@ export default function OptionMenu() {
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
-	const [shownTooltipIndex, setShownTooltipIndex] = useState(null);
-
-	Tooltip.setStaticProperties(shownTooltipIndex, setShownTooltipIndex);
+	const shownTooltipState = useState(null);
 
 	useEffect(() => {
 		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
@@ -34,43 +32,43 @@ export default function OptionMenu() {
 
 	return optionsAreLoaded ? (
 		<aside className={style.container}>
-			<RangeNumberInput
-				optionName="multNumber"
-				label="Multiplication number"
-				max={100}
-				value={options.multNumber}
-				tooltip={
-					new Tooltip({
-						text:
-							"Number by which the node index will be multiplied. " +
-							"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6.",
-						optionIndex: 0
-					})
+			<TooltipWrapper
+				optionIndex={0}
+				text={
+					"Number by which the node index will be multiplied. " +
+					"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6."
 				}
-			/>
-			<RangeNumberInput
-				optionName="nodeCount"
-				label="Number of nodes"
-				max={options.maxNodeCount}
-				value={options.nodeCount}
-				tooltip={
-					new Tooltip({
-						text: "Number of nodes the circle has.",
-						optionIndex: 1
-					})
+				shownTooltipState={shownTooltipState}
+			>
+				<RangeNumberInput
+					optionName="multNumber"
+					label="Multiplication number"
+					max={100}
+					value={options.multNumber}
+				/>
+			</TooltipWrapper>
+			<TooltipWrapper
+				optionIndex={1}
+				text="Number of nodes the circle has."
+				shownTooltipState={shownTooltipState}
+			>
+				<RangeNumberInput
+					optionName="nodeCount"
+					label="Number of nodes"
+					max={options.maxNodeCount}
+					value={options.nodeCount}
+				/>
+			</TooltipWrapper>
+			<TooltipWrapper
+				optionIndex={2}
+				text={
+					"Color palette for the lines. The lines will use colors in order (first color " +
+					"for the first line, last color for the last line, etc.), creating a gradient."
 				}
-			/>
-			<PaletteContainer
-				palettes={options.palettes}
-				tooltip={
-					new Tooltip({
-						text:
-							"Color palette for the lines. The lines will use colors in order (first color " +
-							"for the first line, last color for the last line, etc.), creating a gradient.",
-						optionIndex: 2
-					})
-				}
-			/>
+				shownTooltipState={shownTooltipState}
+			>
+				<PaletteContainer palettes={options.palettes} />
+			</TooltipWrapper>
 		</aside>
 	) : null;
 }

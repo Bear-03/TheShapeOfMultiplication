@@ -1,4 +1,5 @@
-.tooltip__button {
+/* #region Tooltip Button */
+.tooltipButton {
 	--size: 1rem;
 	--color: white;
 
@@ -24,25 +25,27 @@
 	transition-property: color, border-color;
 }
 
-.tooltip__button:hover {
+.tooltipButton:hover {
 	--color: #cccccc;
 }
 
-.tooltip__button:active {
+.tooltipButton:active {
 	--color: #aaaaaa;
 }
+/* #endregion */
 
-[tooltip-text] {
+.container {
 	--arrow-size: 1rem;
 	--bg-color: black;
 	--border-radius: 1rem;
 
 	position: relative;
+	width: 100%;
 	font-size: 1.5rem;
 }
 
-[tooltip-text]::before,
-[tooltip-text]::after {
+.container::before,
+.container::after {
 	position: absolute;
 	right: 103%;
 	pointer-events: none;
@@ -51,8 +54,8 @@
 	transition: opacity 0.3s ease-out;
 }
 
-[tooltip-text]::before {
-	content: attr(tooltip-text);
+.container::before {
+	content: attr(tooltip);
 	top: calc(-1 * var(--border-radius));
 	padding: 1rem;
 	width: max-content;
@@ -62,7 +65,7 @@
 	border-radius: var(--border-radius);
 }
 
-[tooltip-text]::after {
+.container::after {
 	content: "";
 	top: 0;
 	transform: translate(100%, 10%);
@@ -71,7 +74,7 @@
 	border-left-color: var(--bg-color);
 }
 
-[tooltip-text].tooltip--shown::before,
-[tooltip-text].tooltip--shown::after {
+.shown::before,
+.shown::after {
 	opacity: 1;
 }
