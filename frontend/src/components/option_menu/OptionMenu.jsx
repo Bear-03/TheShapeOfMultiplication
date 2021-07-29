@@ -24,7 +24,7 @@ export default function OptionMenu() {
 		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
 		if (storedOptions !== null) updateOptions(storedOptions);
 		setOptionsAreLoaded(true);
-	}, []);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		/* Avoids re-saving the options when they are first loaded, as the
@@ -32,7 +32,7 @@ export default function OptionMenu() {
 		if (!optionsAreLoaded) return;
 
 		localStorage.setItem(localStorageKey, JSON.stringify(options));
-	}, [options]);
+	}, [options]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	function expandOrClose() {
 		/* Menu was expanded but is gonna be closed,
