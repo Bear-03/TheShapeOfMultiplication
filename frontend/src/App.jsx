@@ -1,4 +1,3 @@
-import "./common/styles/menu.css";
 import "./common/styles/tooltip.css";
 
 import "./App.css";
