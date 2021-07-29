@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
 

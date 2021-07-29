@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
 import { OptionContext } from "../contexts/OptionContext";
 
 import style from "./Sketch.module.css";
