@@ -10,7 +10,7 @@ export default function Header() {
 	return (
 		<header>
 			<MenuWrapper
-				menuId={0}
+				menuIndex={0}
 				buttonText="Soon"
 				expandedState={expandState}
 				expandDirection={menuExpandDirections.RIGHT}
@@ -19,7 +19,7 @@ export default function Header() {
 			</MenuWrapper>
 			<h1>The Shape of Multiplication</h1>
 			<MenuWrapper
-				menuId={1}
+				menuIndex={1}
 				buttonText="Hi"
 				expandedState={expandState}
 				expandDirection={menuExpandDirections.LEFT}

@@ -12,7 +12,7 @@ export const menuExpandDirections = Object.freeze({
 });
 
 export function MenuWrapper({
-	menuId,
+	menuIndex,
 	buttonText,
 	expandedState,
 	expandDirection,
@@ -22,15 +22,15 @@ export function MenuWrapper({
 
 	function openCloseMenu() {
 		setExpandedMenu((prevExpandedMenu) => {
-			if (prevExpandedMenu === menuId) return null;
-			return menuId;
+			if (prevExpandedMenu === menuIndex) return null;
+			return menuIndex;
 		});
 	}
 
 	return (
 		<div
 			className={`${style.container} ${style[expandDirection]} ${
-				expandedMenu === menuId ? style.expanded : ""
+				expandedMenu === menuIndex ? style.expanded : ""
 			}`}
 		>
 			<button onClick={openCloseMenu}>{buttonText}</button>
@@ -40,7 +40,7 @@ export function MenuWrapper({
 }
 
 MenuWrapper.propTypes = {
-	menuId: PropTypes.number,
+	menuIndex: PropTypes.number,
 	buttonText: PropTypes.string.isRequired,
 	expandedState: PropTypes.array,
 	expandDirection: PropTypes.oneOf(Object.values(menuExpandDirections))
