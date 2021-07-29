@@ -98,6 +98,7 @@ webkit browsers */
 		var(--hover-thumb-transition-function);
 }
 
+/* !important overrides range element hover (two rules below) */
 .container input[type="range"]::-moz-range-thumb:is(:hover, :active) {
 	background-color: var(--hover-thumb-bg-color) !important;
 }
