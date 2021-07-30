@@ -1,4 +1,7 @@
+import { useRef, useState } from "react";
 import PropTypes from "prop-types";
+
+import { useWindowResize } from "../../hooks";
 import { addPropsToChildren } from "../../common/scripts/util";
 
 import style from "./TooltipWrapper.module.css";
@@ -10,11 +13,27 @@ export default function TooltipWrapper({
 	children
 }) {
 	const [shownTooltip, toggleSwitchShownTooltip] = shownTooltipState;
+	const tooltipButtonRef = useRef();
+	const [tooltipButtonPosition, SetTooltipButtonPosition] = useState({
+		horizontalCenter: undefined,
+		bottom: undefined
+	});
 
 	const showTooltip = () => toggleSwitchShownTooltip(optionIndex);
 
 	const childrenWithTooltipProps = addPropsToChildren(children, {
-		showTooltip
+		showTooltip,
+		tooltipButtonRef
+	});
+
+	useWindowResize(() => {
+		const button = tooltipButtonRef.current;
+
+		const horizontalCenter = button.offsetLeft + button.offsetWidth / 2;
+		const bottom = button.offsetTop + button.offsetHeight;
+
+		// Middle of the element. Coordinates relative to the parent
+		SetTooltipButtonPosition({ horizontalCenter, bottom });
 	});
 
 	return (
@@ -22,6 +41,11 @@ export default function TooltipWrapper({
 			className={`${style.container} ${
 				shownTooltip === optionIndex ? style.shown : ""
 			}`}
+			style={{
+				"--button-horizontal-center":
+					tooltipButtonPosition.horizontalCenter + "px",
+				"--button-bottom": tooltipButtonPosition.bottom + "px"
+			}}
 			tooltip={text}
 		>
 			{childrenWithTooltipProps}

@@ -38,9 +38,11 @@
 /* #endregion */
 
 .container {
-	--down-shift: 1.5rem;
+	/* Margin from the bottom of the button to the tooltip arrow */
+	--down-offset: 0.5rem;
+
 	--arrow-size: 1rem;
-	--bg-color: #000000ef;
+	--bg-color: #000000e5;
 	--border-radius: 1rem;
 
 	position: relative;
@@ -58,23 +60,34 @@
 	transition: opacity 0.3s ease-out;
 }
 
+/* TEXT BOX */
 .container::before {
+	content: "";
+
+	/* Initially the top border will be at the bottom, but since
+	it's invisible, its width has to be subtracted. This makes the
+	tip of the bottom border be at the bottom */
+	top: calc(var(--button-bottom) - var(--arrow-size) + var(--down-offset));
+
+	/* Center horizontally */
+	left: var(--button-horizontal-center);
+	transform: translateX(-50%);
+
+	border: var(--arrow-size) solid transparent;
+	border-bottom-color: var(--bg-color);
+}
+
+/* ARROW */
+.container::after {
 	--padding: 1rem;
 
 	content: attr(tooltip);
+
 	padding: var(--padding);
-	top: calc(var(--down-shift) + var(--arrow-size) + var(--padding));
+	top: calc(var(--button-bottom) + var(--arrow-size) + var(--down-offset));
 	background-color: var(--bg-color);
 
 	border-radius: var(--border-radius);
-}
-
-.container::after {
-	content: "";
-
-	top: var(--down-shift);
-	border: var(--arrow-size) solid transparent;
-	border-bottom-color: var(--bg-color);
 }
 
 .shown::before,

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
 
 import style from "./RangeNumberInput.module.css";
-import { tooltipButton } from "../wrappers/TooltipWrapper.module.css";
+import tooltipStyle from "../wrappers/TooltipWrapper.module.css";
 
 export default function RangeNumberInput({
 	optionName,
@@ -11,7 +11,8 @@ export default function RangeNumberInput({
 	min,
 	max,
 	value,
-	showTooltip
+	showTooltip,
+	tooltipButtonRef
 }) {
 	/* value will only be updated if displayedValue is valid.
 	If it isn't, displayedValue will still be updated so the input
@@ -30,7 +31,11 @@ export default function RangeNumberInput({
 		<div className={style.container}>
 			<div>
 				<span>{label}</span>
-				<button className={tooltipButton} onClick={showTooltip} />
+				<button
+					ref={tooltipButtonRef}
+					className={tooltipStyle.tooltipButton}
+					onClick={showTooltip}
+				/>
 			</div>
 			<div className={style.inputWrapper}>
 				<label
