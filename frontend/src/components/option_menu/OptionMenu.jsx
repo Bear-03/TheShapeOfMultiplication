@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { OptionContext } from "../../contexts/OptionContext";
 
+import { useToggleSwitchState } from "../../hooks";
 import TooltipWrapper from "../wrappers/TooltipWrapper";
 import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
@@ -14,7 +15,7 @@ export default function OptionMenu() {
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
-	const shownTooltipState = useState(null);
+	const shownTooltipState = useToggleSwitchState(null);
 
 	useEffect(() => {
 		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));

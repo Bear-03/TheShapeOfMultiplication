@@ -9,14 +9,9 @@ export default function TooltipWrapper({
 	shownTooltipState,
 	children
 }) {
-	const [shownTooltip, setShownTooltip] = shownTooltipState;
+	const [shownTooltip, toggleSwitchShownTooltip] = shownTooltipState;
 
-	function showTooltip() {
-		setShownTooltip((prevTooltip) => {
-			if (prevTooltip === optionIndex) return null;
-			return optionIndex;
-		});
-	}
+	const showTooltip = () => toggleSwitchShownTooltip(optionIndex);
 
 	const childrenWithTooltipProps = addPropsToChildren(children, {
 		showTooltip

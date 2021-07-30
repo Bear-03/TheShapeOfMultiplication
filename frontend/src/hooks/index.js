@@ -57,3 +57,28 @@ export function useToggleState(initialValue) {
 
 	return [value, toggleState];
 }
+
+/**
+ * Custom useState hook that is reset to the initial value if
+ * the setter is passed the same value that the state already has.
+ * @template T
+ * @param {T} initialValue initial state value
+ * @returns {[T, Function]}
+ */
+export function useToggleSwitchState(initialValue) {
+	const [value, setValue] = useState(initialValue);
+
+	/**
+	 * useState setter that will reset to its initial
+	 * value if the new one is equal to the previous one.
+	 * @param {any} newValue new state value
+	 */
+	function toggleSwitchValue(newValue) {
+		setValue((prevValue) => {
+			if (prevValue === newValue) return initialValue;
+			return newValue;
+		});
+	}
+
+	return [value, toggleSwitchValue];
+}

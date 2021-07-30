@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useToggleSwitchState } from "../hooks";
 
 import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
 import Nav from "./Nav";
 import OptionMenu from "./option_menu/OptionMenu";
 
 export default function Header() {
-	const expandState = useState(null);
+	const expandState = useToggleSwitchState(null);
 
 	return (
 		<header>

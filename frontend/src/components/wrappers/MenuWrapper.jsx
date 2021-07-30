@@ -18,14 +18,9 @@ export function MenuWrapper({
 	expandDirection,
 	children
 }) {
-	const [expandedMenu, setExpandedMenu] = expandedState;
+	const [expandedMenu, toggleSwitchExpandedMenu] = expandedState;
 
-	function openCloseMenu() {
-		setExpandedMenu((prevExpandedMenu) => {
-			if (prevExpandedMenu === menuIndex) return null;
-			return menuIndex;
-		});
-	}
+	const handleExpand = () => toggleSwitchExpandedMenu(menuIndex);
 
 	return (
 		<div
@@ -33,7 +28,7 @@ export function MenuWrapper({
 				expandedMenu === menuIndex ? style.expanded : ""
 			}`}
 		>
-			<button onClick={openCloseMenu}>{buttonText}</button>
+			<button onClick={handleExpand}>{buttonText}</button>
 			{children}
 		</div>
 	);
