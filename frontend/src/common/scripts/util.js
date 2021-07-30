@@ -7,6 +7,7 @@ import React from "react";
  * @returns {React.ReactNode[]}
  */
 export function addPropsToChildren(children, props) {
+	// The children map automatically sets keys to the elements
 	return React.Children.map(children, (child) => {
 		if (React.isValidElement(child))
 			return React.cloneElement(child, props);
