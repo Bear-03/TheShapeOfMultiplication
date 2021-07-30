@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * A custom useEffect hook that only triggers on updates, not on initial mount.
+ * Custom useEffect hook that only triggers on updates, not on initial mount.
  * @param {Function} effect
  * @param {any[]} [dependencies]
  */
@@ -29,7 +29,7 @@ export function useStateObject(initialObject = {}) {
 	const [object, setObject] = useState(initialObject);
 
 	/**
-	 * Setter wrapper
+	 * useState wrapper that will update the object properties.
 	 *
 	 * @param {{} | Function} objectToAdd Key-value pair to add to the existing object or a function that will return one.
 	 * If a function is passed, the first argument will be the previous object.
@@ -48,9 +48,17 @@ export function useStateObject(initialObject = {}) {
 	return [object, updateObject];
 }
 
+/**
+ * Custom useEffect hook that toggles between boolean values.
+ * @param {bool} initialValue initial state value
+ * @returns {[bool, Function]}
+ */
 export function useToggleState(initialValue) {
 	const [value, setValue] = useState(initialValue);
 
+	/**
+	 * useState setter that will toggle the state values.
+	 */
 	function toggleState() {
 		setValue((prevValue) => !prevValue);
 	}
@@ -68,7 +76,7 @@ export function useToggleState(initialValue) {
 export function useToggleSwitchState(initialValue) {
 	const [value, setValue] = useState(initialValue);
 
-	/**
+	/**useState setter
 	 * useState setter that will reset to its initial
 	 * value if the new one is equal to the previous one.
 	 * @param {any} newValue new state value
