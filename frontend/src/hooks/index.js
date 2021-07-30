@@ -90,3 +90,16 @@ export function useToggleSwitchState(initialValue) {
 
 	return [value, toggleSwitchValue];
 }
+
+/**
+ * Custom hook that will run a function every time the window is resized.
+ * @param {Function} callback The function that will be executed
+ */
+export function useWindowResize(callback) {
+	useEffect(() => {
+		callback();
+		window.addEventListener("resize", callback);
+
+		return () => window.removeEventListener("resize", callback);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+}

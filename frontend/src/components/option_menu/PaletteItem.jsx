@@ -1,6 +1,8 @@
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "../../contexts/OptionContext";
+
+import { useWindowResize } from "../../hooks";
 
 import style from "./PaletteItem.module.css";
 
@@ -11,19 +13,12 @@ export default function PaletteItem({ index, palette }) {
 
 	const isSelected = options.selectedPalette === index;
 
-	useEffect(() => {
-		function checkOverflow() {
-			const elementOverflows =
-				container.current.scrollWidth > container.current.clientWidth;
+	useWindowResize(() => {
+		const elementOverflows =
+			container.current.scrollWidth > container.current.clientWidth;
 
-			setHasScrollbar(elementOverflows);
-		}
-
-		checkOverflow();
-		/* useEffect only runs when the component is re-rendered, but
-		this check has to be run every time the window resizes */
-		window.addEventListener("resize", checkOverflow);
-	}, []);
+		setHasScrollbar(elementOverflows);
+	});
 
 	function onPaletteSelect() {
 		updateOptions({ selectedPalette: index });
