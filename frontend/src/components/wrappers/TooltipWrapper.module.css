@@ -3,20 +3,23 @@
 	--size: 1rem;
 	--color: white;
 
-	box-sizing: content-box;
-	display: inline-flex;
-	flex-shrink: 0;
+	margin: 0 1rem;
+}
 
-	font-size: 1.4rem;
-	width: var(--size);
-	height: var(--size);
+.tooltipButton::before {
+	content: "?";
 
+	display: flex;
 	justify-content: center;
 	align-items: center;
 
-	padding: 0.3rem;
-	margin: 0 1rem;
+	font-size: 1.4rem;
 
+	width: var(--size);
+	height: var(--size);
+
+	box-sizing: content-box;
+	padding: 0.3rem;
 	border: 0.15rem solid var(--color);
 	color: var(--color);
 	border-radius: 50%;

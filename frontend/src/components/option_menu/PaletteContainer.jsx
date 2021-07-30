@@ -9,9 +9,7 @@ export default function PaletteContainer({ palettes, showTooltip }) {
 	return (
 		<div className={style.container}>
 			<span>Palettes</span>
-			<button className={tooltipButton} onClick={showTooltip}>
-				?
-			</button>
+			<button className={tooltipButton} onClick={showTooltip} />
 			<ul className={style.paletteUl}>
 				{palettes.map((palette, i) => (
 					<PaletteItem key={i} index={i} palette={palette} />
