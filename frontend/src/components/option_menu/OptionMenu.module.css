@@ -1,5 +1,6 @@
 .container {
 	--border-radius: 0.5rem;
+	--scrollbar-padding: 0.3rem;
 
 	--scrollbar-width: 0.6rem;
 	--scrollbar-bg-color: transparent;
@@ -13,17 +14,25 @@
 }
 
 /* #region Chrome scrollbar rules */
+.container::-webkit-scrollbar,
 .container ::-webkit-scrollbar {
-	width: var(--scrollbar-width);
-	height: var(--scrollbar-width);
+	--track-width: calc(2 * var(--scrollbar-padding) + var(--scrollbar-width));
+
+	width: var(--track-width);
+	height: var(--track-width);
 	background-color: var(--scrollbar-bg-color);
 }
 
+.container::-webkit-scrollbar-thumb,
 .container ::-webkit-scrollbar-thumb {
 	background-color: var(--scrollbar-thumb-color);
 	border-radius: var(--border-radius);
+
+	border: var(--scrollbar-padding) solid transparent;
+	background-clip: padding-box;
 }
 
+.container::-webkit-scrollbar-thumb:hover,
 .container ::-webkit-scrollbar-thumb:hover {
 	background-color: var(--scrollbar-thumb-color-hover);
 }
