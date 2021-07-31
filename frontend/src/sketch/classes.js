@@ -109,8 +109,6 @@ export class Circle {
 	sketch;
 	/** @type {{}} */
 	_options;
-	/** @type {p5.Color[]} */
-	lineColors;
 
 	/** @type {number} */
 	strokeWeight = 2;
@@ -119,12 +117,13 @@ export class Circle {
 	/** @type {Node[]} */
 	nodes;
 	/** @type {p5.Color[]} */
-	usedLineColors = [];
+	lineColors;
+	/** @type {p5.Color[]} */
+	usedLineColors;
 
-	constructor(sketch, options, lineColors) {
+	constructor(sketch, options) {
 		this.sketch = sketch;
 		this._options = options;
-		this.lineColors = lineColors;
 
 		this.populateNodeArray();
 		this.updateLineColors();

@@ -18,7 +18,7 @@ export function createSketch(options, ref) {
 		const circle = new Circle(sketch, options);
 
 		function resizeComponents() {
-			canvasManager.resizeCanvas(sketch);
+			canvasManager.resizeCanvas();
 			circle.resize();
 		}
 
