@@ -4,6 +4,9 @@ import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
 import Nav from "./Nav";
 import OptionMenu from "./option_menu/OptionMenu";
 
+import burgerMenuIcon from "../assets/burger_menu.svg";
+import cogIcon from "../assets/cog.svg";
+
 export default function Header() {
 	const expandState = useToggleSwitchState(null);
 
@@ -11,7 +14,10 @@ export default function Header() {
 		<header>
 			<MenuWrapper
 				menuIndex={0}
-				buttonText="Soon"
+				buttonData={{
+					image: burgerMenuIcon,
+					alt: "Nav Menu"
+				}}
 				expandedState={expandState}
 				expandDirection={menuExpandDirections.RIGHT}
 			>
@@ -20,7 +26,10 @@ export default function Header() {
 			<h1>The Shape of Multiplication</h1>
 			<MenuWrapper
 				menuIndex={1}
-				buttonText="Hi"
+				buttonData={{
+					image: cogIcon,
+					alt: "Options Menu"
+				}}
 				expandedState={expandState}
 				expandDirection={menuExpandDirections.LEFT}
 			>

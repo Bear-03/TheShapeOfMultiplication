@@ -1,7 +1,9 @@
 .container > button {
+	display: flex; /* Fixes weird space at the bottom */
 	position: relative; /* For z-index to work */
 	z-index: 1;
-	transition: filter 0.15s ease-out;
+
+	transition: transform 0.5s ease-out;
 }
 
 .container > button:hover {
@@ -9,6 +11,9 @@
 }
 
 .container aside {
+	--base-top-padding: 2rem;
+	--total-top-padding: calc(var(--header-height) + var(--base-top-padding));
+
 	position: absolute;
 	display: flex;
 	max-width: 100%;
@@ -16,7 +21,7 @@
 	background-color: #1a1a1af0;
 	height: 100%;
 	top: 0;
-	padding: 7rem 2rem 0;
+	padding: var(--total-top-padding) 2rem 0;
 
 	transition: transform 0.3s ease-out;
 }
@@ -25,18 +30,28 @@
 	margin-top: 2rem;
 }
 
+.expanded > button {
+	transform: rotateZ(calc(var(--direction) * 90deg));
+}
+
 .expanded aside {
 	transform: translateX(calc(var(--direction) * 100%));
 }
 
-.expandRight aside {
+.expandLeft {
+	--direction: -1;
+}
+
+.expandRight {
 	--direction: 1;
+}
+
+.expandRight aside {
 	align-items: flex-start;
 	right: 100%;
 }
 
 .expandLeft aside {
-	--direction: -1;
 	align-items: flex-end;
 	left: 100%;
 }

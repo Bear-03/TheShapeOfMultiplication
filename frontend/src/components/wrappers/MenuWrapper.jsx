@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
+
+import { useWindowResize } from "../../hooks";
 
 import style from "./MenuWrapper.module.css";
 
@@ -13,22 +15,39 @@ export const menuExpandDirections = Object.freeze({
 
 export function MenuWrapper({
 	menuIndex,
-	buttonText,
+	buttonData,
 	expandedState,
 	expandDirection,
 	children
 }) {
 	const [expandedMenu, toggleSwitchExpandedMenu] = expandedState;
+	const [headerHeight, setHeaderHeight] = useState();
+	const menuWrapperRef = useRef();
 
 	const handleExpand = () => toggleSwitchExpandedMenu(menuIndex);
 
+	useWindowResize(() => {
+		setHeaderHeight(menuWrapperRef.current.parentElement.offsetHeight);
+	});
+
 	return (
 		<div
+			ref={menuWrapperRef}
 			className={`${style.container} ${style[expandDirection]} ${
 				expandedMenu === menuIndex ? style.expanded : ""
 			}`}
+			style={{
+				"--header-height": headerHeight + "px"
+			}}
 		>
-			<button onClick={handleExpand}>{buttonText}</button>
+			<button onClick={handleExpand}>
+				<img
+					src={buttonData.image}
+					alt={buttonData.alt}
+					height={40}
+					width={40}
+				/>
+			</button>
 			{children}
 		</div>
 	);
@@ -36,7 +55,6 @@ export function MenuWrapper({
 
 MenuWrapper.propTypes = {
 	menuIndex: PropTypes.number,
-	buttonText: PropTypes.string.isRequired,
 	expandedState: PropTypes.array,
 	expandDirection: PropTypes.oneOf(Object.values(menuExpandDirections))
 };
