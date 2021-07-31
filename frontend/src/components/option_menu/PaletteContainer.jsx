@@ -17,7 +17,9 @@ export default function PaletteContainer({
 				ref={tooltipButtonRef}
 				className={tooltipStyle.tooltipButton}
 				onClick={showTooltip}
-			/>
+			>
+				Palette picker tooltip
+			</button>
 			<ul className={style.paletteUl}>
 				{palettes.map((palette, i) => (
 					<PaletteItem key={i} index={i} palette={palette} />

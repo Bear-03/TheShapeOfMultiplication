@@ -15,8 +15,9 @@
 
 .container label {
 	position: absolute;
-	/* Makes it invisible without affecting accessibility */
-	right: 1000%;
+
+	/* Makes the text invisible without affecting accessibility */
+	font-size: 0;
 }
 
 .container input {

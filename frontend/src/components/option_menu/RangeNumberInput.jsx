@@ -35,7 +35,7 @@ export default function RangeNumberInput({
 					ref={tooltipButtonRef}
 					className={tooltipStyle.tooltipButton}
 					onClick={showTooltip}
-				/>
+				>{`${label} tooltip`}</button>
 			</div>
 			<div className={style.inputWrapper}>
 				<label

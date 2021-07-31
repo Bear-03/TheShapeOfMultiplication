@@ -4,6 +4,9 @@
 	--color: white;
 
 	margin: 0 1rem;
+
+	/* Makes the text invisible without affecting accessibility */
+	font-size: 0;
 }
 
 .tooltipButton::before {
