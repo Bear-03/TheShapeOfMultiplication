@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import PropTypes from "prop-types";
+import Image from "next/image";
 
 import { useWindowResize } from "../../hooks";
 
@@ -41,7 +42,7 @@ export function MenuWrapper({
 			}}
 		>
 			<button onClick={handleExpand}>
-				<img
+				<Image
 					src={buttonData.image}
 					alt={buttonData.alt}
 					height={40}

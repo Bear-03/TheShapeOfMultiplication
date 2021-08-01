@@ -4,18 +4,17 @@ import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
 import Nav from "./Nav";
 import OptionMenu from "./option_menu/OptionMenu";
 
-import burgerMenuIcon from "../assets/burger_menu.svg";
-import cogIcon from "../assets/cog.svg";
+import style from "./Header.module.css";
 
 export default function Header() {
 	const expandState = useToggleSwitchState(null);
 
 	return (
-		<header>
+		<header className={style.container}>
 			<MenuWrapper
 				menuIndex={0}
 				buttonData={{
-					image: burgerMenuIcon,
+					image: "/burger_menu.svg",
 					alt: "Nav Menu"
 				}}
 				expandedState={expandState}
@@ -27,7 +26,7 @@ export default function Header() {
 			<MenuWrapper
 				menuIndex={1}
 				buttonData={{
-					image: cogIcon,
+					image: "/cog.svg",
 					alt: "Options Menu"
 				}}
 				expandedState={expandState}

@@ -2,6 +2,21 @@ html {
 	font-size: 62.5%;
 }
 
+html,
+body {
+	/* Mobile fix for horizontal overflow scroll*/
+	height: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	/* Mobile fix for horizontal overflow scroll*/
+	position: relative;
+
+	color: white;
+	background-color: #323232;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;

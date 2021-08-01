@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 import { useWindowResize } from "../../hooks";
-import { addPropsToChildren } from "../../common/scripts/util";
+import { addPropsToChildren } from "../../shared/scripts/util";
 
 import style from "./TooltipWrapper.module.css";
 
