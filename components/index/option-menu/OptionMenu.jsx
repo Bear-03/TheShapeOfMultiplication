@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 
 import { OptionContext } from "contexts/OptionContext";
 import { useToggleSwitchState } from "hooks";
@@ -64,7 +65,7 @@ function OptionMenuAside() {
 			>
 				<RangeNumberInput
 					optionName="multNumber"
-					label="NavMultiplication number"
+					label="Multiplication number"
 					max={100}
 					value={options.multNumber}
 				/>
