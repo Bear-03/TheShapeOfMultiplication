@@ -11,21 +11,24 @@
 }
 
 .container aside {
+	--side-padding: 2rem;
 	--base-top-padding: 2rem;
 	--total-top-padding: calc(var(--header-height) + var(--base-top-padding));
 
 	/* Padding should be added on top of width, not actually
-	going inwards and dereasing the size of the content box*/
+	going inwards and dereasing the size of the content box
+	because that makes PaletteItems slightly overflow s*/
 	box-sizing: content-box;
 
 	position: absolute;
 	display: flex;
-	max-width: 100%;
+	/* width + side paddings should be the full max width */
+	max-width: calc(100% - 2 * var(--side-padding));
 	flex-direction: column;
 	background-color: #1a1a1af0;
 	height: 100%;
 	top: 0;
-	padding: var(--total-top-padding) 2rem 0;
+	padding: var(--total-top-padding) var(--side-padding) 0;
 
 	transition: transform 0.3s ease-out;
 }
