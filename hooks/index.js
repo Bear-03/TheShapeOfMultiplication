@@ -50,8 +50,8 @@ export function useStateObject(initialObject = {}) {
 
 /**
  * Custom useEffect hook that toggles between boolean values.
- * @param {bool} initialValue initial state value
- * @returns {[bool, Function]}
+ * @param {boolean} initialValue initial state value
+ * @returns {[boolean, Function]}
  */
 export function useToggleState(initialValue) {
 	const [value, setValue] = useState(initialValue);

@@ -1,7 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { OptionContext } from "contexts/OptionContext";
 
+import { OptionContext } from "contexts/OptionContext";
 import { useToggleSwitchState } from "hooks";
+
+import {
+	MenuWrapper,
+	menuExpandDirections
+} from "components/shared/wrappers/MenuWrapper";
 import TooltipWrapper from "../wrappers/TooltipWrapper";
 import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
@@ -10,7 +15,23 @@ import style from "./OptionMenu.module.css";
 
 const localStorageKey = "optionMenu";
 
-export default function OptionMenu() {
+export default function OptionMenu({ expanded, onExpand }) {
+	return (
+		<MenuWrapper
+			buttonData={{
+				image: "/cog.svg",
+				alt: "Options Menu"
+			}}
+			expanded={expanded}
+			onExpand={onExpand}
+			expandDirection={menuExpandDirections.LEFT}
+		>
+			<OptionMenuAside />
+		</MenuWrapper>
+	);
+}
+
+function OptionMenuAside() {
 	const [options, updateOptions] = useContext(OptionContext);
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
 	/* Options will use IDs starting from 0 that will identify
