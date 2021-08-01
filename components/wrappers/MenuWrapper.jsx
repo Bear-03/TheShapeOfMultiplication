@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
 
-import { useWindowResize } from "../../hooks";
+import { useWindowResize } from "hooks";
 
 import style from "./MenuWrapper.module.css";
 

@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { useToggleSwitchState } from "../hooks";
+import { useToggleSwitchState } from "hooks";
 
 import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
 import Nav from "./Nav";

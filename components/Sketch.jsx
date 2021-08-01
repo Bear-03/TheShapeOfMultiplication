@@ -1,8 +1,8 @@
 import { useRef, useEffect, useContext } from "react";
-import { OptionContext } from "../contexts/OptionContext";
+import { OptionContext } from "contexts/OptionContext";
 
 import style from "./Sketch.module.css";
-import { createSketch } from "../sketch";
+import { createSketch } from "sketch";
 
 export default function Sketch() {
 	const [options] = useContext(OptionContext);

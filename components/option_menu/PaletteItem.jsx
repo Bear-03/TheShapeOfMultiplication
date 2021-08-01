@@ -1,8 +1,8 @@
 import { useRef, useState, useContext } from "react";
 import PropTypes from "prop-types";
-import { OptionContext } from "../../contexts/OptionContext";
+import { OptionContext } from "contexts/OptionContext";
 
-import { useWindowResize } from "../../hooks";
+import { useWindowResize } from "hooks";
 
 import style from "./PaletteItem.module.css";
 
