@@ -32,9 +32,3 @@ export default function HomePage() {
 		</>
 	);
 }
-
-const globalStyle = `
-body {
-    background-color: green !important;
-}
-`;
