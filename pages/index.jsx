@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
+import { useBodyClass } from "hooks";
+
 import Header from "components/index/Header";
 import Loader from "components/index/Loader";
 
@@ -17,11 +19,7 @@ const DynamicSketch = dynamic(() => import("components/index/Sketch"), {
 });
 
 export default function HomePage() {
-	useEffect(() => {
-		document.body.classList.add(style.body);
-
-		return () => document.body.classList.remove(style.body);
-	}, []);
+	useBodyClass(style.body);
 
 	return (
 		<>

@@ -103,3 +103,16 @@ export function useWindowResize(callback) {
 		return () => window.removeEventListener("resize", callback);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 }
+
+/**
+ * Custom hook that adds a css class to the body element, from any component.
+ * It will remove the class on component cleanup, if it is still there.
+ * @param {string} className
+ */
+export function useBodyClass(className) {
+	useEffect(() => {
+		document.body.classList.add(className);
+
+		return () => document.body.classList.remove(className);
+	}, [className]);
+}
