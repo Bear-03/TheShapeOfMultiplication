@@ -5,7 +5,6 @@ export default class AppDocument extends Document {
 		return (
 			<Html>
 				<Head>
-					<meta charset="utf-8" />
 					<meta
 						name="description"
 						content="Web site created using create-react-app"
