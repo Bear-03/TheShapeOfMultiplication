@@ -7,7 +7,7 @@ export default class AppDocument extends Document {
 				<Head>
 					<meta
 						name="description"
-						content="Web site created using create-react-app"
+						content="The Shape of Multiplication"
 					/>
 				</Head>
 				<body>
