@@ -37,10 +37,6 @@
 	transition: transform var(--expand-time) ease-out;
 }
 
-.container aside > * + * {
-	margin-top: 2rem;
-}
-
 .expanded > button {
 	transform: rotateZ(calc(var(--direction) * 90deg));
 }
