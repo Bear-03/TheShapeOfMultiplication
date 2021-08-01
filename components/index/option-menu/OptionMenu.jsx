@@ -64,7 +64,7 @@ function OptionMenuAside() {
 			>
 				<RangeNumberInput
 					optionName="multNumber"
-					label="Multiplication number"
+					label="NavMultiplication number"
 					max={100}
 					value={options.multNumber}
 				/>
@@ -94,3 +94,8 @@ function OptionMenuAside() {
 		</aside>
 	) : null;
 }
+
+OptionMenu.propTypes = {
+	expanded: PropTypes.bool,
+	onExpand: PropTypes.func
+};

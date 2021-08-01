@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Link from "next/link";
 
 import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
@@ -29,3 +30,8 @@ function NavAside() {
 		</aside>
 	);
 }
+
+Nav.propTypes = {
+	expanded: PropTypes.bool,
+	onExpand: PropTypes.func
+};
