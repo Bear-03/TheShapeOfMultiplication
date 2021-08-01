@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { OptionContext } from "contexts/OptionContext";
 
 import { useToggleSwitchState } from "hooks";
-import TooltipWrapper from "components/wrappers/TooltipWrapper";
+import TooltipWrapper from "../wrappers/TooltipWrapper";
 import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
 

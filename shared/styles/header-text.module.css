@@ -1,0 +1,24 @@
+.container {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container > * {
+	width: fit-content;
+}
+
+.container h1 {
+	font-size: min(6vw, 5rem);
+}
+
+.container a {
+	font-size: min(2vw, 1.7rem);
+	transition: filter 0.1s ease-out;
+}
+
+.container a:hover {
+	filter: brightness(0.7);
+	text-decoration: underline;
+}

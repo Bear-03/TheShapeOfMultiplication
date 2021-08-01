@@ -6,8 +6,3 @@
 	margin: 1rem 3rem;
 	font-size: 2rem;
 }
-
-.container h1 {
-	text-align: center;
-	font-size: min(6vw, 5rem);
-}
