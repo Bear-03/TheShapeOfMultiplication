@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import { useToggleSwitchState } from "../hooks";
 
 import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
 import Nav from "./Nav";
-import OptionMenu from "./option_menu/OptionMenu";
 
 import style from "./Header.module.css";
+
+const DynamicOptionMenu = dynamic(() => import("./option_menu/OptionMenu"));
 
 export default function Header() {
 	const expandState = useToggleSwitchState(null);
@@ -32,7 +34,7 @@ export default function Header() {
 				expandedState={expandState}
 				expandDirection={menuExpandDirections.LEFT}
 			>
-				<OptionMenu />
+				<DynamicOptionMenu />
 			</MenuWrapper>
 		</header>
 	);
