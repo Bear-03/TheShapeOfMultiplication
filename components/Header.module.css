@@ -1,0 +1,13 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1rem 3rem;
+	font-size: 2rem;
+}
+
+.container h1 {
+	text-align: center;
+	font-size: min(5vw, 5rem);
+}
