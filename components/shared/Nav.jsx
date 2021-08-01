@@ -24,6 +24,9 @@ export default function Nav({ expanded, onExpand }) {
 function NavAside() {
 	return (
 		<aside className={style.container}>
+			<Link href="/">
+				<a>Home</a>
+			</Link>
 			<Link href="/how-it-works">
 				<a>How It Works</a>
 			</Link>

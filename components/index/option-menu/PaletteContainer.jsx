@@ -12,14 +12,12 @@ export default function PaletteContainer({
 }) {
 	return (
 		<div className={style.container}>
-			<span>Palettes</span>
-			<button
-				ref={tooltipButtonRef}
-				className={tooltipStyle.tooltipButton}
-				onClick={showTooltip}
-			>
-				Palette picker tooltip
-			</button>
+			<div className={`${style.label} ${tooltipStyle.label}`}>
+				<span>Palettes</span>
+				<button ref={tooltipButtonRef} onClick={showTooltip}>
+					Palette picker tooltip
+				</button>
+			</div>
 			<ul className={style.paletteUl}>
 				{palettes.map((palette, i) => (
 					<PaletteItem key={i} index={i} palette={palette} />

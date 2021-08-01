@@ -29,11 +29,10 @@ export default function RangeNumberInput({
 
 	return (
 		<div className={style.container}>
-			<div>
+			<div className={tooltipStyle.label}>
 				<span>{label}</span>
 				<button
 					ref={tooltipButtonRef}
-					className={tooltipStyle.tooltipButton}
 					onClick={showTooltip}
 				>{`${label} tooltip`}</button>
 			</div>

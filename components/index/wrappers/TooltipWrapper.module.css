@@ -1,5 +1,10 @@
-/* #region Tooltip Button */
-.tooltipButton {
+/* #region Tooltip Container and button */
+.label {
+	display: flex;
+	align-items: center;
+}
+
+.label button {
 	--size: 1rem;
 	--color: white;
 
@@ -9,7 +14,7 @@
 	font-size: 0;
 }
 
-.tooltipButton::before {
+.label button::before {
 	content: "?";
 
 	display: flex;
@@ -31,11 +36,11 @@
 	transition-property: color, border-color;
 }
 
-.tooltipButton:hover {
+.label button:hover {
 	--color: #cccccc;
 }
 
-.tooltipButton:active {
+.label button:active {
 	--color: #aaaaaa;
 }
 /* #endregion */
