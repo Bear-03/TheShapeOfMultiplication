@@ -1,9 +1,13 @@
+.container {
+	--expand-time: 0.5s;
+}
+
 .container > button {
 	display: flex; /* Fixes weird space at the bottom */
 	position: relative; /* For z-index to work */
 	z-index: 1;
 
-	transition: transform 0.5s ease-out;
+	transition: transform var(--expand-time) ease-out;
 }
 
 .container > button:hover {
@@ -30,7 +34,7 @@
 	top: 0;
 	padding: var(--total-top-padding) var(--side-padding) 0;
 
-	transition: transform 0.3s ease-out;
+	transition: transform var(--expand-time) ease-out;
 }
 
 .container aside > * + * {
