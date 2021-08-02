@@ -12,6 +12,9 @@
 
 	/* Makes the text invisible without affecting accessibility */
 	font-size: 0;
+
+	/* Some fonts misplace the "?" in the button, these are safe */
+	font-family: Arial, sans-serif;
 }
 
 .label button::before {

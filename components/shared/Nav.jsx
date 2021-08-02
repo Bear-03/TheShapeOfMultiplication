@@ -11,7 +11,7 @@ export default function Nav({ expanded, onExpand }) {
 	return (
 		<MenuWrapper
 			buttonData={{
-				image: "/burger_menu.svg",
+				image: "/images/burger_menu.svg",
 				alt: "Nav Menu"
 			}}
 			expanded={expanded}

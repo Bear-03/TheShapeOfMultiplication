@@ -20,7 +20,7 @@ export default function OptionMenu({ expanded, onExpand }) {
 	return (
 		<MenuWrapper
 			buttonData={{
-				image: "/cog.svg",
+				image: "/images/cog.svg",
 				alt: "Options Menu"
 			}}
 			expanded={expanded}
