@@ -22,6 +22,7 @@ export default class AppDocument extends Document {
 						href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
 						rel="stylesheet"
 					/>
+					<link rel="icon" href="/favicon.png" />
 				</Head>
 				<body>
 					<Main />
