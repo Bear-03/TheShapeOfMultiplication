@@ -24,8 +24,9 @@
 }
 
 .textWrapper a {
-	font-size: min(2vw, 1.7rem);
-	transition: filter 0.1s ease-out;
+	margin-top: 0.5rem;
+	font-size: min(2.5vw, 1.7rem);
+	transition: filter 0.3s ease-out;
 }
 
 .textWrapper a:hover {
