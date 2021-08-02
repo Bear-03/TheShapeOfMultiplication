@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-
-import { useBodyClass } from "hooks";
 
 import Header from "components/index/Header";
 import Loader from "components/index/Loader";
 
 import { OptionProvider } from "contexts/OptionContext";
-
-import style from "page-styles/home.module.css";
 
 const DynamicSketch = dynamic(() => import("components/index/Sketch"), {
 	ssr: false,
@@ -19,8 +14,6 @@ const DynamicSketch = dynamic(() => import("components/index/Sketch"), {
 });
 
 export default function HomePage() {
-	useBodyClass(style.body);
-
 	return (
 		<>
 			<Head>

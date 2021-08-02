@@ -30,9 +30,11 @@
 	max-width: calc(100% - 2 * var(--side-padding));
 	flex-direction: column;
 	background-color: #1a1a1af0;
-	height: 100%;
-	top: 0;
+
 	padding: var(--total-top-padding) var(--side-padding) 0;
+
+	top: 0;
+	bottom: 0;
 
 	transition: transform var(--expand-time) ease-out;
 }

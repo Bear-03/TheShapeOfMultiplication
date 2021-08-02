@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useToggleState } from "hooks";
-import Nav from "../shared/Nav";
+import Nav from "../shared/nav/Nav";
 
 import headerTextStyle from "shared/styles/header-text.module.css";
 

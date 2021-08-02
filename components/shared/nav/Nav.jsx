@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
-import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
+import { MenuWrapper, menuExpandDirections } from "../wrappers/MenuWrapper";
 
 import style from "./Nav.module.css";
 
@@ -36,11 +37,24 @@ function NavAside() {
 
 	return (
 		<aside ref={asideRef} className={style.container}>
-			<Link href="/">
-				<a>Home</a>
-			</Link>
-			<Link href="/how-it-works">
-				<a>How It Works</a>
+			<div className={style.pages}>
+				<Link href="/">
+					<a>Home</a>
+				</Link>
+				<Link href="/how-it-works">
+					<a>How It Works</a>
+				</Link>
+			</div>
+			<Link href="https://github.com/Bear-03/TheShapeOfMultiplication">
+				<a className={style.footer}>
+					<Image
+						src="/images/github.svg"
+						alt="Github repository"
+						height={25}
+						width={25}
+					/>
+					<span>Made by Bear_03</span>
+				</a>
 			</Link>
 		</aside>
 	);

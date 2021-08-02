@@ -105,14 +105,15 @@ export function useWindowResize(callback) {
 }
 
 /**
- * Custom hook that adds a css class to the body element, from any component.
+ * Custom hook that adds a css class to the html element, from any component.
  * It will remove the class on component cleanup, if it is still there.
  * @param {string} className
  */
-export function useBodyClass(className) {
+export function useClassForElement(selector, className) {
 	useEffect(() => {
-		document.body.classList.add(className);
+		const element = document.querySelector(selector);
+		document.querySelector(selector).classList.add(className);
 
-		return () => document.body.classList.remove(className);
-	}, [className]);
+		return () => element.classList.remove(className);
+	}, [selector, className]);
 }
