@@ -97,6 +97,6 @@ function OptionMenuAside() {
 }
 
 OptionMenu.propTypes = {
-	expanded: PropTypes.bool,
-	onExpand: PropTypes.func
+	expanded: PropTypes.bool.isRequired,
+	onExpand: PropTypes.func.isRequired
 };

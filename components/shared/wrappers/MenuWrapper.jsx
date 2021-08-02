@@ -52,7 +52,12 @@ export function MenuWrapper({
 }
 
 MenuWrapper.propTypes = {
-	expanded: PropTypes.bool,
-	onExpand: PropTypes.func,
+	buttonData: PropTypes.shape({
+		image: PropTypes.string,
+		alt: PropTypes.string
+	}),
+	expanded: PropTypes.bool.isRequired,
+	onExpand: PropTypes.func.isRequired,
 	expandDirection: PropTypes.oneOf(Object.values(menuExpandDirections))
+		.isRequired
 };
