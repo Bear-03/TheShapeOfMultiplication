@@ -45,17 +45,18 @@ function NavAside() {
 					<a>How It Works</a>
 				</Link>
 			</div>
-			<Link href="https://github.com/Bear-03/TheShapeOfMultiplication">
-				<a className={style.footer}>
-					<Image
-						src="/images/github.svg"
-						alt="Github repository"
-						height={25}
-						width={25}
-					/>
-					<span>Made by Bear_03</span>
-				</a>
-			</Link>
+			<a
+				className={style.footer}
+				href="https://github.com/Bear-03/TheShapeOfMultiplication"
+			>
+				<Image
+					src="/images/github.svg"
+					alt="Github repository"
+					height={25}
+					width={25}
+				/>
+				<span>Made by Bear_03</span>
+			</a>
 		</aside>
 	);
 }
