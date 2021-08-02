@@ -48,6 +48,8 @@ function NavAside() {
 			<a
 				className={style.footer}
 				href="https://github.com/Bear-03/TheShapeOfMultiplication"
+				target="_blank"
+				rel="noreferrer"
 			>
 				<Image
 					src="/images/github.svg"
