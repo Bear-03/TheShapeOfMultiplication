@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import Nav from "../shared/nav/Nav";
 
-import headerTextStyle from "shared/styles/header-text.module.css";
+import headerStyle from "shared/styles/header.module.css";
 
 const DynamicOptionMenu = dynamic(() => import("./option-menu/OptionMenu"));
 
@@ -12,12 +12,12 @@ export default function Header() {
 	const [expandedMenu, setExpandedMenu] = useToggleSwitchState(null);
 
 	return (
-		<header className={headerTextStyle.container}>
+		<header className={headerStyle.container}>
 			<Nav
 				expanded={expandedMenu === 0}
 				onExpand={() => setExpandedMenu(0)}
 			/>
-			<div className={headerTextStyle.textWrapper}>
+			<div className={headerStyle.textWrapper}>
 				<h1>The Shape of Multiplication</h1>
 				<Link href="/how-it-works">
 					<a>How it works</a>
