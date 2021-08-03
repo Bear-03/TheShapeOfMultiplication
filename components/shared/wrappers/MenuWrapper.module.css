@@ -1,5 +1,5 @@
 .container {
-	--expand-time: 0.5s;
+	--expand-time: 0.3s;
 }
 
 .container > button {
