@@ -40,15 +40,16 @@ function OptionMenuAside() {
 	const shownTooltipState = useToggleSwitchState(null);
 
 	useEffect(() => {
-		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
-		if (storedOptions !== null) updateOptions(storedOptions);
-		setOptionsAreLoaded(true);
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-	useEffect(() => {
 		/* Avoids re-saving the options when they are first loaded, as the
 		options object would be updated and this useEffect would be called */
-		if (!optionsAreLoaded) return;
+		if (!optionsAreLoaded) {
+			const storedOptions = JSON.parse(
+				localStorage.getItem(localStorageKey)
+			);
+			if (storedOptions !== null) updateOptions(storedOptions);
+			setOptionsAreLoaded(true);
+			return;
+		}
 
 		localStorage.setItem(localStorageKey, JSON.stringify(options));
 	}, [options]); // eslint-disable-line react-hooks/exhaustive-deps
