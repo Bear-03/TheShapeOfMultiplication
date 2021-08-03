@@ -24,6 +24,7 @@ export function createSketch(options, ref) {
 
 		sketch.setup = () => {
 			resizeComponents();
+			sketch.noLoop();
 		};
 
 		sketch.draw = () => {
@@ -42,10 +43,12 @@ export function createSketch(options, ref) {
 		 */
 		onOptionChange = (newOptions) => {
 			circle.options = newOptions;
+			sketch.redraw();
 		};
 
 		sketch.windowResized = () => {
 			resizeComponents();
+			sketch.redraw();
 		};
 	}
 
