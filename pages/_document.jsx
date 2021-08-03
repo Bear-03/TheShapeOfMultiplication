@@ -9,6 +9,7 @@ export default class AppDocument extends Document {
 						name="description"
 						content="The Shape of Multiplication"
 					/>
+
 					<link
 						rel="preconnect"
 						href="https://fonts.googleapis.com"
@@ -22,7 +23,22 @@ export default class AppDocument extends Document {
 						href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
 						rel="stylesheet"
 					/>
-					<link rel="icon" href="/favicon.png" />
+
+					<link
+						rel="icon"
+						href="/favicons/favicon-light.png"
+						media="(prefers-color-scheme: no-preference)"
+					/>
+					<link
+						rel="icon"
+						href="/favicons/favicon-dark.png"
+						media="(prefers-color-scheme: dark)"
+					/>
+					<link
+						rel="icon"
+						href="/favicons/favicon-light.png"
+						media="(prefers-color-scheme: light)"
+					/>
 				</Head>
 				<body>
 					<Main />
