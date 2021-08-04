@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-import { MenuWrapper, menuExpandDirections } from "../wrappers/MenuWrapper";
+import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
 
 import style from "./Nav.module.css";
 

@@ -2,7 +2,7 @@ import { useToggleSwitchState } from "hooks";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-import Nav from "../shared/nav/Nav";
+import Nav from "../shared/Nav";
 
 import headerStyle from "shared/styles/header.module.css";
 
