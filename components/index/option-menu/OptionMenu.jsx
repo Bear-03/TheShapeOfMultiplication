@@ -38,7 +38,6 @@ function OptionMenuAside() {
 	const [options, updateOptions] = useContext(OptionContext);
 	const [requestTriggers] = useContext(RequestContext);
 
-	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
 	const shownTooltipState = useToggleSwitchState(null);
@@ -58,7 +57,7 @@ function OptionMenuAside() {
 		localStorage.setItem(localStorageKey, JSON.stringify(options));
 	}, [options]); // eslint-disable-line react-hooks/exhaustive-deps
 
-	return optionsAreLoaded ? (
+	return (
 		<aside className={style.container}>
 			<TooltipWrapper
 				optionIndex={0}
@@ -72,7 +71,6 @@ function OptionMenuAside() {
 					optionName="multNumber"
 					label="Multiplication number"
 					max={100}
-					value={options.multNumber}
 				/>
 			</TooltipWrapper>
 			<TooltipWrapper
@@ -84,7 +82,6 @@ function OptionMenuAside() {
 					optionName="nodeCount"
 					label="Number of nodes"
 					max={options.maxNodeCount}
-					value={options.nodeCount}
 				/>
 			</TooltipWrapper>
 			<div className={style.buttonContainer}>
@@ -103,7 +100,7 @@ function OptionMenuAside() {
 				<PaletteContainer palettes={options.palettes} />
 			</TooltipWrapper>
 		</aside>
-	) : null;
+	);
 }
 
 OptionMenu.propTypes = {

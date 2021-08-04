@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "contexts/OptionContext";
 
@@ -10,21 +10,29 @@ export default function RangeNumberInput({
 	label,
 	min,
 	max,
-	value,
 	showTooltip,
 	tooltipButtonRef
 }) {
 	/* value will only be updated if displayedValue is valid.
 	If it isn't, displayedValue will still be updated so the input
 	element shows feedback */
-	const [displayedValue, setDisplayedValue] = useState(value);
-	const [, updateOptions] = useContext(OptionContext);
+	const [options, updateOptions] = useContext(OptionContext);
+
+	const optionsValue = options[optionName];
+	const [displayedValue, setDisplayedValue] = useState(optionsValue);
+
+	/* Displays all valid option changes:
+		- They have loaded from localStorage
+		- They are valid and have been updated in onValueIput (below) */
+	useEffect(() => {
+		setDisplayedValue(optionsValue);
+	}, [optionsValue]);
 
 	function onValueInput(event) {
-		setDisplayedValue(event.target.value);
-
 		if (event.target.checkValidity())
 			updateOptions({ [optionName]: parseInt(event.target.value) });
+		// Handles invalid inputs
+		else setDisplayedValue(event.target.value);
 	}
 
 	return (
@@ -70,7 +78,6 @@ RangeNumberInput.propTypes = {
 	label: PropTypes.string.isRequired,
 	min: PropTypes.number,
 	max: PropTypes.number.isRequired,
-	value: PropTypes.number.isRequired,
 	showTooltip: PropTypes.func
 };
 
