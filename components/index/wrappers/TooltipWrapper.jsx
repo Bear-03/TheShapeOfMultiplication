@@ -6,23 +6,15 @@ import { addPropsToChildren } from "shared/scripts/util";
 
 import style from "./TooltipWrapper.module.css";
 
-export default function TooltipWrapper({
-	optionIndex,
-	text,
-	shownTooltipState,
-	children
-}) {
-	const [shownTooltip, toggleSwitchShownTooltip] = shownTooltipState;
+export default function TooltipWrapper({ text, shown, onShow, children }) {
 	const tooltipButtonRef = useRef();
-	const [tooltipButtonPosition, SetTooltipButtonPosition] = useState({
+	const [tooltipButtonPosition, setTooltipButtonPosition] = useState({
 		horizontalCenter: undefined,
 		bottom: undefined
 	});
 
-	const showTooltip = () => toggleSwitchShownTooltip(optionIndex);
-
 	const childrenWithTooltipProps = addPropsToChildren(children, {
-		showTooltip,
+		showTooltip: onShow,
 		tooltipButtonRef
 	});
 
@@ -33,14 +25,12 @@ export default function TooltipWrapper({
 		const bottom = button.offsetTop + button.offsetHeight;
 
 		// Middle of the element. Coordinates relative to the parent
-		SetTooltipButtonPosition({ horizontalCenter, bottom });
+		setTooltipButtonPosition({ horizontalCenter, bottom });
 	});
 
 	return (
 		<div
-			className={`${style.container} ${
-				shownTooltip === optionIndex ? style.shown : ""
-			}`}
+			className={`${style.container} ${shown ? style.shown : ""}`}
 			style={{
 				"--button-horizontal-center":
 					tooltipButtonPosition.horizontalCenter + "px",
@@ -54,7 +44,7 @@ export default function TooltipWrapper({
 }
 
 TooltipWrapper.propTypes = {
-	optionIndex: PropTypes.number.isRequired,
 	text: PropTypes.string.isRequired,
-	shownTooltipState: PropTypes.array
+	shown: PropTypes.bool.isRequired,
+	onShow: PropTypes.func.isRequired
 };

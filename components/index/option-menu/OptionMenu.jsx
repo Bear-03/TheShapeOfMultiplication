@@ -38,17 +38,17 @@ function OptionMenuAside() {
 
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
-	const shownTooltipState = useToggleSwitchState(null);
+	const [shownTooltip, setShownTooltip] = useToggleSwitchState(null);
 
 	return (
 		<aside className={style.container}>
 			<TooltipWrapper
-				optionIndex={0}
 				text={
 					"Number by which the node index will be multiplied. " +
 					"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6."
 				}
-				shownTooltipState={shownTooltipState}
+				shown={shownTooltip === 0}
+				onShow={() => setShownTooltip(0)}
 			>
 				<RangeNumberInput
 					optionName="multNumber"
@@ -57,9 +57,9 @@ function OptionMenuAside() {
 				/>
 			</TooltipWrapper>
 			<TooltipWrapper
-				optionIndex={1}
 				text="Number of nodes the circle has."
-				shownTooltipState={shownTooltipState}
+				shown={shownTooltip === 1}
+				onShow={() => setShownTooltip(1)}
 			>
 				<RangeNumberInput
 					optionName="nodeCount"
@@ -73,12 +73,12 @@ function OptionMenuAside() {
 				</button>
 			</div>
 			<TooltipWrapper
-				optionIndex={2}
 				text={
 					"Color palette for the lines. The lines will use colors in order (first color " +
 					"for the first line, last color for the last line, etc.), creating a gradient."
 				}
-				shownTooltipState={shownTooltipState}
+				shown={shownTooltip === 2}
+				onShow={() => setShownTooltip(2)}
 			>
 				<PaletteContainer palettes={options.palettes} />
 			</TooltipWrapper>
