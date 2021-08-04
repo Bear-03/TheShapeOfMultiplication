@@ -6,9 +6,9 @@
 
 .label button {
 	--size: 1rem;
-	--color: white;
 
 	margin: 0 1rem;
+	transition: filter 0.1s ease-out;
 
 	/* Makes the text invisible without affecting accessibility */
 	font-size: 0;
@@ -31,20 +31,17 @@
 
 	box-sizing: content-box;
 	padding: 0.3rem;
-	border: 0.15rem solid var(--color);
-	color: var(--color);
+	border: 0.15rem solid white;
+	color: white;
 	border-radius: 50%;
-
-	transition: all 0.1s ease-out;
-	transition-property: color, border-color;
 }
 
 .label button:hover {
-	--color: #cccccc;
+	filter: brightness(0.7);
 }
 
 .label button:active {
-	--color: #aaaaaa;
+	filter: brightness(0.5);
 }
 /* #endregion */
 
