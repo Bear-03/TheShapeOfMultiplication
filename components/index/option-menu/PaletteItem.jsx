@@ -1,4 +1,4 @@
-import { useRef, useState, useContext } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "contexts/OptionContext";
 
@@ -13,12 +13,14 @@ export default function PaletteItem({ index, palette }) {
 
 	const isSelected = options.selectedPalette === index;
 
-	useWindowResize(() => {
+	useEffect(() => {
 		const elementOverflows =
 			container.current.scrollWidth > container.current.clientWidth;
 
 		setHasScrollbar(elementOverflows);
-	});
+
+		// Update when the "seen width" of PaletteItem <ul> changes
+	}, [container?.current?.clientWidth]);
 
 	function onPaletteSelect() {
 		updateOptions({ selectedPalette: index });

@@ -9,7 +9,7 @@ import headerStyle from "shared/styles/header.module.css";
 const DynamicOptionMenu = dynamic(() => import("./option-menu/OptionMenu"));
 
 export default function Header() {
-	const [expandedMenu, setExpandedMenu] = useToggleSwitchState(null);
+	const [expandedMenu, setExpandedMenu] = useToggleSwitchState(1);
 
 	return (
 		<header className={headerStyle.container}>
