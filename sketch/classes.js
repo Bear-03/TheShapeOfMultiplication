@@ -220,6 +220,8 @@ export class Circle {
 	}
 
 	drawLines() {
+		this.sketch.strokeWeight(1);
+
 		for (let [i, node] of this.nodes.entries()) {
 			// Start at node 1 because first node is 0 and 0 * anything = 0
 			if (i === 0) continue;
