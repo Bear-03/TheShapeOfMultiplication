@@ -38,8 +38,6 @@ function OptionMenuAside() {
 	const [options, updateOptions] = useContext(OptionContext);
 	const [requestTriggers] = useContext(RequestContext);
 
-	console.log(requestTriggers);
-
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
