@@ -2,12 +2,12 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 
 import Header from "components/index/Header";
-import Loader from "components/index/Loader";
+import Loader from "components/index/sketch/Loader";
 
 import { OptionProvider } from "contexts/OptionContext";
 import { RequestProvider } from "contexts/RequestContext";
 
-const DynamicSketch = dynamic(() => import("components/index/Sketch"), {
+const DynamicSketch = dynamic(() => import("components/index/sketch/Sketch"), {
 	ssr: false,
 	loading: function LoaderComponent() {
 		return <Loader />;
