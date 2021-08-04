@@ -1,5 +1,6 @@
 .container {
 	--expand-time: 0.3s;
+	--transform-transition: transform var(--expand-time) ease-out;
 }
 
 .container > button {
@@ -7,7 +8,7 @@
 	position: relative; /* For z-index to work */
 	z-index: 1;
 
-	transition: transform var(--expand-time) ease-out;
+	transition: var(--transform-transition), filter 0.2s ease-out;
 }
 
 .container > button:hover {
@@ -30,7 +31,7 @@
 	top: 0;
 	bottom: 0;
 
-	transition: transform var(--expand-time) ease-out;
+	transition: var(--transform-transition);
 }
 
 .expanded > button {
