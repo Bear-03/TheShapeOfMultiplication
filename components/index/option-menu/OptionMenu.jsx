@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 
 import { OptionContext } from "contexts/OptionContext";
@@ -15,8 +15,6 @@ import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
 
 import style from "./OptionMenu.module.css";
-
-const localStorageKey = "optionMenu";
 
 export default function OptionMenu({ expanded, onExpand }) {
 	return (
@@ -35,27 +33,12 @@ export default function OptionMenu({ expanded, onExpand }) {
 }
 
 function OptionMenuAside() {
-	const [options, updateOptions] = useContext(OptionContext);
+	const [options] = useContext(OptionContext);
 	const [requestTriggers] = useContext(RequestContext);
 
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
 	const shownTooltipState = useToggleSwitchState(null);
-
-	useEffect(() => {
-		/* Avoids re-saving the options when they are first loaded, as the
-		options object would be updated and this useEffect would be called */
-		if (!optionsAreLoaded) {
-			const storedOptions = JSON.parse(
-				localStorage.getItem(localStorageKey)
-			);
-			if (storedOptions !== null) updateOptions(storedOptions);
-			setOptionsAreLoaded(true);
-			return;
-		}
-
-		localStorage.setItem(localStorageKey, JSON.stringify(options));
-	}, [options]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<aside className={style.container}>

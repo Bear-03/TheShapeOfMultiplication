@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import { useStateObject } from "../hooks";
+import { useEffect, createContext } from "react";
+import { useStateObject, useUpdateEffect } from "../hooks";
 
 export const OptionContext = createContext();
 
@@ -17,8 +17,19 @@ const defaultOptions = {
 	selectedPalette: 0
 };
 
+const localStorageKey = "optionMenu";
+
 export function OptionProvider({ children }) {
 	const [options, updateOptions] = useStateObject(defaultOptions);
+
+	useEffect(() => {
+		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
+		if (storedOptions !== null) updateOptions(storedOptions);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+	useUpdateEffect(() => {
+		localStorage.setItem(localStorageKey, JSON.stringify(options));
+	}, [options]);
 
 	return (
 		<OptionContext.Provider value={[options, updateOptions]}>
