@@ -69,7 +69,7 @@ function OptionMenuAside() {
 			</TooltipWrapper>
 			<div className={style.buttonContainer}>
 				<button onClick={requestTriggers.requestScreenshot}>
-					Take Screenshot of Canvas
+					Take Screenshot
 				</button>
 			</div>
 			<TooltipWrapper
