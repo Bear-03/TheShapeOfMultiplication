@@ -5,15 +5,15 @@ import { CanvasManager, Circle } from "./classes";
  *
  * @param {{}} options Option menu context object
  * @param {string} ref Reference to the canvas parent div
- * @returns {Function} onOptionChange function
+ * @returns {p5} sketch
  */
 export function createSketch(options, ref) {
-	let onOptionChange = () => {};
-
 	/**
 	 * @param {p5} sketch
 	 */
 	function sketchFunction(sketch) {
+		let screenshotRequested = false;
+
 		const canvasManager = new CanvasManager(sketch);
 		const circle = new Circle(sketch, options);
 
@@ -35,24 +35,32 @@ export function createSketch(options, ref) {
 			sketch.scale(1, -1);
 
 			circle.draw();
-		};
 
-		/**
-		 * Function that will be run when options change
-		 * @param {{}} newOptions
-		 */
-		onOptionChange = (newOptions) => {
-			circle.options = newOptions;
-			sketch.redraw();
+			if (screenshotRequested) {
+				sketch.save("the-shape-of-multiplication.png");
+				screenshotRequested = false;
+			}
 		};
 
 		sketch.windowResized = () => {
 			resizeComponents();
 			sketch.redraw();
 		};
+
+		/**
+		 * Function that will be run when options change
+		 * @param {{}} newOptions
+		 */
+		sketch.onOptionChange = (newOptions) => {
+			circle.options = newOptions;
+			sketch.redraw();
+		};
+
+		sketch.requestScreenshot = () => {
+			screenshotRequested = true;
+			sketch.redraw();
+		};
 	}
 
-	new p5(sketchFunction, ref);
-
-	return onOptionChange;
+	return new p5(sketchFunction, ref);
 }

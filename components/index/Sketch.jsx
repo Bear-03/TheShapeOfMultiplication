@@ -1,24 +1,27 @@
 import { useRef, useEffect, useContext } from "react";
 import { OptionContext } from "contexts/OptionContext";
+import { RequestContext } from "contexts/RequestContext";
 
 import style from "./Sketch.module.css";
 import { createSketch } from "sketch";
 
 export default function Sketch() {
 	const [options] = useContext(OptionContext);
+	const [, setRequestTriggers] = useContext(RequestContext);
+
 	const containerRef = useRef();
-	const onOptionChange = useRef();
+	const sketch = useRef();
 
 	useEffect(() => {
-		if (onOptionChange.current === undefined) {
-			onOptionChange.current = createSketch(
-				options,
-				containerRef.current
-			);
+		if (sketch.current === undefined) {
+			sketch.current = createSketch(options, containerRef.current);
+			setRequestTriggers({
+				requestScreenshot: sketch.current.requestScreenshot
+			});
 		} else {
-			onOptionChange.current(options);
+			sketch.current.onOptionChange(options);
 		}
-	}, [options]);
+	}, [options]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return <div ref={containerRef} className={style.container}></div>;
 }

@@ -5,6 +5,7 @@ import Header from "components/index/Header";
 import Loader from "components/index/Loader";
 
 import { OptionProvider } from "contexts/OptionContext";
+import { RequestProvider } from "contexts/RequestContext";
 
 const DynamicSketch = dynamic(() => import("components/index/Sketch"), {
 	ssr: false,
@@ -19,10 +20,12 @@ export default function HomePage() {
 			<Head>
 				<title>The Shape of Multiplication</title>
 			</Head>
-			<OptionProvider>
-				<Header />
-				<DynamicSketch />
-			</OptionProvider>
+			<RequestProvider>
+				<OptionProvider>
+					<Header />
+					<DynamicSketch />
+				</OptionProvider>
+			</RequestProvider>
 		</>
 	);
 }

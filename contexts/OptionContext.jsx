@@ -1,7 +1,7 @@
-import React from "react";
+import { createContext } from "react";
 import { useStateObject } from "../hooks";
 
-export const OptionContext = React.createContext();
+export const OptionContext = createContext();
 
 const defaultOptions = {
 	multNumber: 2,

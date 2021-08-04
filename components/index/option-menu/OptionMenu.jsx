@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 
 import { OptionContext } from "contexts/OptionContext";
+import { RequestContext } from "contexts/RequestContext";
+
 import { useToggleSwitchState } from "hooks";
 
 import {
@@ -34,6 +36,10 @@ export default function OptionMenu({ expanded, onExpand }) {
 
 function OptionMenuAside() {
 	const [options, updateOptions] = useContext(OptionContext);
+	const [requestTriggers] = useContext(RequestContext);
+
+	console.log(requestTriggers);
+
 	const [optionsAreLoaded, setOptionsAreLoaded] = useState(false);
 	/* Options will use IDs starting from 0 that will identify
 	which tooltip is open. null = no tooltip shown */
