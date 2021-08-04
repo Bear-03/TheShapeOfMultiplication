@@ -16,6 +16,9 @@ export default function Header() {
 					<a>Go back</a>
 				</Link>
 			</div>
+			{/* As there isn't another menu icon to compensate the centered
+			flexbox, a dummy div is needed with the same width as the button */}
+			<div style={{ width: 40, height: 40 }} />
 		</header>
 	);
 }
