@@ -89,6 +89,11 @@ function OptionMenuAside() {
 					value={options.nodeCount}
 				/>
 			</TooltipWrapper>
+			<div className={style.buttonContainer}>
+				<button onClick={requestTriggers.requestScreenshot}>
+					Take Screenshot
+				</button>
+			</div>
 			<TooltipWrapper
 				optionIndex={2}
 				text={

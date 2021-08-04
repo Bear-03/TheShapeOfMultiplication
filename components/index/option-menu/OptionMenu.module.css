@@ -1,3 +1,19 @@
+.buttonContainer {
+	display: flex;
+	width: 100%;
+}
+
+.buttonContainer > * {
+	flex: 1;
+}
+
+.buttonContainer > button {
+	border: white solid 0.2rem;
+	padding: 0.3rem;
+	border-radius: 0.5rem;
+}
+
+/* #region scrollbar */
 .container {
 	--border-radius: 0.5rem;
 	--scrollbar-padding: 0.3rem;
@@ -8,6 +24,7 @@
 	--scrollbar-thumb-color-hover: #7f7f7f;
 
 	overflow-y: auto;
+	font-size: 1.5rem;
 
 	/* Firefox scrollbar */
 	scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
@@ -17,7 +34,7 @@
 	margin-top: 2rem;
 }
 
-/* #region Chrome scrollbar rules */
+/* Chrome scrollbar rules */
 .container::-webkit-scrollbar,
 .container ::-webkit-scrollbar {
 	--track-width: calc(2 * var(--scrollbar-padding) + var(--scrollbar-width));

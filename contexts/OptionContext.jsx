@@ -12,7 +12,6 @@ const defaultOptions = {
 		["#B9E3C6", "#59C9A5", "#D81E5B", "#23395B", "#FFFD98", "#FFFFFF"],
 		["#D60270", "#9B4F96", "#0038A8"],
 		["#55CDFC", "#F7A8B8", "#FFFFFF", "#F7A8B8", "#55CDFC"],
-		["#FF76A4", "#FFFFFF", "#BF11D7", "#000000", "#303CBE"],
 		["#FFFFFF"]
 	],
 	selectedPalette: 0
