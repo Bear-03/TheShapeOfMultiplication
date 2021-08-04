@@ -11,6 +11,16 @@
 	border: white solid 0.2rem;
 	padding: 0.3rem;
 	border-radius: 0.5rem;
+
+	transition: filter 0.1s ease-out;
+}
+
+.buttonContainer > button:hover {
+	filter: brightness(0.7);
+}
+
+.buttonContainer > button:active {
+	filter: brightness(0.5);
 }
 
 /* #region scrollbar */
