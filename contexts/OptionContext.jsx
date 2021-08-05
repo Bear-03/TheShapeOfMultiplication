@@ -15,6 +15,8 @@ const defaultOptions = {
 		["#FFFFFF"]
 	],
 	selectedPalette: 0,
+	/* version must be increased by 1 if the structure
+	of the option object structure is updated.*/
 	version: 0
 };
 
