@@ -13,6 +13,7 @@ import {
 import TooltipWrapper from "../wrappers/TooltipWrapper";
 import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
+import Timeline from "./Timeline";
 
 import style from "./OptionMenu.module.css";
 
@@ -45,7 +46,7 @@ function OptionMenuAside() {
 			<TooltipWrapper
 				text={
 					"Number by which the node index will be multiplied. " +
-					"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6."
+					"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6"
 				}
 				shown={shownTooltip === 0}
 				onShow={() => setShownTooltip(0)}
@@ -57,7 +58,7 @@ function OptionMenuAside() {
 				/>
 			</TooltipWrapper>
 			<TooltipWrapper
-				text="Number of nodes the circle has."
+				text="Number of nodes the circle has"
 				shown={shownTooltip === 1}
 				onShow={() => setShownTooltip(1)}
 			>
@@ -67,6 +68,13 @@ function OptionMenuAside() {
 					max={options.maxNodeCount}
 				/>
 			</TooltipWrapper>
+			<TooltipWrapper
+				text="Contorls how many lines are drawn"
+				shown={shownTooltip === 2}
+				onShow={() => setShownTooltip(2)}
+			>
+				<Timeline />
+			</TooltipWrapper>
 			<div className={style.buttonContainer}>
 				<button onClick={requestTriggers.requestScreenshot}>
 					Take Screenshot
@@ -75,10 +83,10 @@ function OptionMenuAside() {
 			<TooltipWrapper
 				text={
 					"Color palette for the lines. The lines will use colors in order (first color " +
-					"for the first line, last color for the last line, etc.), creating a gradient."
+					"for the first line, last color for the last line, etc.), creating a gradient"
 				}
-				shown={shownTooltip === 2}
-				onShow={() => setShownTooltip(2)}
+				shown={shownTooltip === 3}
+				onShow={() => setShownTooltip(3)}
 			>
 				<PaletteContainer palettes={options.palettes} />
 			</TooltipWrapper>

@@ -14,3 +14,17 @@ export function addPropsToChildren(children, props) {
 		return child;
 	});
 }
+
+/**
+ * Returns the name of the property whose value changed between two objects
+ * @param {{}} oldObject
+ * @param {{}} newObject
+ * @returns {string | null} The property changed or null, if none were changed
+ */
+export function getChangedProperty(oldObject, newObject) {
+	for (const property in oldObject) {
+		if (oldObject[property] !== newObject[property]) return property;
+	}
+
+	return null;
+}

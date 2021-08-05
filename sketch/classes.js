@@ -3,6 +3,7 @@
  */
 
 import { generateGradientArray } from "./palette-manager";
+import { getChangedProperty } from "shared/scripts/util";
 
 export class CanvasManager {
 	/* Number multiplied by the available
@@ -137,9 +138,15 @@ export class Circle {
 		const oldOptions = this.options;
 		this._options = newOptions;
 
-		if (oldOptions.nodeCount !== this.nodeCount) this.updateNodeCount();
-		if (oldOptions.selectedPalette !== this.options.selectedPalette)
-			this.updateLineColors();
+		switch (getChangedProperty(oldOptions, newOptions)) {
+			case "nodeCount":
+				this.updateNodeCount();
+				break;
+
+			case "selectedPalette":
+				this.updateLineColors();
+				break;
+		}
 	}
 
 	get nodeCount() {
@@ -148,6 +155,10 @@ export class Circle {
 
 	get usedPalette() {
 		return this.options.palettes[this.options.selectedPalette];
+	}
+
+	get linesToDraw() {
+		return this.options.timelinePosition;
 	}
 
 	updateNodeCount() {
@@ -225,6 +236,7 @@ export class Circle {
 		for (let [i, node] of this.nodes.entries()) {
 			// Start at node 1 because first node is 0 and 0 * anything = 0
 			if (i === 0) continue;
+			if (i > this.linesToDraw) break;
 
 			const endNodeIndex = (i * this.options.multNumber) % this.nodeCount;
 			this.drawLineBetweenNodes(
