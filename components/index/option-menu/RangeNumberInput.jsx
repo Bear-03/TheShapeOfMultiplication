@@ -25,14 +25,16 @@ export default function RangeNumberInput({
 		- They have loaded from localStorage
 		- They are valid and have been updated in onValueIput (below) */
 	useEffect(() => {
+		if (optionsValue === parseInt(displayedValue)) return;
+
 		setDisplayedValue(optionsValue);
-	}, [optionsValue]);
+	}, [optionsValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	function onValueInput(event) {
+		setDisplayedValue(event.target.value);
+
 		if (event.target.checkValidity())
 			updateOptions({ [optionName]: parseInt(event.target.value) });
-		// Handles invalid inputs
-		else setDisplayedValue(event.target.value);
 	}
 
 	return (
