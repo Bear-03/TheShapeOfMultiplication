@@ -1,4 +1,5 @@
 import { useEffect, useState, createContext } from "react";
+import { deletePropertiesInArray } from "shared/scripts/util";
 
 const storageKey = "options";
 
@@ -57,8 +58,15 @@ export function OptionProvider({ children }) {
 		setOptions((prevOptions) => {
 			const newOptions = { ...prevOptions, [optionName]: value };
 
-			if (!unsavedOptionNames.includes(optionName))
-				localStorage.setItem(storageKey, JSON.stringify(newOptions));
+			if (!unsavedOptionNames.includes(optionName)) {
+				// Unsaved options have to be removed
+				const optionsToSave = deletePropertiesInArray(
+					newOptions,
+					unsavedOptionNames
+				);
+
+				localStorage.setItem(storageKey, JSON.stringify(optionsToSave));
+			}
 
 			return newOptions;
 		});

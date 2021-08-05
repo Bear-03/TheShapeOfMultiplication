@@ -28,3 +28,19 @@ export function getChangedProperty(oldObject, newObject) {
 
 	return null;
 }
+
+/**
+ * Deletes all the properties in an object except those present in an array
+ * @param {{}} object Object whose properties will be deleted
+ * @param {string[]} array Array with properties to keep
+ * @returns {{}} Object only with properties in the array
+ */
+export function deletePropertiesInArray(object, array) {
+	const objectCopy = Object.assign({}, object);
+
+	for (const property in objectCopy) {
+		if (array.includes(property)) delete objectCopy[property];
+	}
+
+	return objectCopy;
+}
