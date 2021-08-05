@@ -21,7 +21,7 @@ export default function PaletteItem({ index, palette }) {
 	}, [container?.current?.clientWidth]);
 
 	function onPaletteSelect() {
-		updateOptions({ selectedPalette: index });
+		updateOptions("selectedPalette", index);
 	}
 
 	return (

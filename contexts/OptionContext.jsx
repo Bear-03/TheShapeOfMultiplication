@@ -1,5 +1,4 @@
 import { useEffect, useState, createContext } from "react";
-import { deletePropertiesInArray } from "shared/scripts/util";
 
 const storageKey = "options";
 
@@ -22,7 +21,7 @@ const defaultOptions = {
 };
 
 // Options that won't be saved to localStorage
-const unsavedOptionsArray = ["timelinePosition"];
+const unsavedOptionNames = ["timelinePosition"];
 
 function loadOptions() {
 	let savedOptions = JSON.parse(localStorage.getItem(storageKey));
@@ -48,24 +47,18 @@ export function OptionProvider({ children }) {
 		const savedOptions = loadOptions();
 
 		if (savedOptions !== null)
-			setOptions({
-				...defaultOptions,
+			setOptions((prevOptions) => ({
+				...prevOptions,
 				...savedOptions
-			});
+			}));
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-	function updateOptions(optionsToAdd) {
+	function updateOptions(optionName, value) {
 		setOptions((prevOptions) => {
-			const newOptions = { ...prevOptions, ...optionsToAdd };
+			const newOptions = { ...prevOptions, [optionName]: value };
 
-			const optionsToSave = deletePropertiesInArray(
-				newOptions,
-				unsavedOptionsArray
-			);
-
-			console.log(optionsToSave);
-
-			localStorage.setItem(storageKey, JSON.stringify(optionsToSave));
+			if (!unsavedOptionNames.includes(optionName))
+				localStorage.setItem(storageKey, JSON.stringify(newOptions));
 
 			return newOptions;
 		});
