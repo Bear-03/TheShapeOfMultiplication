@@ -1,0 +1,71 @@
+.buttonContainer {
+	display: flex;
+	width: 100%;
+
+	* {
+		flex: 1;
+	}
+}
+
+.buttonContainer > button {
+	border: white solid 0.2rem;
+	padding: 0.3rem;
+	border-radius: 0.5rem;
+
+	transition: filter 0.1s ease-out;
+
+	&:hover {
+		filter: brightness(0.7);
+	}
+
+	&:active {
+		filter: brightness(0.5);
+	}
+}
+
+.container {
+	overflow-y: auto;
+	font-size: 1.5rem;
+
+	// SCROLLBAR RULES
+
+	--border-radius: 0.5rem;
+	--scrollbar-padding: 0.3rem;
+
+	--scrollbar-width: 0.6rem;
+	--scrollbar-bg-color: transparent;
+	--scrollbar-thumb-color: #707070;
+	--scrollbar-thumb-color-hover: #7f7f7f;
+
+	// Firefox scrollbar
+	scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
+
+	// Chrome scrollbar rules
+	&::-webkit-scrollbar,
+	::-webkit-scrollbar {
+		--track-width: calc(
+			2 * var(--scrollbar-padding) + var(--scrollbar-width)
+		);
+
+		width: var(--track-width);
+		height: var(--track-width);
+		background-color: var(--scrollbar-bg-color);
+	}
+
+	&::-webkit-scrollbar-thumb,
+	::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar-thumb-color);
+		border-radius: var(--border-radius);
+
+		border: var(--scrollbar-padding) solid transparent;
+		background-clip: padding-box;
+
+		&:hover {
+			background-color: var(--scrollbar-thumb-color-hover);
+		}
+	}
+}
+
+.container > * + * {
+	margin-top: 2rem;
+}

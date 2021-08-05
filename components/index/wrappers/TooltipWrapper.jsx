@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useWindowResize } from "hooks";
 import { addPropsToChildren } from "shared/scripts/util";
 
-import style from "./TooltipWrapper.module.css";
+import style from "./TooltipWrapper.module.scss";
 
 export default function TooltipWrapper({ text, shown, onShow, children }) {
 	const tooltipButtonRef = useRef();

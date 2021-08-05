@@ -1,0 +1,108 @@
+// #region Tooltip Container and button
+.label {
+	display: flex;
+	align-items: center;
+}
+
+.label button {
+	--size: 1rem;
+
+	margin: 0 1rem;
+	transition: filter 0.1s ease-out;
+
+	// Makes the text invisible without affecting accessibility
+	font-size: 0;
+
+	// Some fonts misplace the "?" in the button, these are safe
+	font-family: Arial, sans-serif;
+
+	&::before {
+		content: "?";
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 1.4rem;
+
+		width: var(--size);
+		height: var(--size);
+
+		box-sizing: content-box;
+		padding: 0.3rem;
+		border: 0.15rem solid white;
+		color: white;
+		border-radius: 50%;
+	}
+
+	&:hover {
+		filter: brightness(0.7);
+	}
+
+	&:active {
+		filter: brightness(0.5);
+	}
+}
+// #endregion
+
+.container {
+	// Margin from the bottom of the button to the tooltip arrow
+	--down-offset: 0.5rem;
+
+	--arrow-size: 1rem;
+	--bg-color: #000000e5;
+	--border-radius: 1rem;
+
+	position: relative;
+	width: 100%;
+
+	&::before,
+	&::after {
+		position: absolute;
+		pointer-events: none;
+		z-index: 1;
+
+		opacity: 0;
+		transition: opacity 0.3s ease-out;
+	}
+
+	// ARROW
+	&::before {
+		content: "";
+
+		/* Initially the top border will be at the bottom, but since
+		it's invisible, its width has to be subtracted. This makes the
+		tip of the bottom border be at the bottom */
+		top: calc(
+			var(--button-bottom) - var(--arrow-size) + var(--down-offset)
+		);
+
+		// Center horizontally
+		left: var(--button-horizontal-center);
+		transform: translateX(-50%);
+
+		border: var(--arrow-size) solid transparent;
+		border-bottom-color: var(--bg-color);
+	}
+
+	// TEXT BOX
+	&::after {
+		--padding: 1rem;
+
+		content: attr(tooltip);
+
+		padding: var(--padding);
+		top: calc(
+			var(--button-bottom) + var(--arrow-size) + var(--down-offset)
+		);
+
+		max-width: 70ch;
+		background-color: var(--bg-color);
+		border-radius: var(--border-radius);
+	}
+}
+
+.shown::before,
+.shown::after {
+	opacity: 1;
+}

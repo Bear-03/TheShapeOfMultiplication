@@ -2,8 +2,8 @@ import { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "contexts/OptionContext";
 
-import style from "./RangeNumberInput.module.css";
-import tooltipStyle from "../wrappers/TooltipWrapper.module.css";
+import style from "./RangeNumberInput.module.scss";
+import tooltipStyle from "../wrappers/TooltipWrapper.module.scss";
 
 export default function RangeNumberInput({
 	optionName,

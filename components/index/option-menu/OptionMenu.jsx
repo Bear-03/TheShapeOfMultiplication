@@ -15,7 +15,7 @@ import RangeNumberInput from "./RangeNumberInput";
 import PaletteContainer from "./PaletteContainer";
 import Timeline from "./Timeline";
 
-import style from "./OptionMenu.module.css";
+import style from "./OptionMenu.module.scss";
 
 export default function OptionMenu({ expanded, onExpand }) {
 	return (

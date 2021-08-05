@@ -1,4 +1,4 @@
-import "shared/styles/globals.css";
+import "shared/styles/globals.scss";
 
 import Head from "next/head";
 

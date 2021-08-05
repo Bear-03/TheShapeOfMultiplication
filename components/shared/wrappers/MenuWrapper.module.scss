@@ -1,0 +1,62 @@
+.container {
+	--transform-transition: transform 0.3s ease-out;
+}
+
+.container > button {
+	display: flex; // Fixes weird space at the bottom
+	position: relative; // For z-index to work
+	z-index: 1;
+
+	transition: var(--transform-transition), filter 0.2s ease-out;
+
+	&:hover {
+		filter: brightness(0.7);
+	}
+}
+
+.container aside {
+	--base-top-padding: 2rem;
+	--total-top-padding: calc(var(--header-height) + var(--base-top-padding));
+
+	position: absolute;
+	display: flex;
+
+	max-width: 100%;
+	flex-direction: column;
+	background-color: #1a1a1af0;
+
+	padding: var(--total-top-padding) 2rem 0;
+
+	top: 0;
+	bottom: 0;
+
+	transition: var(--transform-transition);
+}
+
+.expanded {
+	> button {
+		transform: rotate(calc(var(--direction) * 90deg));
+	}
+
+	aside {
+		transform: translateX(calc(var(--direction) * 100%));
+	}
+}
+
+.expandLeft {
+	--direction: -1;
+
+	aside {
+		align-items: flex-end;
+		left: 100%;
+	}
+}
+
+.expandRight {
+	--direction: 1;
+
+	aside {
+		align-items: flex-start;
+		right: 100%;
+	}
+}

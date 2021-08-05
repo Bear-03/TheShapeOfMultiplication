@@ -1,0 +1,48 @@
+@mixin thumb($thumb-selector, $width, $height) {
+	&#{$thumb-selector} {
+		appearance: none;
+		border: none;
+
+		width: $width;
+		height: $height;
+		background-color: #252525;
+		border-radius: 1rem;
+
+		transition: background-color 0.2s ease-out;
+	}
+}
+
+@mixin thumb-hover($thumb-selector) {
+	&#{$thumb-selector}:is(:hover, :active) {
+		// !important overrides range element hover (two rules below)
+		background-color: #949494 !important;
+	}
+}
+
+@mixin track-hover($thumb-selector) {
+	&:hover#{$thumb-selector} {
+		background-color: #5c5c5c;
+	}
+}
+
+@mixin main-style($track-width, $track-height, $thumb-width, $thumb-height) {
+	appearance: none;
+	cursor: pointer;
+	width: $track-width;
+	height: $track-height;
+
+	border-radius: 0.5rem;
+	padding: 0.4rem;
+	margin-right: 1rem;
+
+	/* Chrome doesn't render a rule if it contains an unknown selector, even
+	if other ones do work. This makes it necessary to duplicate the rules */
+	@include thumb("::-moz-range-thumb", $thumb-width, $thumb-height);
+	@include thumb("::-webkit-slider-thumb", $thumb-width, $thumb-height);
+
+	@include thumb-hover("::-moz-range-thumb");
+	@include thumb-hover("::-webkit-slider-thumb");
+
+	@include track-hover("::-moz-range-thumb");
+	@include track-hover("::-webkit-slider-thumb");
+}

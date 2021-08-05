@@ -1,0 +1,9 @@
+@use "shared/styles/slider.scss";
+
+.label {
+	margin-bottom: 1rem;
+}
+
+.container input {
+	@include slider.main-style(100%, 4rem, 0.7rem, 3rem);
+}

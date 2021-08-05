@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 import PaletteItem from "./PaletteItem";
 
-import style from "./PaletteContainer.module.css";
-import tooltipStyle from "../wrappers/TooltipWrapper.module.css";
+import style from "./PaletteContainer.module.scss";
+import tooltipStyle from "../wrappers/TooltipWrapper.module.scss";
 
 export default function PaletteContainer({
 	palettes,

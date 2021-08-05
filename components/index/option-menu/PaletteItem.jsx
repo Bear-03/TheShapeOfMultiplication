@@ -2,7 +2,7 @@ import { useRef, useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { OptionContext } from "contexts/OptionContext";
 
-import style from "./PaletteItem.module.css";
+import style from "./PaletteItem.module.scss";
 
 export default function PaletteItem({ index, palette }) {
 	const [options, updateOptions] = useContext(OptionContext);
