@@ -20,8 +20,6 @@ export default function Timeline({ showTooltip, tooltipButtonRef }) {
 					Timeline tooltip
 				</button>
 			</div>
-			{/* max has a -1 because the 0th node will
-			never have a line, so it should be skipped */}
 			<input
 				type="range"
 				id="timelineController"
