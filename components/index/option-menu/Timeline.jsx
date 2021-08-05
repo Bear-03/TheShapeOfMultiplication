@@ -9,7 +9,7 @@ export default function Timeline({ showTooltip, tooltipButtonRef }) {
 	const [options, updateOptions] = useContext(OptionContext);
 
 	function onValueInput(event) {
-		updateOptions({ timelinePosition: parseInt(event.target.value) });
+		updateOptions({ timelinePosition: parseFloat(event.target.value) });
 	}
 
 	return (
@@ -26,7 +26,8 @@ export default function Timeline({ showTooltip, tooltipButtonRef }) {
 				type="range"
 				id="timelineController"
 				min={0}
-				max={options.nodeCount - 1}
+				max={1}
+				step={0.01}
 				value={options.timelinePosition}
 				onChange={onValueInput}
 			/>

@@ -157,10 +157,6 @@ export class Circle {
 		return this.options.palettes[this.options.selectedPalette];
 	}
 
-	get linesToDraw() {
-		return this.options.timelinePosition;
-	}
-
 	updateNodeCount() {
 		this.populateNodeArray();
 		this.updateNodeProperties();
@@ -233,10 +229,16 @@ export class Circle {
 	drawLines() {
 		this.sketch.strokeWeight(1);
 
+		/* 1 is subtracted from nodeCount because the 0th node
+		will never have a line, so it should not be counted */
+		const linesToDraw = Math.round(
+			(this.nodeCount - 1) * this.options.timelinePosition
+		);
+
 		for (let [i, node] of this.nodes.entries()) {
 			// Start at node 1 because first node is 0 and 0 * anything = 0
 			if (i === 0) continue;
-			if (i > this.linesToDraw) break;
+			if (i > linesToDraw) break;
 
 			const endNodeIndex = (i * this.options.multNumber) % this.nodeCount;
 			this.drawLineBetweenNodes(
