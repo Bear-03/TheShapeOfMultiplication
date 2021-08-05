@@ -1,5 +1,5 @@
-import { useEffect, useRef, createContext } from "react";
-import { useStateObject, useUpdateEffect } from "../hooks";
+import { useEffect, useState, createContext } from "react";
+import { deletePropertiesInArray } from "shared/scripts/util";
 
 const storageKey = "options";
 
@@ -21,40 +21,55 @@ const defaultOptions = {
 	version: 0
 };
 
+// Options that won't be saved to localStorage
+const unsavedOptionsArray = ["timelinePosition"];
+
 function loadOptions() {
-	let storedOptions = JSON.parse(localStorage.getItem(storageKey));
+	let savedOptions = JSON.parse(localStorage.getItem(storageKey));
 
-	if (storedOptions !== null) {
+	if (savedOptions !== null) {
 		const optionsAreOutdated =
-			storedOptions.version < defaultOptions.version;
+			savedOptions.version < defaultOptions.version;
 
-		/* Already stored options won't be removed, they simply will never be
+		/* Already saved options won't be removed, they simply will never be
 		loaded. If the user changes anything, they will be overwritten */
-		if (optionsAreOutdated) storedOptions = null;
+		if (optionsAreOutdated) savedOptions = null;
 	}
 
-	return storedOptions;
+	return savedOptions;
 }
 
 export const OptionContext = createContext();
 
 export function OptionProvider({ children }) {
-	const optionsHaveLoaded = useRef(false);
-	const [options, updateOptions] = useStateObject(defaultOptions);
+	const [options, setOptions] = useState(defaultOptions);
 
 	useEffect(() => {
-		const storedOptions = loadOptions();
-		if (storedOptions !== null) updateOptions(storedOptions);
+		const savedOptions = loadOptions();
+
+		if (savedOptions !== null)
+			setOptions({
+				...defaultOptions,
+				...savedOptions
+			});
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-	useUpdateEffect(() => {
-		if (!optionsHaveLoaded.current) {
-			optionsHaveLoaded.current = true;
-			return;
-		}
+	function updateOptions(optionsToAdd) {
+		setOptions((prevOptions) => {
+			const newOptions = { ...prevOptions, ...optionsToAdd };
 
-		localStorage.setItem(storageKey, JSON.stringify(options));
-	}, [options]);
+			const optionsToSave = deletePropertiesInArray(
+				newOptions,
+				unsavedOptionsArray
+			);
+
+			console.log(optionsToSave);
+
+			localStorage.setItem(storageKey, JSON.stringify(optionsToSave));
+
+			return newOptions;
+		});
+	}
 
 	return (
 		<OptionContext.Provider value={[options, updateOptions]}>

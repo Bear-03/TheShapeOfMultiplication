@@ -28,3 +28,33 @@ export function getChangedProperty(oldObject, newObject) {
 
 	return null;
 }
+
+/**
+ * Deletes all the properties in an object except those present in an array
+ * @param {{}} object Object whose properties will be deleted
+ * @param {string[]} array Array with properties to keep
+ * @returns {{}} Object only with properties in the array
+ */
+export function deletePropertiesInArray(object, array) {
+	const objectCopy = Object.assign({}, object);
+
+	for (const property in objectCopy) {
+		if (array.includes(property)) delete objectCopy[property];
+	}
+
+	return objectCopy;
+}
+
+/**
+ * Runs a predicate on every array entry and only keeps those that return true
+ * @param {{}} object Object on which to run the predicate
+ * @param {(propertyName: string, propertyValue: any) => boolean} predicate
+ * @returns {{}} Filtered object
+ */
+export function filterObject(object, predicate) {
+	return Object.fromEntries(
+		Object.entries(object).filter((keyValuePair) => {
+			return predicate(...keyValuePair);
+		})
+	);
+}
