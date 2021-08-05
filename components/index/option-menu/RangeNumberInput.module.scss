@@ -1,11 +1,5 @@
 @use "shared/styles/slider.scss";
 
-.container {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-}
-
 .inputWrapper {
 	display: flex;
 	align-items: center;
@@ -15,40 +9,43 @@
 	min-width: 15rem;
 }
 
-.container label {
-	position: absolute;
+.container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 
-	// Makes the text invisible without affecting accessibility
-	font-size: 0;
+	label {
+		position: absolute;
+		// Makes the text invisible without affecting accessibility
+		font-size: 0;
+	}
 }
 
 .container input {
 	background-color: #f5f5f5;
+
+	&[type="number"] {
+		outline: none; // Removes chrome outline on focus
+		appearance: textfield;
+		width: 4ch;
+
+		border: none;
+		border-radius: 0.7rem;
+		padding: 0 0.4rem;
+
+		// Fixes chrome +- buttons not disappearing with "appearance: textfield"
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			appearance: none;
+		}
+
+		&:invalid {
+			// Chrome doesn't apply border-radius to outline so box-shadow has to be used
+			box-shadow: 0 0 0 0.2rem #c80000;
+		}
+	}
+
+	&[type="range"] {
+		@include slider.main-style(100%, 1rem, 1.5rem, 0.5rem);
+	}
 }
-
-// Fixes chrome +- buttons not disappearing with "appearance: textfield"
-.container input[type="number"]::-webkit-outer-spin-button,
-.container input[type="number"]::-webkit-inner-spin-button {
-	appearance: none;
-}
-
-.container input[type="number"] {
-	outline: none; // Removes chrome outline on focus
-	appearance: textfield;
-	width: 4ch;
-
-	border: none;
-	border-radius: 0.7rem;
-	padding: 0 0.4rem;
-}
-
-.container input[type="number"]:invalid {
-	// Chrome doesn't apply border-radius to outline so box-shadow has to be used
-	box-shadow: 0 0 0 0.2rem #c80000;
-}
-
-.container input[type="range"] {
-	@include slider.main-style(100%, 1rem, 1.5rem, 0.5rem);
-}
-
-// DOUBLED RULES
