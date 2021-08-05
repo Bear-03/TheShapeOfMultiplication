@@ -20,12 +20,12 @@
 	--thumb-border-radius: 1rem;
 
 	--hover-thumb-bg-color: #949494;
-	--hover-track-thumb-bg-color: #5c5c5c; /* thumb brightness when hovering on track */
+	--hover-track-thumb-bg-color: #5c5c5c; // thumb brightness when hovering on track
 	--hover-thumb-transition-duration: 0.2s;
 	--hover-thumb-transition-function: ease-out;
 }
 
-/* DOUBLED RULES */
+// DOUBLED RULES
 /* Chrome doesn't render a rule if it contains
 an unknown selector, even if other ones do work.
 This makes it necessary to make a rule only for
@@ -57,7 +57,7 @@ webkit browsers */
 		var(--hover-thumb-transition-function);
 }
 
-/* !important overrides range element hover (two rules below) */
+// !important overrides range element hover (two rules below)
 .container input::-moz-range-thumb:is(:hover, :active) {
 	background-color: var(--hover-thumb-bg-color) !important;
 }
@@ -74,4 +74,4 @@ webkit browsers */
 	background-color: var(--hover-track-thumb-bg-color);
 }
 
-/* DOUBLED RULES */
+// DOUBLED RULES

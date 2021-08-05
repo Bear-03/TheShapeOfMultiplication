@@ -13,23 +13,23 @@
 
 	margin: auto;
 	padding: 0 3rem;
-}
 
-.textWrapper > * {
-	width: fit-content;
-}
+	> * {
+		width: fit-content;
+	}
 
-.textWrapper h1 {
-	font-size: min(6vw, 5rem);
-}
+	h1 {
+		font-size: min(6vw, 5rem);
+	}
 
-.textWrapper a {
-	margin-top: 0.5rem;
-	font-size: min(2.5vw, 1.7rem);
-	transition: filter 0.3s ease-out;
-}
+	a {
+		margin-top: 0.5rem;
+		font-size: min(2.5vw, 1.7rem);
+		transition: filter 0.3s ease-out;
 
-.textWrapper a:hover {
-	filter: brightness(0.7);
-	text-decoration: underline;
+		&:hover {
+			filter: brightness(0.7);
+			text-decoration: underline;
+		}
+	}
 }

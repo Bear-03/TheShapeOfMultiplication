@@ -4,15 +4,15 @@
 }
 
 .container > button {
-	display: flex; /* Fixes weird space at the bottom */
-	position: relative; /* For z-index to work */
+	display: flex; // Fixes weird space at the bottom
+	position: relative; // For z-index to work
 	z-index: 1;
 
 	transition: var(--transform-transition), filter 0.2s ease-out;
-}
 
-.container > button:hover {
-	filter: brightness(0.7);
+	&:hover {
+		filter: brightness(0.7);
+	}
 }
 
 .container aside {
@@ -21,7 +21,7 @@
 
 	position: absolute;
 	display: flex;
-	/* width + side paddings should be the full max width */
+	// width + side paddings should be the full max width
 	max-width: 100%;
 	flex-direction: column;
 	background-color: #1a1a1af0;
@@ -34,28 +34,30 @@
 	transition: var(--transform-transition);
 }
 
-.expanded > button {
-	transform: rotateZ(calc(var(--direction) * 90deg));
-}
+.expanded {
+	> button {
+		transform: rotateZ(calc(var(--direction) * 90deg));
+	}
 
-.expanded aside {
-	transform: translateX(calc(var(--direction) * 100%));
+	aside {
+		transform: translateX(calc(var(--direction) * 100%));
+	}
 }
 
 .expandLeft {
 	--direction: -1;
+
+	aside {
+		align-items: flex-end;
+		left: 100%;
+	}
 }
 
 .expandRight {
 	--direction: 1;
-}
 
-.expandRight aside {
-	align-items: flex-start;
-	right: 100%;
-}
-
-.expandLeft aside {
-	align-items: flex-end;
-	left: 100%;
+	aside {
+		align-items: flex-start;
+		right: 100%;
+	}
 }

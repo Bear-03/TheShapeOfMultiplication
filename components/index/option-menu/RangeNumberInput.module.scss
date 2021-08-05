@@ -16,7 +16,7 @@
 .container label {
 	position: absolute;
 
-	/* Makes the text invisible without affecting accessibility */
+	// Makes the text invisible without affecting accessibility
 	font-size: 0;
 }
 
@@ -24,14 +24,14 @@
 	background-color: #f5f5f5;
 }
 
-/* Fixes chrome +- buttons not disappearing with "appearance: textfield"*/
+// Fixes chrome +- buttons not disappearing with "appearance: textfield"
 .container input[type="number"]::-webkit-outer-spin-button,
 .container input[type="number"]::-webkit-inner-spin-button {
 	appearance: none;
 }
 
 .container input[type="number"] {
-	outline: none; /* Removes chrome outline on focus */
+	outline: none; // Removes chrome outline on focus
 	appearance: textfield;
 	width: 4ch;
 
@@ -41,8 +41,7 @@
 }
 
 .container input[type="number"]:invalid {
-	/* Chrome doesn't apply border-radius to outline
-    so box-shadow has to be used */
+	// Chrome doesn't apply border-radius to outline so box-shadow has to be used
 	box-shadow: 0 0 0 0.2rem #c80000;
 }
 
@@ -62,12 +61,12 @@
 	--thumb-border-radius: 50rem;
 
 	--hover-thumb-bg-color: #949494;
-	--hover-track-thumb-bg-color: #5c5c5c; /* thumb brightness when hovering on track */
+	--hover-track-thumb-bg-color: #5c5c5c; // thumb brightness when hovering on track
 	--hover-thumb-transition-duration: 0.2s;
 	--hover-thumb-transition-function: ease-out;
 }
 
-/* DOUBLED RULES */
+// DOUBLED RULES
 /* Chrome doesn't render a rule if it contains
 an unknown selector, even if other ones do work.
 This makes it necessary to make a rule only for
@@ -99,7 +98,7 @@ webkit browsers */
 		var(--hover-thumb-transition-function);
 }
 
-/* !important overrides range element hover (two rules below) */
+// !important overrides range element hover (two rules below)
 .container input[type="range"]::-moz-range-thumb:is(:hover, :active) {
 	background-color: var(--hover-thumb-bg-color) !important;
 }

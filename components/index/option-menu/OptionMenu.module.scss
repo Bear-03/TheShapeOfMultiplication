@@ -1,10 +1,10 @@
 .buttonContainer {
 	display: flex;
 	width: 100%;
-}
 
-.buttonContainer > * {
-	flex: 1;
+	* {
+		flex: 1;
+	}
 }
 
 .buttonContainer > button {
@@ -13,18 +13,22 @@
 	border-radius: 0.5rem;
 
 	transition: filter 0.1s ease-out;
+
+	&:hover {
+		filter: brightness(0.7);
+	}
+
+	&:active {
+		filter: brightness(0.5);
+	}
 }
 
-.buttonContainer > button:hover {
-	filter: brightness(0.7);
-}
-
-.buttonContainer > button:active {
-	filter: brightness(0.5);
-}
-
-/* #region scrollbar */
 .container {
+	overflow-y: auto;
+	font-size: 1.5rem;
+
+	// SCROLLBAR RULES
+
 	--border-radius: 0.5rem;
 	--scrollbar-padding: 0.3rem;
 
@@ -33,38 +37,35 @@
 	--scrollbar-thumb-color: #707070;
 	--scrollbar-thumb-color-hover: #7f7f7f;
 
-	overflow-y: auto;
-	font-size: 1.5rem;
-
-	/* Firefox scrollbar */
+	// Firefox scrollbar
 	scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
+
+	// Chrome scrollbar rules
+	&::-webkit-scrollbar,
+	::-webkit-scrollbar {
+		--track-width: calc(
+			2 * var(--scrollbar-padding) + var(--scrollbar-width)
+		);
+
+		width: var(--track-width);
+		height: var(--track-width);
+		background-color: var(--scrollbar-bg-color);
+	}
+
+	&::-webkit-scrollbar-thumb,
+	::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar-thumb-color);
+		border-radius: var(--border-radius);
+
+		border: var(--scrollbar-padding) solid transparent;
+		background-clip: padding-box;
+
+		&:hover {
+			background-color: var(--scrollbar-thumb-color-hover);
+		}
+	}
 }
 
 .container > * + * {
 	margin-top: 2rem;
 }
-
-/* Chrome scrollbar rules */
-.container::-webkit-scrollbar,
-.container ::-webkit-scrollbar {
-	--track-width: calc(2 * var(--scrollbar-padding) + var(--scrollbar-width));
-
-	width: var(--track-width);
-	height: var(--track-width);
-	background-color: var(--scrollbar-bg-color);
-}
-
-.container::-webkit-scrollbar-thumb,
-.container ::-webkit-scrollbar-thumb {
-	background-color: var(--scrollbar-thumb-color);
-	border-radius: var(--border-radius);
-
-	border: var(--scrollbar-padding) solid transparent;
-	background-clip: padding-box;
-}
-
-.container::-webkit-scrollbar-thumb:hover,
-.container ::-webkit-scrollbar-thumb:hover {
-	background-color: var(--scrollbar-thumb-color-hover);
-}
-/* #endregion */

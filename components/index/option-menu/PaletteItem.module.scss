@@ -1,28 +1,28 @@
 .outerLi {
 	display: flex;
-}
 
-.outerLi:hover {
-	--background-color: #ffffff15;
-}
+	&:hover,
+	&.selected {
+		/* The hover rules have to be in the <li> instead of
+		the inner <ul> because firefox doesn't render the border-radius
+		with box-shadow properly when a scrollbar is present */
+		border-radius: var(--border-radius);
+		// Expands the background a bit to the sides
+		box-shadow: 0 0 0 0.5rem var(--background-color);
+		background-color: var(--background-color);
+	}
 
-.outerLi.selected {
-	--background-color: #ffffff2a;
-}
+	&:hover {
+		--background-color: #ffffff15;
+	}
 
-.outerLi.selected:hover {
-	--background-color: #ffffff35;
-}
+	&.selected {
+		--background-color: #ffffff2a;
+	}
 
-.outerLi:hover,
-.outerLi.selected {
-	/* The hover rules have to be in the <li> instead of
-	the inner <ul> because firefox doesn't render the border-radius
-	with box-shadow properly when a scrollbar is present */
-	border-radius: var(--border-radius);
-	/* Expands the background a bit to the sides */
-	box-shadow: 0 0 0 0.5rem var(--background-color);
-	background-color: var(--background-color);
+	&.selected:hover {
+		--background-color: #ffffff35;
+	}
 }
 
 .container {
