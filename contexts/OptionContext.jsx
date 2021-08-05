@@ -1,4 +1,4 @@
-import { useEffect, createContext } from "react";
+import { useEffect, useRef, createContext } from "react";
 import { useStateObject, useUpdateEffect } from "../hooks";
 
 const storageKey = "options";
@@ -38,6 +38,7 @@ function loadOptions() {
 export const OptionContext = createContext();
 
 export function OptionProvider({ children }) {
+	const optionsHaveLoaded = useRef(false);
 	const [options, updateOptions] = useStateObject(defaultOptions);
 
 	useEffect(() => {
@@ -46,6 +47,11 @@ export function OptionProvider({ children }) {
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useUpdateEffect(() => {
+		if (!optionsHaveLoaded.current) {
+			optionsHaveLoaded.current = true;
+			return;
+		}
+
 		localStorage.setItem(storageKey, JSON.stringify(options));
 	}, [options]);
 
