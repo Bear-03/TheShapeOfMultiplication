@@ -27,7 +27,7 @@ export default function Timeline({ showTooltip, tooltipButtonRef }) {
 				id="timelineController"
 				min={0}
 				max={1}
-				step={0.01}
+				step={0.001}
 				value={options.timelinePosition}
 				onChange={onValueInput}
 			/>
