@@ -1,3 +1,5 @@
+@use "shared/styles/slider.scss";
+
 .container {
 	display: flex;
 	justify-content: space-between;
@@ -46,73 +48,7 @@
 }
 
 .container input[type="range"] {
-	appearance: none;
-	cursor: pointer;
-	width: 100%;
-	height: 1rem;
-
-	border-radius: 0.5rem;
-	padding: 0 0.4rem;
-	margin-right: 1rem;
-
-	--thumb-height: 0.5rem;
-	--thumb-width: 1.5rem;
-	--thumb-backround-color: #252525;
-	--thumb-border-radius: 50rem;
-
-	--hover-thumb-bg-color: #949494;
-	--hover-track-thumb-bg-color: #5c5c5c; // thumb brightness when hovering on track
-	--hover-thumb-transition-duration: 0.2s;
-	--hover-thumb-transition-function: ease-out;
+	@include slider.main-style(100%, 1rem, 1.5rem, 0.5rem);
 }
 
 // DOUBLED RULES
-/* Chrome doesn't render a rule if it contains
-an unknown selector, even if other ones do work.
-This makes it necessary to make a rule only for
-webkit browsers */
-
-.container input[type="range"]::-moz-range-thumb {
-	appearance: none;
-	border: none;
-
-	height: var(--thumb-height);
-	width: var(--thumb-width);
-	background-color: var(--thumb-backround-color);
-	border-radius: var(--thumb-border-radius);
-
-	transition: background-color var(--hover-thumb-transition-duration)
-		var(--hover-thumb-transition-function);
-}
-
-.container input[type="range"]::-webkit-slider-thumb {
-	appearance: none;
-	border: none;
-
-	height: var(--thumb-height);
-	width: var(--thumb-width);
-	background-color: var(--thumb-backround-color);
-	border-radius: var(--thumb-border-radius);
-
-	transition: background-color var(--hover-thumb-transition-duration)
-		var(--hover-thumb-transition-function);
-}
-
-// !important overrides range element hover (two rules below)
-.container input[type="range"]::-moz-range-thumb:is(:hover, :active) {
-	background-color: var(--hover-thumb-bg-color) !important;
-}
-
-.container input[type="range"]::-webkit-slider-thumb:is(:hover, :active) {
-	background-color: var(--hover-thumb-bg-color) !important;
-}
-
-.container input[type="range"]:hover::-moz-range-thumb {
-	background-color: var(--hover-track-thumb-bg-color);
-}
-
-.container input[type="range"]:hover::-webkit-slider-thumb {
-	background-color: var(--hover-track-thumb-bg-color);
-}
-
-/* DOUBLED RULES */
