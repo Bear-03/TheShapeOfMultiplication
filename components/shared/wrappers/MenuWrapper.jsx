@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { useWindowResize } from "hooks";
 
-import style from "./MenuWrapper.module.css";
+import style from "./MenuWrapper.module.scss";
 
 /**
  * Enum containing the name of the menu classes for each direction

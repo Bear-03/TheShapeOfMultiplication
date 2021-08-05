@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useToggleState } from "hooks";
 import Nav from "../shared/Nav";
 
-import headerStyle from "shared/styles/header.module.css";
+import headerStyle from "shared/styles/header.module.scss";
 
 export default function Header() {
 	const [expanded, toggleExpanded] = useToggleState(false);

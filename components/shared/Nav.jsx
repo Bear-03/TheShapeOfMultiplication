@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { MenuWrapper, menuExpandDirections } from "./wrappers/MenuWrapper";
 
-import style from "./Nav.module.css";
+import style from "./Nav.module.scss";
 
 export default function Nav({ expanded, onExpand }) {
 	return (

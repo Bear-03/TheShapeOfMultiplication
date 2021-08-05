@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import Nav from "../shared/Nav";
 
-import headerStyle from "shared/styles/header.module.css";
+import headerStyle from "shared/styles/header.module.scss";
 
 const DynamicOptionMenu = dynamic(() => import("./option-menu/OptionMenu"));
 

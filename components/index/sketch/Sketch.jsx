@@ -2,7 +2,7 @@ import { useRef, useEffect, useContext } from "react";
 import { OptionContext } from "contexts/OptionContext";
 import { RequestContext } from "contexts/RequestContext";
 
-import style from "./Sketch.module.css";
+import style from "./Sketch.module.scss";
 import { createSketch } from "sketch";
 
 export default function Sketch() {
