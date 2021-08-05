@@ -45,8 +45,8 @@ function OptionMenuAside() {
 		<aside className={style.container}>
 			<TooltipWrapper
 				text={
-					"Number by which the node index will be multiplied. " +
-					"e.g. With multNumber = 3, node no. 2 would be linked to node no. 6 because 2 x 3 = 6"
+					"Number by which the node will be multiplied. " +
+					"e.g. If it equals 3, node no. 2 would be linked to node no. 6, as 2 x 3 = 6"
 				}
 				shown={shownTooltip === 0}
 				onShow={() => setShownTooltip(0)}
@@ -69,7 +69,7 @@ function OptionMenuAside() {
 				/>
 			</TooltipWrapper>
 			<TooltipWrapper
-				text="Contorls how many lines are drawn"
+				text="Controls how many lines are drawn, allowing to see how the lines are drawn in time"
 				shown={shownTooltip === 2}
 				onShow={() => setShownTooltip(2)}
 			>
