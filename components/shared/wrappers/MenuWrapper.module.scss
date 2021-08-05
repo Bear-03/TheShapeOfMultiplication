@@ -1,6 +1,5 @@
 .container {
-	--expand-time: 0.3s;
-	--transform-transition: transform var(--expand-time) ease-out;
+	--transform-transition: transform 0.3s ease-out;
 }
 
 .container > button {
@@ -21,7 +20,7 @@
 
 	position: absolute;
 	display: flex;
-	// width + side paddings should be the full max width
+
 	max-width: 100%;
 	flex-direction: column;
 	background-color: #1a1a1af0;
@@ -36,7 +35,7 @@
 
 .expanded {
 	> button {
-		transform: rotateZ(calc(var(--direction) * 90deg));
+		transform: rotate(calc(var(--direction) * 90deg));
 	}
 
 	aside {
