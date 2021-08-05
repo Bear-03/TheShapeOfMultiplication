@@ -1,7 +1,7 @@
 import { useEffect, createContext } from "react";
 import { useStateObject, useUpdateEffect } from "../hooks";
 
-export const OptionContext = createContext();
+const storageKey = "options";
 
 const defaultOptions = {
 	multNumber: 2,
@@ -14,21 +14,37 @@ const defaultOptions = {
 		["#55CDFC", "#F7A8B8", "#FFFFFF", "#F7A8B8", "#55CDFC"],
 		["#FFFFFF"]
 	],
-	selectedPalette: 0
+	selectedPalette: 0,
+	version: 0
 };
 
-const localStorageKey = "optionMenu";
+function loadOptions() {
+	let storedOptions = JSON.parse(localStorage.getItem(storageKey));
+
+	if (storedOptions !== null) {
+		const optionsAreOutdated =
+			storedOptions.version < defaultOptions.version;
+
+		/* Already stored options won't be removed, they simply will never be
+		loaded. If the user changes anything, they will be overwritten */
+		if (optionsAreOutdated) storedOptions = null;
+	}
+
+	return storedOptions;
+}
+
+export const OptionContext = createContext();
 
 export function OptionProvider({ children }) {
 	const [options, updateOptions] = useStateObject(defaultOptions);
 
 	useEffect(() => {
-		const storedOptions = JSON.parse(localStorage.getItem(localStorageKey));
+		const storedOptions = loadOptions();
 		if (storedOptions !== null) updateOptions(storedOptions);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useUpdateEffect(() => {
-		localStorage.setItem(localStorageKey, JSON.stringify(options));
+		localStorage.setItem(storageKey, JSON.stringify(options));
 	}, [options]);
 
 	return (
