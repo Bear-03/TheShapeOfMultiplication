@@ -55,6 +55,11 @@
 	overflow-y: auto;
 	font-size: 1.5rem;
 
+	/* Firefox subtracts the scrollbar width
+	from the usable container width, so it has to
+	be slightly bigger */
+	width: 55rem;
+
 	&,
 	* {
 		@include scrollbar(0.6rem, 0.3rem, #707070, #7f7f7f);

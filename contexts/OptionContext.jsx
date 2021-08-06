@@ -7,7 +7,7 @@ const storageKey = "options";
 const defaultOptions = {
 	multNumber: 2,
 	nodeCount: 100,
-	maxNodeCount: 700,
+	maxNodeCount: 1000,
 	palettes: [
 		["#AFCBFF", "#254441", "#43AA8B", "#B2B09B", "#EF3054"],
 		["#B9E3C6", "#59C9A5", "#D81E5B", "#23395B", "#FFFD98", "#FFFFFF"],

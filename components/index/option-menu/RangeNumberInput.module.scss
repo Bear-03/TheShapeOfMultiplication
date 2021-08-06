@@ -5,8 +5,8 @@
 	align-items: center;
 	justify-content: flex-end;
 	width: 100%;
-	max-width: 28rem;
-	min-width: 15rem;
+	max-width: 30rem;
+	min-width: 10rem;
 }
 
 .container {
@@ -27,7 +27,7 @@
 	&[type="number"] {
 		outline: none; // Removes chrome outline on focus
 		appearance: textfield;
-		width: 4ch;
+		width: 5ch;
 
 		border: none;
 		border-radius: 0.7rem;
