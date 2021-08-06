@@ -23,7 +23,7 @@ const defaultOptions = {
 };
 
 // Options that won't be saved to localStorage
-const unsavedOptionNames = ["timelinePosition"];
+const unsavedOptionNames = ["maxNodeCount", "timelinePosition"];
 
 function loadOptions() {
 	let savedOptions = JSON.parse(localStorage.getItem(storageKey));
