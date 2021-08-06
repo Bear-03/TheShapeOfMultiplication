@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-import { useWindowResize } from "hooks";
+import { useEvent } from "hooks";
 import { addPropsToChildren } from "shared/scripts/util";
 
 import style from "./TooltipWrapper.module.scss";
@@ -18,7 +18,7 @@ export default function TooltipWrapper({ text, shown, onShow, children }) {
 		tooltipButtonRef
 	});
 
-	useWindowResize(() => {
+	useEvent("resize", true, () => {
 		const button = tooltipButtonRef.current;
 
 		const horizontalCenter = button.offsetLeft + button.offsetWidth / 2;

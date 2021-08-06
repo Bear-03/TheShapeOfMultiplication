@@ -92,23 +92,18 @@ export function useToggleSwitchState(initialValue) {
 }
 
 /**
- * Custom hook that will run a function every time the window is resized.
- * @param {Function} callback The function that will be executed
+ * Custom hook that adds an event listener to the window
+ * @param {string} name name of the event
+ * @param {*} runOnLoad whether or not to run the callback before the listener is added
+ * @param {*} callback event callback
+ * @param {*} dependencies values that will re-subscribe the event if they change
  */
-export function useWindowResize(callback) {
+export function useEvent(name, runOnLoad, callback, dependencies = []) {
 	useEffect(() => {
-		callback();
-		window.addEventListener("resize", callback);
+		if (runOnLoad) callback();
+		window.addEventListener(name, callback);
 
-		return () => window.removeEventListener("resize", callback);
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
-}
-
-export function useBeforeUnload(callback, dependencies) {
-	useEffect(() => {
-		window.addEventListener("beforeunload", callback);
-
-		return () => window.removeEventListener("beforeunload", callback);
+		return () => window.removeEventListener(name, callback);
 	}, dependencies); // eslint-disable-line react-hooks/exhaustive-deps
 }
 

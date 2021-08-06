@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
 
-import { useWindowResize } from "hooks";
+import { useEvent } from "hooks";
 
 import style from "./MenuWrapper.module.scss";
 
@@ -24,7 +24,7 @@ export function MenuWrapper({
 	const [headerHeight, setHeaderHeight] = useState();
 	const menuWrapperRef = useRef();
 
-	useWindowResize(() => {
+	useEvent("resize", true, () => {
 		setHeaderHeight(menuWrapperRef.current.parentElement.offsetHeight);
 	});
 

@@ -1,5 +1,5 @@
 import { useEffect, createContext } from "react";
-import { useBeforeUnload, useStateObject } from "hooks";
+import { useEvent, useStateObject } from "hooks";
 import { deletePropertiesInArray } from "shared/scripts/util";
 
 const storageKey = "options";
@@ -50,14 +50,19 @@ export function OptionProvider({ children }) {
 		if (savedOptions !== null) updateOptions(savedOptions);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-	useBeforeUnload(() => {
-		const optionsToSave = deletePropertiesInArray(
-			options,
-			unsavedOptionNames
-		);
+	useEvent(
+		"beforeunload",
+		false,
+		() => {
+			const optionsToSave = deletePropertiesInArray(
+				options,
+				unsavedOptionNames
+			);
 
-		localStorage.setItem(storageKey, JSON.stringify(optionsToSave));
-	}, [options]);
+			localStorage.setItem(storageKey, JSON.stringify(optionsToSave));
+		},
+		[options]
+	);
 
 	return (
 		<OptionContext.Provider value={[options, updateOptions]}>
