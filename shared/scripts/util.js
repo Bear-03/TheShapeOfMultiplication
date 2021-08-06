@@ -19,14 +19,17 @@ export function addPropsToChildren(children, props) {
  * Returns the name of the property whose value changed between two objects
  * @param {{}} oldObject
  * @param {{}} newObject
- * @returns {string | null} The property changed or null, if none were changed
+ * @returns {string[] | null} Array of properties changed or null, if none were changed
  */
-export function getChangedProperty(oldObject, newObject) {
+export function getChangedProperties(oldObject, newObject) {
+	const changedProperties = [];
+
 	for (const property in oldObject) {
-		if (oldObject[property] !== newObject[property]) return property;
+		if (oldObject[property] !== newObject[property])
+			changedProperties.push(property);
 	}
 
-	return null;
+	return changedProperties.length >= 1 ? changedProperties : null;
 }
 
 /**

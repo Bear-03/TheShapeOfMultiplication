@@ -3,7 +3,7 @@
  */
 
 import { generateGradientArray } from "./palette-manager";
-import { getChangedProperty } from "shared/scripts/util";
+import { getChangedProperties } from "shared/scripts/util";
 
 export class CanvasManager {
 	/* Number multiplied by the available
@@ -138,15 +138,11 @@ export class Circle {
 		const oldOptions = this.options;
 		this._options = newOptions;
 
-		switch (getChangedProperty(oldOptions, newOptions)) {
-			case "nodeCount":
-				this.updateNodeCount();
-				break;
+		const changedProperties = getChangedProperties(oldOptions, newOptions);
 
-			case "selectedPalette":
-				this.updateLineColors();
-				break;
-		}
+		if (changedProperties.includes("nodeCount")) this.updateNodeCount();
+		if (changedProperties.includes("selectedPalette"))
+			this.updateLineColors();
 	}
 
 	get nodeCount() {
