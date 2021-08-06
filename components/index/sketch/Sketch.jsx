@@ -1,6 +1,5 @@
 import { useRef, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import { useUpdateEffect } from "hooks";
 
 import { OptionContext } from "contexts/OptionContext";
 import { RequestContext } from "contexts/RequestContext";
@@ -26,11 +25,6 @@ export default function Sketch() {
 			sketch.current.onOptionChange(options);
 		}
 	}, [options]); // eslint-disable-line react-hooks/exhaustive-deps
-
-	useUpdateEffect(() => {
-		// Recalculates component sizes after a route change
-		if (sketch.current !== undefined) sketch.windowResized();
-	}, [router.pathname]);
 
 	return <div ref={containerRef} className={style.container}></div>;
 }

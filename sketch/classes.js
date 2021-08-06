@@ -34,11 +34,14 @@ export class CanvasManager {
 		The width available is the whole window width because there will be no elements on the sides
 		The height available is the window height, but subtracting the height of the elements on top, as
 		they have to stay there and that space isn't available. (canvas top coordinate = height of the elements on top)
+
+		window.innerWidth and window.innerHeight are needed instead of accessing them through the canvas because of how
+		the sketch updates after a nextjs route change.
 		*/
 		return (
 			Math.min(
-				this.sketch.windowWidth,
-				this.sketch.windowHeight - this.getCanvasBoundingRect().top
+				window.innerWidth,
+				window.innerHeight - this.getCanvasBoundingRect().top
 			) * this.sizeScalingFactor
 		);
 	}
