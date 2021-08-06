@@ -104,6 +104,14 @@ export function useWindowResize(callback) {
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 }
 
+export function useBeforeUnload(callback, dependencies) {
+	useEffect(() => {
+		window.addEventListener("beforeunload", callback);
+
+		return () => window.removeEventListener("beforeunload", callback);
+	}, dependencies); // eslint-disable-line react-hooks/exhaustive-deps
+}
+
 /**
  * Custom hook that adds a css class to the html element, from any component.
  * It will remove the class on component cleanup, if it is still there.

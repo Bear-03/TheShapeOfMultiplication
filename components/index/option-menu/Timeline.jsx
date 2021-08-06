@@ -9,7 +9,7 @@ export default function Timeline({ showTooltip, tooltipButtonRef }) {
 	const [options, updateOptions] = useContext(OptionContext);
 
 	function onValueInput(event) {
-		updateOptions("timelinePosition", parseFloat(event.target.value));
+		updateOptions({ timelinePosition: parseFloat(event.target.value) });
 	}
 
 	return (

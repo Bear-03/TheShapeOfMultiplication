@@ -34,7 +34,7 @@ export default function RangeNumberInput({
 		setDisplayedValue(event.target.value);
 
 		if (event.target.checkValidity())
-			updateOptions(optionName, parseInt(event.target.value));
+			updateOptions({ [optionName]: parseInt(event.target.value) });
 	}
 
 	return (
