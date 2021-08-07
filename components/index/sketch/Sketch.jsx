@@ -1,5 +1,4 @@
 import { useRef, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
 
 import { OptionContext } from "contexts/OptionContext";
 import { RequestContext } from "contexts/RequestContext";
@@ -11,7 +10,6 @@ export default function Sketch() {
 	const [options] = useContext(OptionContext);
 	const [, setRequestTriggers] = useContext(RequestContext);
 
-	const router = useRouter();
 	const containerRef = useRef();
 	const sketch = useRef();
 
