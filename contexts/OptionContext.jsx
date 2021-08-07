@@ -9,10 +9,10 @@ const defaultOptions = {
 	nodeCount: 100,
 	maxNodeCount: 1000,
 	palettes: [
-		["#AFCBFF", "#254441", "#43AA8B", "#B2B09B", "#EF3054"],
-		["#B9E3C6", "#59C9A5", "#D81E5B", "#23395B", "#FFFD98", "#FFFFFF"],
-		["#D60270", "#9B4F96", "#0038A8"],
-		["#55CDFC", "#F7A8B8", "#FFFFFF", "#F7A8B8", "#55CDFC"],
+		["#F72585", "#7209B7", "#3A0CA3", "#4361EE", "#4CC9F0"],
+		["#820933", "#D84797", "#D2FDFF", "#3ABEFF", "#26FFE6"],
+		["#FFFFFF", "#00A7E1", "#00171F", "#003459", "#007EA7"],
+		["#61210F", "#EA2B1F", "#EDAE49", "#F9DF74", "#F9EDCC"],
 		["#FFFFFF"]
 	],
 	selectedPalette: 0,
