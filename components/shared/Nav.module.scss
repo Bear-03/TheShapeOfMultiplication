@@ -9,7 +9,7 @@
 		transition: background-color 0.1s ease-out;
 
 		&:hover {
-			background-color: hsla(0, 0%, 100%, 0.2);
+			background-color: hsla(0, 0%, 100%, 0.3);
 		}
 	}
 }
@@ -20,7 +20,7 @@
 	width: 100%;
 
 	.current {
-		background-color: hsla(0, 0%, 100%, 0.1);
+		background-color: hsla(0, 0%, 100%, 0.15);
 	}
 }
 
