@@ -6,31 +6,56 @@ import style from "./Explanation.module.scss";
 const animations = [
 	{
 		image: "1-nodes-no-numbers.png",
-		text: "These are nodes"
+		content: <p>These are nodes</p>
 	},
 	{
 		image: "2-nodes-with-numbers.png",
-		text: "Each node is assigned a number, starting from zero"
+		content: <p>Each node is assigned a number, starting from zero</p>
 	},
 	{
 		image: "3-two-lines.gif",
-		text:
-			"Then, the number of each node is multiplied by the " +
-			'"Multiplication number" , and a line is drawn from the first node ' +
-			"to the node whose number is the result. \n" +
-			'For example, with "Multiplication number" = 4, node no. 2 would be joint to ' +
-			"node no. 8, as 2 x 4 = 8"
+		content: (
+			<p>
+				Then, the number of each node is multiplied by the
+				&quot;Multiplication number&quot;, and a line is drawn from the
+				first node to the node whose number is the result <br />
+				For example, with &quot;Multiplication number&quot; = 4, node
+				no. 2 would be joint to node no. 8, as 2 x 4 = 8
+			</p>
+		)
 	},
 	{
 		image: "4-all-lines.gif",
-		text:
-			'You can modify the "Multiplication number" in the options menu (top-right icon) \n' +
-			"If the resulting number is greater than the maximum number, " +
-			"it will just wrap around and start back from zero"
+		content: (
+			<div>
+				<span>
+					You can modify the &quot;Multiplication number&quot; in the
+					options menu (
+				</span>
+				<div className={style.textContentImage}>
+					<Image
+						src="/images/cog.svg"
+						alt="cog"
+						width={20}
+						height={20}
+					/>
+				</div>
+				<span> icon in the main page)</span>
+				<p>
+					If the resulting number is greater than the maximum number,
+					it will just wrap around and start back from zero
+				</p>
+			</div>
+		)
 	},
 	{
 		image: "5-interesting-shapes.gif",
-		text: "As simple as these rules may seem, they can create incredibly complex and mesmerizing shapes"
+		content: (
+			<p>
+				As simple as these rules may seem, they can create incredibly
+				complex and mesmerizing shapes
+			</p>
+		)
 	}
 ];
 
@@ -96,7 +121,7 @@ export default function Explanation() {
 					/>
 				</button>
 			</div>
-			<p>{animation.text}</p>
+			<div className={style.textContainer}>{animation.content}</div>
 		</div>
 	);
 }

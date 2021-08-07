@@ -4,13 +4,17 @@
 	justify-content: center;
 	align-items: center;
 	margin: 0 2rem;
+}
 
+.textContainer {
+	position: relative;
+	max-width: min(70ch, 100%);
 	font-size: 2rem;
 	text-align: center;
 
-	p {
-		max-width: 60ch;
-		white-space: pre-wrap;
+	.textContentImage {
+		display: inline-block;
+		transform: translateY(0.2rem);
 	}
 }
 
