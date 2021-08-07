@@ -106,7 +106,7 @@ export default function Explanation() {
 				</button>
 				<div className={style.circleWrapper}>
 					<Image
-						src={`/how-it-works-anim/${animation.image}`}
+						src={`/how-it-works/${animation.image}`}
 						alt="Explanation images"
 						height={750}
 						width={750}
