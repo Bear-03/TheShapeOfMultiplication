@@ -13,7 +13,7 @@ export default function Header() {
 			<div className={headerStyle.textWrapper}>
 				<h1>How It Works</h1>
 				<Link href="/">
-					<a>Go back</a>
+					<a>Go home</a>
 				</Link>
 			</div>
 			{/* As there isn't another menu icon to compensate the centered
