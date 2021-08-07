@@ -1,5 +1,5 @@
-import Head from "next/head";
 import dynamic from "next/dynamic";
+import { NextSeo } from "next-seo";
 
 import Header from "components/index/Header";
 import Loader from "components/index/sketch/Loader";
@@ -17,9 +17,7 @@ const DynamicSketch = dynamic(() => import("components/index/sketch/Sketch"), {
 export default function HomePage() {
 	return (
 		<>
-			<Head>
-				<title>The Shape of Multiplication</title>
-			</Head>
+			<NextSeo description="Main page" />
 			<RequestProvider>
 				<OptionProvider>
 					<Header />

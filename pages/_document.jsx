@@ -5,11 +5,6 @@ export default class AppDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					<meta
-						name="description"
-						content="The Shape of Multiplication"
-					/>
-
 					<link
 						rel="preconnect"
 						href="https://fonts.googleapis.com"
