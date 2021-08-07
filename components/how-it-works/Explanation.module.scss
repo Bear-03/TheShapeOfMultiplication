@@ -1,0 +1,73 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 2rem;
+
+	font-size: 2rem;
+	text-align: center;
+
+	p {
+		max-width: 60ch;
+		white-space: pre-wrap;
+	}
+}
+
+.imageContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-height: 70rem;
+	gap: 10%;
+
+	* {
+		max-height: 100%;
+	}
+
+	button {
+		/* Needed so &:active rule works for non-flipped button,
+        as --scale-transform would be undefined */
+		--scale-transform: scale(1);
+		transition: transform 0.1s ease-out, filter 0.2s ease-out;
+
+		// Removes bottom white space
+		display: flex;
+
+		&.flipX {
+			--scale-transform: scale(-1);
+			transform: var(--scale-transform);
+		}
+
+		&:active {
+			transform: var(--scale-transform) translateX(0.3rem);
+		}
+
+		&:hover {
+			filter: brightness(0.7);
+		}
+
+		&.lockButton {
+			visibility: hidden;
+		}
+
+		* {
+			// Avoids image being the event.target
+			pointer-events: none;
+		}
+	}
+}
+
+.applyAppear :is(.circleWrapper, p) {
+	animation: appear 0.5s ease-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
