@@ -30,7 +30,7 @@ const animations = [
 	},
 	{
 		image: "5-interesting-shapes.gif",
-		text: "As simple as this rules may seem, they can create incredibly complex and mesmerizing shapes"
+		text: "As simple as these rules may seem, they can create incredibly complex and mesmerizing shapes"
 	}
 ];
 
