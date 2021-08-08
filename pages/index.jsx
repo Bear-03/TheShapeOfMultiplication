@@ -14,10 +14,19 @@ const DynamicSketch = dynamic(() => import("components/index/sketch/Sketch"), {
 	}
 });
 
+const description =
+	"Visualize the patterns within multiplication that emerge from a simple set of rules";
+
 export default function HomePage() {
 	return (
 		<>
-			<NextSeo description="Main page" />
+			<NextSeo
+				description={description}
+				openGraph={{
+					title: "The Shape of Multipliation",
+					description: { description }
+				}}
+			/>
 			<RequestProvider>
 				<OptionProvider>
 					<Header />
