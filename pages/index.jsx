@@ -24,7 +24,7 @@ export default function HomePage() {
 				description={description}
 				openGraph={{
 					title: "The Shape of Multipliation",
-					description: { description }
+					description: description
 				}}
 			/>
 			<RequestProvider>
