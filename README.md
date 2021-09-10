@@ -12,4 +12,4 @@ Just by tinkering a bit with the options on the website, you can get astonishing
 
 [website]: https://theshapeofmultiplication.ml/
 [howitworks]: https://theshapeofmultiplication.ml/how-it-works
-[galleryimage]: https://theshapeofmultiplication.ml/_next/image?url=%2Fhow-it-works%2F5-interesting-shapes.gif&w=750&q=75
+[galleryimage]: public/how-it-works/5-interesting-shapes.gif
