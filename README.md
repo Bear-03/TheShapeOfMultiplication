@@ -10,6 +10,6 @@ Just by tinkering a bit with the options on the website, you can get astonishing
 
 ![Gallery][galleryimage]
 
-[website]: https://theshapeofmultiplication.ml/
+[website]: https://the-shape-of-multiplication.vercel.app/
 [howitworks]: https://theshapeofmultiplication.ml/how-it-works
 [galleryimage]: public/how-it-works/5-interesting-shapes.gif
